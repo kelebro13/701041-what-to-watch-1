@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Тимур Гумеров](https://up.htmlacademy.ru/react/1/user/701041).
-* Наставник: `Неизвестно`.
+* Наставник: [Евгений Фаллер](https://up.htmlacademy.ru/react/1/user/505933).
 
 ---
 
