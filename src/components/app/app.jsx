@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import MovieCard from "../movie-card/movie-card.jsx";
 
 const App = (props) => {
+  const titleClickHandler = () => {};
+
   return (
     <React.Fragment>
       <div className="visually-hidden">
@@ -140,7 +142,7 @@ const App = (props) => {
           <div className="catalog__movies-list">
             {
               props.movieTitles.map((title, index) => {
-                return <MovieCard key={index} title={title}/>;
+                return <MovieCard key={index} title={title} onClick={titleClickHandler}/>;
               })
             }
           </div>
