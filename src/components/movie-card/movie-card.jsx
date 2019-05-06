@@ -10,14 +10,15 @@ const MovieCard = (props) => {
           alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175"/>
       </div>
       <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html">{props.title}</a>
+        <a className="small-movie-card__link" href="movie-page.html" onClick={props.onClick}>{props.title}</a>
       </h3>
     </article>
   );
 };
 
 MovieCard.propTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 export default MovieCard;
