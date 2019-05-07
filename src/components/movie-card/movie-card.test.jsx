@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MovieCard from "./movie-card.jsx";
+import MovieCard from "./movie-card";
 
 it(`render correctly MovieCard component`, () => {
   const title = `Aviator`;
