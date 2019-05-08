@@ -1,8 +1,8 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import App from "./app";
+import MovieList from "./movie-list";
 
-it(`render correctly App component`, () => {
+it(`render correctly MovieList component`, () => {
   const films = [
     {
       src: `img/aviator.jpg`,
@@ -13,10 +13,10 @@ it(`render correctly App component`, () => {
       title: `We need to talk about Kevin`
     }
   ];
+
   const tree = renderer
-    .create(<App films={films}/>)
+    .create(<MovieList films={films}/>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();
 });
-

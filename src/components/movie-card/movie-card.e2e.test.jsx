@@ -6,12 +6,14 @@ import MovieCard from "./movie-card";
 Enzyme.configure({adapter: new Adapter()});
 
 it(`check the onClick callback`, () => {
+  const src = ``;
   const title = `Aviator`;
-  const clickHandler = jest.fn();
+  const titleClickHandler = jest.fn();
+  const previewClickHandler = jest.fn();
 
-  const movieCard = shallow(<MovieCard title={title} onClick={clickHandler}/>);
+  const movieCard = shallow(<MovieCard src={src} title={title} onTitleClick={titleClickHandler} onPreviewClick={previewClickHandler}/>);
 
   movieCard.find(`a`).simulate(`click`);
 
-  expect(clickHandler).toHaveBeenCalledTimes(1);
+  expect(titleClickHandler).toHaveBeenCalledTimes(1);
 });
