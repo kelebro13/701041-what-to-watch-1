@@ -3,13 +3,12 @@ import renderer from "react-test-renderer";
 import MovieCard from "./movie-card";
 
 it(`render correctly MovieCard component`, () => {
+  const id = 1;
   const src = ``;
   const title = `Aviator`;
-  const titleClickHandler = jest.fn();
-  const previewClickHandler = jest.fn();
 
   const tree = renderer
-    .create(<MovieCard src={src} title={title} onTitleClick={titleClickHandler} onPreviewClick={previewClickHandler}/>)
+    .create(<MovieCard id={id} src={src} title={title}/>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

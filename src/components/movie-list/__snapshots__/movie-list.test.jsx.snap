@@ -6,6 +6,8 @@ exports[`render correctly MovieList component 1`] = `
 >
   <article
     className="small-movie-card catalog__movies-card"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <button
       className="small-movie-card__play-btn"
@@ -38,6 +40,8 @@ exports[`render correctly MovieList component 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <button
       className="small-movie-card__play-btn"

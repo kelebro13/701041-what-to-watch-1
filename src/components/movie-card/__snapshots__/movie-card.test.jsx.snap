@@ -3,10 +3,12 @@
 exports[`render correctly MovieCard component 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
 >
   <button
     className="small-movie-card__play-btn"
-    onClick={[MockFunction]}
+    onClick={[Function]}
     type="button"
   >
     Play
@@ -27,7 +29,6 @@ exports[`render correctly MovieCard component 1`] = `
     <a
       className="small-movie-card__link"
       href="movie-page.html"
-      onClick={[MockFunction]}
     >
       Aviator
     </a>
