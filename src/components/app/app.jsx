@@ -1,10 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
 import MovieList from "../movie-list/movie-list";
 
 const App = (props) => {
   return (
-    <React.Fragment>
+    <>
       <div className="visually-hidden">
         <svg xmlns="http://www.w3.org/2000/svg">
           <symbol id="add" viewBox="0 0 19 20">
@@ -158,7 +156,7 @@ const App = (props) => {
           </div>
         </footer>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 

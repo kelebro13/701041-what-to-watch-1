@@ -1,6 +1,3 @@
-import React from "react";
-import PropTypes from "prop-types";
-
 const MovieCard = (props) => {
   const {id, src, title, onTitleClick, onActiveCardChange, onPreviewClick} = props;
 
