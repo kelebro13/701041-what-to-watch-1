@@ -1,15 +1,8 @@
-import React from "react";
 import ReactDOM from "react-dom";
-import App from './components/app/app.jsx';
-
-const movieTitles = [
-  `Fantastic Beasts: The Crimes of Grindelwald`,
-  `Bohemian Rhapsody`,
-  `Macbeth`,
-  `Aviator`,
-];
+import App from './components/app/app';
+import films from './mocks/films';
 
 ReactDOM.render(
-    <App movieTitles={movieTitles}/>,
+    <App films={films}/>,
     document.getElementById(`root`)
 );

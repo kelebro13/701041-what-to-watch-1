@@ -1,12 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import MovieCard from "../movie-card/movie-card.jsx";
+import MovieList from "../movie-list/movie-list";
 
 const App = (props) => {
-  const titleClickHandler = () => {};
-
   return (
-    <React.Fragment>
+    <>
       <div className="visually-hidden">
         <svg xmlns="http://www.w3.org/2000/svg">
           <symbol id="add" viewBox="0 0 19 20">
@@ -139,13 +135,7 @@ const App = (props) => {
             </li>
           </ul>
 
-          <div className="catalog__movies-list">
-            {
-              props.movieTitles.map((title, index) => {
-                return <MovieCard key={index} title={title} onClick={titleClickHandler}/>;
-              })
-            }
-          </div>
+          <MovieList films={props.films}/>
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
@@ -166,12 +156,15 @@ const App = (props) => {
           </div>
         </footer>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 
 App.propTypes = {
-  movieTitles: PropTypes.arrayOf(PropTypes.string).isRequired
+  films: PropTypes.arrayOf(PropTypes.shape({
+    src: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired
+  })).isRequired
 };
 
 export default App;
