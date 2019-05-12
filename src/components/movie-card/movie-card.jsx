@@ -1,5 +1,6 @@
 const MovieCard = (props) => {
-  const {id, src, title, onTitleClick, onActiveCardChange, onPreviewClick} = props;
+  const {film, id, onTitleClick, onActiveCardChange, onPreviewClick} = props;
+  const {src, title} = film;
 
   const _handleCardMouseEnter = () => {
     if (onActiveCardChange) {
@@ -15,7 +16,7 @@ const MovieCard = (props) => {
 
   const _handlePreviewClick = () => {
     if (onPreviewClick) {
-      onPreviewClick(id);
+      onPreviewClick(film);
     }
   };
 
@@ -34,8 +35,10 @@ const MovieCard = (props) => {
 
 MovieCard.propTypes = {
   id: PropTypes.number.isRequired,
-  src: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  film: PropTypes.shape({
+    src: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  }).isRequired,
   onTitleClick: PropTypes.func,
   onPreviewClick: PropTypes.func,
   onActiveCardChange: PropTypes.func,

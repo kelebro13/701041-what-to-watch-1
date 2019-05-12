@@ -25,12 +25,10 @@ class MovieList extends React.PureComponent {
       <div className="catalog__movies-list">
         {
           films.map((film, index) => {
-            const {title, src} = film;
             return <MovieCard
               key={index}
               id={index}
-              src={src}
-              title={title}
+              film={film}
               onActiveCardChange={this.handleActiveCardChange}
               onTitleClick={this.handleTitleClick}
               onPreviewClick={this.handlePreviewClick} />;
