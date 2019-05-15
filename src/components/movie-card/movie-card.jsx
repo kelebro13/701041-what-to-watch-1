@@ -1,37 +1,67 @@
-const MovieCard = (props) => {
-  const {film, id, onTitleClick, onActiveCardChange, onPreviewClick} = props;
-  const {posterSrc, title} = film;
+import VideoPlayer from '../video-player/video-player';
 
-  const _handleCardMouseEnter = () => {
-    if (onActiveCardChange) {
-      onActiveCardChange(id);
-    }
-  };
+const DELAY = 1000;
 
-  const _handleCardMouseLeave = () => {
-    if (onActiveCardChange) {
-      onActiveCardChange();
-    }
-  };
+class MovieCard extends React.PureComponent {
 
-  const _handlePreviewClick = () => {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isPlaying: false
+    };
+    this._handleCardMouseEnter = this._handleCardMouseEnter.bind(this);
+    this._handleCardMouseLeave = this._handleCardMouseLeave.bind(this);
+  }
+
+  render() {
+    const {film, onTitleClick} = this.props;
+    const {posterSrc, title, sources} = film;
+    const {isPlaying} = this.state;
+
+    return (
+      <article className="small-movie-card catalog__movies-card" onMouseEnter={this._handleCardMouseEnter} onMouseLeave={this._handleCardMouseLeave}>
+        <div className="small-movie-card__image">
+          <VideoPlayer isPlaying={isPlaying} poster={posterSrc} sourceMp4={sources.mp4} sourceWebm={sources.webm}/>
+        </div>
+        <h3 className="small-movie-card__title">
+          <a className="small-movie-card__link" href="movie-page.html" onClick={onTitleClick}>{title}</a>
+        </h3>
+      </article>
+    );
+  }
+
+  _handleCardMouseEnter() {
+    const {film, onPreviewClick} = this.props;
+    this._playVideo();
+    this._changeActiveCard(true);
     if (onPreviewClick) {
       onPreviewClick(film);
     }
-  };
+  }
 
-  return (
-    <article className="small-movie-card catalog__movies-card" onMouseEnter={_handleCardMouseEnter} onMouseLeave={_handleCardMouseLeave}>
-      <button className="small-movie-card__play-btn" type="button" onClick={_handlePreviewClick}>Play</button>
-      <div className="small-movie-card__image">
-        <img src={posterSrc} alt={title} width="280" height="175"/>
-      </div>
-      <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html" onClick={onTitleClick}>{title}</a>
-      </h3>
-    </article>
-  );
-};
+  _handleCardMouseLeave() {
+    this._stopVideo();
+    this._changeActiveCard(false);
+  }
+
+  _playVideo() {
+    this.timerId = setTimeout(() => {
+      this.setState({isPlaying: true});
+    }, DELAY);
+  }
+
+  _stopVideo() {
+    clearTimeout(this.timerId);
+    this.setState({isPlaying: false});
+  }
+
+  _changeActiveCard(isActive) {
+    const {id, onActiveCardChange} = this.props;
+    if (onActiveCardChange) {
+      onActiveCardChange(isActive ? id : null);
+    }
+  }
+}
 
 MovieCard.propTypes = {
   id: PropTypes.number.isRequired,

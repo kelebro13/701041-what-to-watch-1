@@ -6,20 +6,13 @@ exports[`render correctly MovieCard component 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
-  <button
-    className="small-movie-card__play-btn"
-    onClick={[Function]}
-    type="button"
-  >
-    Play
-  </button>
   <div
     className="small-movie-card__image"
   >
-    <img
-      alt="Aviator"
+    <video
       height="175"
-      src=""
+      muted={true}
+      poster=""
       width="280"
     />
   </div>
