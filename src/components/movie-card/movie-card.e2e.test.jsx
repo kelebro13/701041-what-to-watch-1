@@ -5,8 +5,12 @@ import MovieCard from "./movie-card";
 it(`check the onTitleClick callback`, () => {
   const id = 1;
   const film = {
-    src: ``,
-    title: `Aviator`
+    title: `Aviator`,
+    posterSrc: ``,
+    sources: {
+      mp4: ``,
+      webm: ``
+    }
   };
   const handleTitleClick = jest.fn();
 
@@ -20,14 +24,18 @@ it(`check the onTitleClick callback`, () => {
 it(`check the onPreviewClick callback`, () => {
   const id = 1;
   const film = {
-    src: ``,
-    title: `Aviator`
+    title: `Aviator`,
+    posterSrc: ``,
+    sources: {
+      mp4: ``,
+      webm: ``
+    }
   };
   const handlePreviewClick = jest.fn();
 
   const movieCard = shallow(<MovieCard id={id} film={film} onPreviewClick={handlePreviewClick}/>);
 
-  movieCard.find(`button`).simulate(`click`);
+  movieCard.simulate(`mouseEnter`);
 
   expect(handlePreviewClick).toHaveBeenCalledTimes(1);
   expect(handlePreviewClick).toBeCalledWith(film);

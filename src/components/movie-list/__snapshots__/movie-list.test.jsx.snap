@@ -9,20 +9,13 @@ exports[`render correctly MovieList component 1`] = `
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
-    <button
-      className="small-movie-card__play-btn"
-      onClick={[Function]}
-      type="button"
-    >
-      Play
-    </button>
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="Aviator"
+      <video
         height="175"
-        src="img/aviator.jpg"
+        muted={true}
+        poster="img/aviator.jpg"
         width="280"
       />
     </div>
@@ -43,20 +36,13 @@ exports[`render correctly MovieList component 1`] = `
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
-    <button
-      className="small-movie-card__play-btn"
-      onClick={[Function]}
-      type="button"
-    >
-      Play
-    </button>
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="We need to talk about Kevin"
+      <video
         height="175"
-        src="img/we-need-to-talk-about-kevin.jpg"
+        muted={true}
+        poster="img/we-need-to-talk-about-kevin.jpg"
         width="280"
       />
     </div>

@@ -41,8 +41,12 @@ class MovieList extends React.PureComponent {
 
 MovieList.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
-    src: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    posterSrc: PropTypes.string.isRequired,
+    sources: PropTypes.shape({
+      mp4: PropTypes.string,
+      webm: PropTypes.string
+    }).isRequired
   })).isRequired
 };
 

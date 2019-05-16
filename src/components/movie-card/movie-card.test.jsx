@@ -4,8 +4,12 @@ import MovieCard from "./movie-card";
 it(`render correctly MovieCard component`, () => {
   const id = 1;
   const film = {
-    src: ``,
-    title: `Aviator`
+    title: `Aviator`,
+    posterSrc: ``,
+    sources: {
+      mp4: ``,
+      webm: ``
+    }
   };
 
   const tree = renderer
