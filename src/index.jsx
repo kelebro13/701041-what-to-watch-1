@@ -5,7 +5,7 @@ import App from './components/app/app';
 import films from './mocks/films';
 import {reducer, initialState} from "./reducer";
 
-const store = createStore(reducer, initialState);
+const store = createStore(reducer, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
     <Provider store={store}>

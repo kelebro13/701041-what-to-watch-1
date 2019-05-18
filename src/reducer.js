@@ -1,5 +1,5 @@
 export const initialState = {
-  genre: `All Genres`,
+  genre: `All genres`,
   filmsByGenre: []
 };
 
