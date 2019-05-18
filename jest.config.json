@@ -5,5 +5,9 @@
   "transform": {
     "^.+\\.(js|jsx|ts)$": "babel-jest"
   },
-  "testURL": "http://localhost/"
+  "testURL": "http://localhost/",
+  "collectCoverageFrom": [
+  "**/src/**/*.{js,jsx}",
+  "!**/node_modules/**"
+  ]
 }
