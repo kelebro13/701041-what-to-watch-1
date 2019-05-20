@@ -1,27 +1,33 @@
 import renderer from "react-test-renderer";
-import App from "./app";
+import {App} from "./app";
 
 it(`render correctly App component`, () => {
+  const genre = `All genres`;
+  const genres = [`All genres`, `Kids & Family`, `Comedies`];
   const films = [
     {
-      title: `Aviator`,
-      posterSrc: `img/aviator.jpg`,
+      title: `Fantastic Beasts: The Crimes of Grindelwald`,
+      genre: `Kids & Family`,
+      posterSrc: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
       sources: {
-        mp4: ``,
-        webm: ``
+        mp4: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+        webm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
       }
     },
     {
-      title: `We need to talk about Kevin`,
-      posterSrc: `img/we-need-to-talk-about-kevin.jpg`,
+      title: `Johnny English`,
+      genre: `Comedies`,
+      posterSrc: `img/johnny-english.jpg`,
       sources: {
-        mp4: ``,
-        webm: ``
+        mp4: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+        webm: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
       }
     }
   ];
+  const handleSelectedGenreChange = () => {};
+
   const tree = renderer
-    .create(<App films={films}/>)
+    .create(<App genre={genre} genres={genres} films={films} onSelectedGenreChange={handleSelectedGenreChange}/>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

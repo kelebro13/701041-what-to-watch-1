@@ -277,6 +277,7 @@ Array [
           <a
             className="catalog__genres-link"
             href="#"
+            onClick={[Function]}
           >
             All genres
           </a>
@@ -287,56 +288,7 @@ Array [
           <a
             className="catalog__genres-link"
             href="#"
-          >
-            Comedies
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Crime
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Documentary
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Dramas
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Horror
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
+            onClick={[Function]}
           >
             Kids & Family
           </a>
@@ -347,28 +299,9 @@ Array [
           <a
             className="catalog__genres-link"
             href="#"
+            onClick={[Function]}
           >
-            Romance
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Sci-Fi
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Thrillers
+            Comedies
           </a>
         </li>
       </ul>
@@ -386,9 +319,18 @@ Array [
             <video
               height="175"
               muted={true}
-              poster="img/aviator.jpg"
+              poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
               width="280"
-            />
+            >
+              <source
+                src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+                type="video/webm; codecs=\\"vp8, vorbis\\""
+              />
+              <source
+                src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+                type="video/mp4; codecs=\\"avc1.42E01E, mp4a.40.2\\""
+              />
+            </video>
           </div>
           <h3
             className="small-movie-card__title"
@@ -398,7 +340,7 @@ Array [
               href="movie-page.html"
               onClick={[Function]}
             >
-              Aviator
+              Fantastic Beasts: The Crimes of Grindelwald
             </a>
           </h3>
         </article>
@@ -413,9 +355,18 @@ Array [
             <video
               height="175"
               muted={true}
-              poster="img/we-need-to-talk-about-kevin.jpg"
+              poster="img/johnny-english.jpg"
               width="280"
-            />
+            >
+              <source
+                src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+                type="video/webm; codecs=\\"vp8, vorbis\\""
+              />
+              <source
+                src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+                type="video/mp4; codecs=\\"avc1.42E01E, mp4a.40.2\\""
+              />
+            </video>
           </div>
           <h3
             className="small-movie-card__title"
@@ -425,7 +376,7 @@ Array [
               href="movie-page.html"
               onClick={[Function]}
             >
-              We need to talk about Kevin
+              Johnny English
             </a>
           </h3>
         </article>

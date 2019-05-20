@@ -6,8 +6,10 @@
   "scripts": {
     "build": "webpack --mode development",
     "start": "webpack-dev-server --open",
-    "eslint": "eslint src/**/*.jsx",
-    "test": "npm run eslint && jest --config jest.config.json --no-cache"
+    "eslint": "eslint src/**/*.js src/**/*.jsx",
+    "test": "npm run eslint && jest --config jest.config.json --no-cache",
+    "only-test": "jest --config jest.config.json --no-cache",
+    "test-coverage": "jest --config jest.config.json --coverage"
   },
   "devDependencies": {
     "@babel/core": "7.4.4",
@@ -32,6 +34,8 @@
   "dependencies": {
     "prop-types": "15.7.2",
     "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "react-dom": "16.8.6",
+    "react-redux": "7.0.3",
+    "redux": "4.0.1"
   }
 }
