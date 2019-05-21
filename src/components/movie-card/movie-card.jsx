@@ -1,8 +1,8 @@
 import VideoPlayer from '../video-player/video-player';
 
-const DELAY = 1000;
-
 class MovieCard extends React.PureComponent {
+
+  static DELAY = 1000;
 
   constructor(props) {
     super(props);
@@ -47,7 +47,7 @@ class MovieCard extends React.PureComponent {
   _playVideo() {
     this.timerId = setTimeout(() => {
       this.setState({isPlaying: true});
-    }, DELAY);
+    }, MovieCard.DELAY);
   }
 
   _stopVideo() {
