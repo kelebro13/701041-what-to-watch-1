@@ -1,11 +1,8 @@
-import {connect} from "react-redux";
 import MovieList from "../movie-list/movie-list";
 import GenreList from "../genre-list/genre-list";
-import {getFilmsByGenre, getGenres} from "./app-utils";
-import {ActionCreators, CHANGE_GENRE} from "../../reducer";
 
 const App = (props) => {
-  const {genre, genres, films, onSelectedGenreChange} = props;
+  const {genre, genres, films, changeSelectedGenre} = props;
   return (
     <>
       <div className="visually-hidden">
@@ -107,7 +104,7 @@ const App = (props) => {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <GenreList genres={genres} activeGenre={genre} onSelectedGenreChange={onSelectedGenreChange}/>
+          <GenreList genres={genres} activeGenre={genre} onSelectedGenreChange={changeSelectedGenre}/>
           <MovieList films={films}/>
 
           <div className="catalog__more">
@@ -144,29 +141,7 @@ App.propTypes = {
       webm: PropTypes.string
     }).isRequired
   })).isRequired,
-  onSelectedGenreChange: PropTypes.func,
+  changeSelectedGenre: PropTypes.func,
 };
 
-const mapStateToProps = (state) => {
-  const {genre} = state;
-  const films = getFilmsByGenre(genre, state.films);
-  const genres = getGenres(state.films);
-
-  return {
-    genre,
-    genres,
-    films,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  const changeSelectedGenre = ActionCreators[CHANGE_GENRE];
-  return {
-    onSelectedGenreChange: (genre) => {
-      dispatch(changeSelectedGenre(genre));
-    }
-  };
-};
-
-export {App};
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
