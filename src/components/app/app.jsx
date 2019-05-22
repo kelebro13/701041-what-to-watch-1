@@ -2,7 +2,13 @@ import MovieList from "../movie-list/movie-list";
 import GenreList from "../genre-list/genre-list";
 
 const App = (props) => {
-  const {genre, genres, films, changeSelectedGenre} = props;
+  const {genre, genres, films, filmsByGenre, changeSelectedGenre, setFilmsByGenre} = props;
+
+  const _handleChangeSelectedGenre = (selectedGenre) => {
+    changeSelectedGenre(selectedGenre);
+    setFilmsByGenre(selectedGenre, films);
+  };
+
   return (
     <>
       <div className="visually-hidden">
@@ -104,8 +110,8 @@ const App = (props) => {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <GenreList genres={genres} activeGenre={genre} onSelectedGenreChange={changeSelectedGenre}/>
-          <MovieList films={films}/>
+          <GenreList genres={genres} activeGenre={genre} changeSelectedGenre={_handleChangeSelectedGenre}/>
+          <MovieList films={filmsByGenre}/>
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
@@ -141,7 +147,16 @@ App.propTypes = {
       webm: PropTypes.string
     }).isRequired
   })).isRequired,
+  filmsByGenre: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    posterSrc: PropTypes.string.isRequired,
+    sources: PropTypes.shape({
+      mp4: PropTypes.string,
+      webm: PropTypes.string
+    }).isRequired
+  })).isRequired,
   changeSelectedGenre: PropTypes.func,
+  setFilmsByGenre: PropTypes.func
 };
 
 export default App;

@@ -24,10 +24,9 @@ it(`render correctly App component`, () => {
       }
     }
   ];
-  const handleSelectedGenreChange = () => {};
 
   const tree = renderer
-    .create(<App genre={genre} genres={genres} films={films} onSelectedGenreChange={handleSelectedGenreChange}/>)
+    .create(<App genre={genre} genres={genres} films={films} filmsByGenre={films} changeSelectedGenre={jest.fn()} setFilmsByGenre={jest.fn()}/>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();
