@@ -1,5 +1,8 @@
 import MovieList from "../movie-list/movie-list";
 import GenreList from "../genre-list/genre-list";
+import withActiveItem from "../../hoc/with-active-item/with-active-item";
+
+const MovieListWrapped = withActiveItem(MovieList);
 
 const App = (props) => {
   const {genre, genres, films, filmsByGenre, changeSelectedGenre, setFilmsByGenre} = props;
@@ -111,7 +114,7 @@ const App = (props) => {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <GenreList genres={genres} activeGenre={genre} changeSelectedGenre={_handleChangeSelectedGenre}/>
-          <MovieList films={filmsByGenre}/>
+          <MovieListWrapped films={filmsByGenre}/>
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>

@@ -22,7 +22,7 @@ it(`render correctly MovieList component`, () => {
   ];
 
   const tree = renderer
-    .create(<MovieList films={films}/>)
+    .create(<MovieList films={films} activeCard={-1} onActiveCardChange={() => {}}/>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();
