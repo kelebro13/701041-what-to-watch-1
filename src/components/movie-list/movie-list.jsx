@@ -13,9 +13,6 @@ const MovieCardWrapped = withActiveItem(withTransformProps((props) => {
 const MovieList = (props) => {
   const {films, onActiveCardChange} = props;
 
-  const handleTitleClick = () => {};
-  const handlePreviewClick = () => {};
-
   return (
     <div className="catalog__movies-list">
       {
@@ -24,9 +21,7 @@ const MovieList = (props) => {
             key={index}
             id={index}
             film={film}
-            onActiveCardChange={onActiveCardChange}
-            onTitleClick={handleTitleClick}
-            onPreviewClick={handlePreviewClick} />;
+            onActiveCardChange={onActiveCardChange}/>;
         })
       }
     </div>
