@@ -58,7 +58,7 @@ class MovieCard extends React.PureComponent {
   _changeActiveCard(isActive) {
     const {id, onActiveCardChange} = this.props;
     if (onActiveCardChange) {
-      onActiveCardChange(isActive ? id : null);
+      onActiveCardChange(isActive ? id : undefined);
     }
   }
 }
