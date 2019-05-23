@@ -1,18 +1,14 @@
 import MovieList from "../movie-list/movie-list";
 import GenreList from "../genre-list/genre-list";
-import withActiveItem from "../../hoc/with-active-item/with-active-item";
+import withSelectItem from "../../hoc/with-select-item/with-select-item";
 import withTransformProps from "../../hoc/with-transform-props/with-transform-props";
 
-const MovieListWrapped = withActiveItem(
+const MovieListWrapped = withSelectItem(
     withTransformProps((props) => {
-      const {activeItem, onActiveItemChange} = props;
-      const newProps = {...props};
-      delete newProps[`activeItem`];
-      delete newProps[`onActiveItemChange`];
       return {
-        ...newProps,
-        activeCard: activeItem,
-        onActiveCardChange: onActiveItemChange
+        ...props,
+        activeCard: props.selectedItem,
+        onActiveCardChange: props.onSelectedItemChange
       };
     })(MovieList));
 

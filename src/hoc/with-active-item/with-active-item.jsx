@@ -3,20 +3,22 @@ const withActiveItem = (Component) => {
     constructor(props) {
       super(props);
       this.state = {
-        activeItem: -1
+        isActive: false
       };
-      this.handleActiveItemChange = this.handleActiveItemChange.bind(this);
+      this.handleActiveStatusChange = this.handleActiveStatusChange.bind(this);
     }
 
-    handleActiveItemChange(id = -1) {
-      this.setState((prevState) => ({
-        activeItem: prevState.activeItem !== id ? id : -1
-      }));
+    handleActiveStatusChange(isActive) {
+      this.setState({isActive});
     }
 
     render() {
+      const {isActive} = this.state;
       return (
-        <Component {...this.props} activeItem={this.state.activeItem} onActiveItemChange={this.handleActiveItemChange}/>
+        <Component
+          {...this.props}
+          isActive={isActive}
+          onActiveStatusChange={this.handleActiveStatusChange}/>
       );
     }
   }

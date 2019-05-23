@@ -14,7 +14,7 @@ it(`check the onTitleClick callback`, () => {
   };
   const handleTitleClick = jest.fn();
 
-  const movieCard = shallow(<MovieCard id={id} film={film} onTitleClick={handleTitleClick}/>);
+  const movieCard = shallow(<MovieCard id={id} film={film} onTitleClick={handleTitleClick} isPlaying={false}/>);
 
   movieCard.find(`a`).simulate(`click`);
 
@@ -33,7 +33,7 @@ it(`check the onPreviewClick callback`, () => {
   };
   const handlePreviewClick = jest.fn();
 
-  const movieCard = shallow(<MovieCard id={id} film={film} onPreviewClick={handlePreviewClick}/>);
+  const movieCard = shallow(<MovieCard id={id} film={film} onPreviewClick={handlePreviewClick} isPlaying={false}/>);
 
   movieCard.simulate(`mouseEnter`);
 

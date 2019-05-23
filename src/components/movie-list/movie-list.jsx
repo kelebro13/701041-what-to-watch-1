@@ -1,4 +1,14 @@
 import MovieCard from "../movie-card/movie-card";
+import withActiveItem from "../../hoc/with-active-item/with-active-item";
+import withTransformProps from "../../hoc/with-transform-props/with-transform-props";
+
+const MovieCardWrapped = withActiveItem(withTransformProps((props) => {
+  return {
+    ...props,
+    isPlaying: props.isActive,
+    switchPlayer: props.onActiveStatusChange,
+  };
+})(MovieCard));
 
 const MovieList = (props) => {
   const {films, onActiveCardChange} = props;
@@ -10,7 +20,7 @@ const MovieList = (props) => {
     <div className="catalog__movies-list">
       {
         films.map((film, index) => {
-          return <MovieCard
+          return <MovieCardWrapped
             key={index}
             id={index}
             film={film}

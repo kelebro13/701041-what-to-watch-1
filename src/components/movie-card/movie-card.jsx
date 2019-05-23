@@ -6,17 +6,13 @@ class MovieCard extends React.PureComponent {
 
   constructor(props) {
     super(props);
-    this.state = {
-      isPlaying: false
-    };
     this._handleCardMouseEnter = this._handleCardMouseEnter.bind(this);
     this._handleCardMouseLeave = this._handleCardMouseLeave.bind(this);
   }
 
   render() {
-    const {film, onTitleClick} = this.props;
+    const {film, onTitleClick, isPlaying} = this.props;
     const {posterSrc, title, sources} = film;
-    const {isPlaying} = this.state;
 
     return (
       <article className="small-movie-card catalog__movies-card" onMouseEnter={this._handleCardMouseEnter} onMouseLeave={this._handleCardMouseLeave}>
@@ -46,13 +42,13 @@ class MovieCard extends React.PureComponent {
 
   _playVideo() {
     this.timerId = setTimeout(() => {
-      this.setState({isPlaying: true});
+      this.props.switchPlayer(true);
     }, MovieCard.DELAY);
   }
 
   _stopVideo() {
     clearTimeout(this.timerId);
-    this.setState({isPlaying: false});
+    this.props.switchPlayer(false);
   }
 
   _changeActiveCard(isActive) {
@@ -73,6 +69,8 @@ MovieCard.propTypes = {
       webm: PropTypes.string
     }).isRequired
   }).isRequired,
+  isPlaying: PropTypes.bool.isRequired,
+  switchPlayer: PropTypes.func,
   onTitleClick: PropTypes.func,
   onPreviewClick: PropTypes.func,
   onActiveCardChange: PropTypes.func,
