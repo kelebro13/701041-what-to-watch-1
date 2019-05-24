@@ -8,14 +8,7 @@ exports[`render correctly MovieCard component 1`] = `
 >
   <div
     className="small-movie-card__image"
-  >
-    <video
-      height="175"
-      muted={true}
-      poster=""
-      width="280"
-    />
-  </div>
+  />
   <h3
     className="small-movie-card__title"
   >

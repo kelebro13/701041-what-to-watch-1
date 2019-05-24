@@ -1,5 +1,5 @@
 import {DEFAULT_GENRE} from '../genre-list/genre-list';
-import {getGenres, getFilmsByGenre} from './app-utils';
+import {getGenres} from './app-utils';
 
 describe(`Check getGenres`, () => {
   it(`should return genres by films`, () => {

@@ -1,5 +1,4 @@
 import {initialState, reducer, ActionCreators, Actions} from "./reducer";
-import {getFilmsByGenre} from "./components/app/app-utils";
 import {DEFAULT_GENRE} from "./components/genre-list/genre-list";
 
 describe(`reducer`, () => {

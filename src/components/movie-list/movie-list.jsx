@@ -1,6 +1,7 @@
 import MovieCard from "../movie-card/movie-card";
 import withActiveItem from "../../hoc/with-active-item/with-active-item";
 import withTransformProps from "../../hoc/with-transform-props/with-transform-props";
+import withVideo from "../../hoc/with-video/with-video";
 
 const MovieCardWrapped = withActiveItem(withTransformProps((props) => {
   return {
@@ -8,7 +9,7 @@ const MovieCardWrapped = withActiveItem(withTransformProps((props) => {
     isPlaying: props.isActive,
     switchPlayer: props.onActiveStatusChange,
   };
-})(MovieCard));
+})(withVideo(MovieCard)));
 
 const MovieList = (props) => {
   const {films, onActiveCardChange} = props;

@@ -1,5 +1,3 @@
-import VideoPlayer from '../video-player/video-player';
-
 class MovieCard extends React.PureComponent {
 
   static DELAY = 1000;
@@ -11,16 +9,15 @@ class MovieCard extends React.PureComponent {
   }
 
   render() {
-    const {film, onTitleClick, isPlaying} = this.props;
-    const {posterSrc, title, sources} = film;
+    const {film, onTitleClick, renderVideo} = this.props;
 
     return (
       <article className="small-movie-card catalog__movies-card" onMouseEnter={this._handleCardMouseEnter} onMouseLeave={this._handleCardMouseLeave}>
         <div className="small-movie-card__image">
-          <VideoPlayer isPlaying={isPlaying} poster={posterSrc} sourceMp4={sources.mp4} sourceWebm={sources.webm}/>
+          {renderVideo && renderVideo(film)}
         </div>
         <h3 className="small-movie-card__title">
-          <a className="small-movie-card__link" href="movie-page.html" onClick={onTitleClick}>{title}</a>
+          <a className="small-movie-card__link" href="movie-page.html" onClick={onTitleClick}>{film.title}</a>
         </h3>
       </article>
     );
@@ -69,6 +66,7 @@ MovieCard.propTypes = {
       webm: PropTypes.string
     }).isRequired
   }).isRequired,
+  renderVideo: PropTypes.func,
   isPlaying: PropTypes.bool.isRequired,
   switchPlayer: PropTypes.func,
   onTitleClick: PropTypes.func,
