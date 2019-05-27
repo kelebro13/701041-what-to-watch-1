@@ -1,30 +1,23 @@
-import VideoPlayer from '../video-player/video-player';
-
-const DELAY = 1000;
-
 class MovieCard extends React.PureComponent {
+
+  static DELAY = 1000;
 
   constructor(props) {
     super(props);
-    this.state = {
-      isPlaying: false
-    };
     this._handleCardMouseEnter = this._handleCardMouseEnter.bind(this);
     this._handleCardMouseLeave = this._handleCardMouseLeave.bind(this);
   }
 
   render() {
-    const {film, onTitleClick} = this.props;
-    const {posterSrc, title, sources} = film;
-    const {isPlaying} = this.state;
+    const {film, onTitleClick, renderVideo} = this.props;
 
     return (
       <article className="small-movie-card catalog__movies-card" onMouseEnter={this._handleCardMouseEnter} onMouseLeave={this._handleCardMouseLeave}>
         <div className="small-movie-card__image">
-          <VideoPlayer isPlaying={isPlaying} poster={posterSrc} sourceMp4={sources.mp4} sourceWebm={sources.webm}/>
+          {renderVideo && renderVideo(film)}
         </div>
         <h3 className="small-movie-card__title">
-          <a className="small-movie-card__link" href="movie-page.html" onClick={onTitleClick}>{title}</a>
+          <a className="small-movie-card__link" href="movie-page.html" onClick={onTitleClick}>{film.title}</a>
         </h3>
       </article>
     );
@@ -46,19 +39,19 @@ class MovieCard extends React.PureComponent {
 
   _playVideo() {
     this.timerId = setTimeout(() => {
-      this.setState({isPlaying: true});
-    }, DELAY);
+      this.props.switchPlayer(true);
+    }, MovieCard.DELAY);
   }
 
   _stopVideo() {
     clearTimeout(this.timerId);
-    this.setState({isPlaying: false});
+    this.props.switchPlayer(false);
   }
 
   _changeActiveCard(isActive) {
     const {id, onActiveCardChange} = this.props;
     if (onActiveCardChange) {
-      onActiveCardChange(isActive ? id : null);
+      onActiveCardChange(isActive ? id : undefined);
     }
   }
 }
@@ -73,6 +66,9 @@ MovieCard.propTypes = {
       webm: PropTypes.string
     }).isRequired
   }).isRequired,
+  renderVideo: PropTypes.func,
+  isPlaying: PropTypes.bool.isRequired,
+  switchPlayer: PropTypes.func,
   onTitleClick: PropTypes.func,
   onPreviewClick: PropTypes.func,
   onActiveCardChange: PropTypes.func,

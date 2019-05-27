@@ -7,7 +7,7 @@ it(`render correctly GenreList component`, () => {
   const onSelectedGenreChange = () => {};
 
   const tree = renderer
-    .create(<GenreList genres={genres} activeGenre={activeGenre} onSelectedGenreChange={onSelectedGenreChange}/>)
+    .create(<GenreList genres={genres} activeGenre={activeGenre} changeSelectedGenre={onSelectedGenreChange}/>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

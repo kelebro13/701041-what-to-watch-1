@@ -1,5 +1,5 @@
 import renderer from "react-test-renderer";
-import {App} from "./app";
+import App from "./app";
 
 it(`render correctly App component`, () => {
   const genre = `All genres`;
@@ -24,10 +24,9 @@ it(`render correctly App component`, () => {
       }
     }
   ];
-  const handleSelectedGenreChange = () => {};
 
   const tree = renderer
-    .create(<App genre={genre} genres={genres} films={films} onSelectedGenreChange={handleSelectedGenreChange}/>)
+    .create(<App genre={genre} genres={genres} films={films} filmsByGenre={films} changeSelectedGenre={() => {}} setFilmsByGenre={() => {}}/>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

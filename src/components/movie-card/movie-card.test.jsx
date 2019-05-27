@@ -13,7 +13,7 @@ it(`render correctly MovieCard component`, () => {
   };
 
   const tree = renderer
-    .create(<MovieCard id={id} film={film}/>)
+    .create(<MovieCard id={id} film={film} isPlaying={false}/>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();
