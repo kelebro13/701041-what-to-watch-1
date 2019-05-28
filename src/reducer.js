@@ -12,28 +12,27 @@ export const Actions = {
   SET_FILMS_BY_GENRE: `SET_FILMS_BY_GENRE`
 };
 
-export const ActionCreators = {
-  [Actions.CHANGE_GENRE]: (genreType) => {
-    return {
-      type: Actions.CHANGE_GENRE,
-      payload: genreType
-    };
-  },
-  [Actions.SET_FILMS_BY_GENRE]: (genre, AllFilms) => {
-    let filmsByGenre;
-    if (!Array.isArray(AllFilms)) {
-      filmsByGenre = [];
-    } else if (typeof genre !== `string` || genre === DEFAULT_GENRE || genre === ``) {
-      filmsByGenre = AllFilms.slice(0);
-    } else {
-      filmsByGenre = AllFilms.filter((film) => film.genre === genre);
-    }
+export const changeSelectedGenre = (genreType) => {
+  return {
+    type: Actions.CHANGE_GENRE,
+    payload: genreType
+  };
+};
 
-    return {
-      type: Actions.SET_FILMS_BY_GENRE,
-      payload: filmsByGenre
-    };
+export const setFilmsByGenre = (genre, AllFilms) => {
+  let filmsByGenre;
+  if (!Array.isArray(AllFilms)) {
+    filmsByGenre = [];
+  } else if (typeof genre !== `string` || genre === DEFAULT_GENRE || genre === ``) {
+    filmsByGenre = AllFilms.slice(0);
+  } else {
+    filmsByGenre = AllFilms.filter((film) => film.genre === genre);
   }
+
+  return {
+    type: Actions.SET_FILMS_BY_GENRE,
+    payload: filmsByGenre
+  };
 };
 
 export const reducer = (state = initialState, action) => {

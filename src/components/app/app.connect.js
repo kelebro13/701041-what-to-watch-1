@@ -1,5 +1,5 @@
 import {getGenres} from "./app-utils";
-import {ActionCreators, Actions} from "../../reducer";
+import {setFilmsByGenre, changeSelectedGenre} from "../../reducer";
 import {connect} from "react-redux";
 import App from "./app";
 
@@ -16,8 +16,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  changeSelectedGenre: ActionCreators[Actions.CHANGE_GENRE],
-  setFilmsByGenre: ActionCreators[Actions.SET_FILMS_BY_GENRE]
+  changeSelectedGenre,
+  setFilmsByGenre
 };
 
 export default connect(

@@ -1,11 +1,10 @@
-import {initialState, reducer, ActionCreators, Actions} from "./reducer";
+import {initialState, reducer, Actions, setFilmsByGenre, changeSelectedGenre} from "./reducer";
 import {DEFAULT_GENRE} from "./components/genre-list/genre-list";
 
 describe(`reducer`, () => {
   it(`should correct process action CHANGE_GENRE`, () => {
     const newGenre = `Comedies`;
-    const actionCreator = ActionCreators[Actions.CHANGE_GENRE];
-    const store = reducer(initialState, actionCreator(newGenre));
+    const store = reducer(initialState, changeSelectedGenre(newGenre));
 
     expect(store).toEqual({
       ...initialState,
@@ -45,8 +44,7 @@ describe(`reducer`, () => {
       }
     ];
 
-    const actionCreator = ActionCreators[Actions.SET_FILMS_BY_GENRE];
-    const store = reducer(initialState, actionCreator(genre, films));
+    const store = reducer(initialState, setFilmsByGenre(genre, films));
 
     expect(store).toEqual({
       ...initialState,
@@ -82,8 +80,7 @@ describe(`ActionCreators`, () => {
   describe(`check CHANGE_GENRE`, () => {
     it(`check return action`, () => {
       const newGenre = `Comedies`;
-      const actionCreator = ActionCreators[Actions.CHANGE_GENRE];
-      const action = actionCreator(newGenre);
+      const action = changeSelectedGenre(newGenre);
 
       expect(action).toEqual({
         type: Actions.CHANGE_GENRE,
@@ -125,8 +122,7 @@ describe(`ActionCreators`, () => {
         }
       ];
 
-      const actionCreator = ActionCreators[Actions.SET_FILMS_BY_GENRE];
-      const action = actionCreator(genre, films);
+      const action = setFilmsByGenre(genre, films);
 
       expect(action).toEqual({
         type: Actions.SET_FILMS_BY_GENRE,
@@ -185,8 +181,7 @@ describe(`ActionCreators`, () => {
         }
       ];
 
-      const actionCreator = ActionCreators[Actions.SET_FILMS_BY_GENRE];
-      const action = actionCreator(genre, films);
+      const action = setFilmsByGenre(genre, films);
 
       expect(action).toEqual({
         type: Actions.SET_FILMS_BY_GENRE,
@@ -226,8 +221,7 @@ describe(`ActionCreators`, () => {
         }
       ];
 
-      const actionCreator = ActionCreators[Actions.SET_FILMS_BY_GENRE];
-      const action = actionCreator(genre, films);
+      const action = setFilmsByGenre(genre, films);
 
       expect(action).toEqual({
         type: Actions.SET_FILMS_BY_GENRE,
@@ -267,8 +261,7 @@ describe(`ActionCreators`, () => {
         }
       ];
 
-      const actionCreator = ActionCreators[Actions.SET_FILMS_BY_GENRE];
-      const action = actionCreator(genre, films);
+      const action = setFilmsByGenre(genre, films);
 
       expect(action).toEqual({
         type: Actions.SET_FILMS_BY_GENRE,
@@ -280,8 +273,7 @@ describe(`ActionCreators`, () => {
       const genre = DEFAULT_GENRE;
       const films = [];
 
-      const actionCreator = ActionCreators[Actions.SET_FILMS_BY_GENRE];
-      const action = actionCreator(genre, films);
+      const action = setFilmsByGenre(genre, films);
 
       expect(action).toEqual({
         type: Actions.SET_FILMS_BY_GENRE,
@@ -293,8 +285,7 @@ describe(`ActionCreators`, () => {
       const genre = null;
       const films = `test`;
 
-      const actionCreator = ActionCreators[Actions.SET_FILMS_BY_GENRE];
-      const action = actionCreator(genre, films);
+      const action = setFilmsByGenre(genre, films);
 
       expect(action).toEqual({
         type: Actions.SET_FILMS_BY_GENRE,
