@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render correctly CustomLink componen 1`] = `
-<a
-  className="catalog__genres-link"
-  href="#"
+<button
+  className="test_class"
+  id="test_button"
   onClick={[Function]}
 >
   Test
-</a>
+</button>
 `;

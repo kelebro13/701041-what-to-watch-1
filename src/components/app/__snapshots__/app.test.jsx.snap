@@ -274,35 +274,32 @@ Array [
         <li
           className="catalog__genres-item catalog__genres-item--active"
         >
-          <a
+          <button
             className="catalog__genres-link"
-            href="#"
             onClick={[Function]}
           >
             All genres
-          </a>
+          </button>
         </li>
         <li
           className="catalog__genres-item"
         >
-          <a
+          <button
             className="catalog__genres-link"
-            href="#"
             onClick={[Function]}
           >
             Kids & Family
-          </a>
+          </button>
         </li>
         <li
           className="catalog__genres-item"
         >
-          <a
+          <button
             className="catalog__genres-link"
-            href="#"
             onClick={[Function]}
           >
             Comedies
-          </a>
+          </button>
         </li>
       </ul>
       <div

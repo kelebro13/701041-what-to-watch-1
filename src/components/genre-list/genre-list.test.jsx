@@ -4,7 +4,7 @@ import GenreList from "./genre-list";
 it(`render correctly GenreList component`, () => {
   const genres = [`All genres`, `Comedies`, `Crime`, `Documentary`, `Dramas`, `Horror`, `Kids & Family`, `Romance`, `Sci-Fi`, `Thrillers`];
   const activeGenre = `All genres`;
-  const onSelectedGenreChange = () => {};
+  const onSelectedGenreChange = jest.fn();
 
   const tree = renderer
     .create(<GenreList genres={genres} activeGenre={activeGenre} changeSelectedGenre={onSelectedGenreChange}/>)
