@@ -1,5 +1,5 @@
 import {reducer, Actions, changeSelectedGenre} from "./reducer";
-import {DEFAULT_GENRE} from "./components/genre-list/genre-list";
+import {DEFAULT_GENRE} from "../components/genre-list/genre-list";
 
 describe(`ActionCreators`, () => {
   describe(`check CHANGE_GENRE`, () => {

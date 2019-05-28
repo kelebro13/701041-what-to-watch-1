@@ -1,5 +1,5 @@
-import films from './mocks/films';
-import {DEFAULT_GENRE} from "./components/genre-list/genre-list";
+import films from '../mocks/films';
+import {DEFAULT_GENRE} from "../components/genre-list/genre-list";
 
 export const initialState = {
   genre: `All genres`,

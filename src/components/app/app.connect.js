@@ -1,11 +1,11 @@
-import {getGenres} from "./app-utils";
-import {changeSelectedGenre} from "../../reducer";
 import {connect} from "react-redux";
+import {getGenres} from "../../reducer/selectors";
+import {changeSelectedGenre} from "../../reducer/reducer";
 import App from "./app";
 
 const mapStateToProps = (state) => {
-  const {genre, films, filmsByGenre} = state;
-  const genres = getGenres(films);
+  const {genre, filmsByGenre} = state;
+  const genres = getGenres(state);
 
   return {
     genre,

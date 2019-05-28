@@ -1,5 +1,5 @@
-import {DEFAULT_GENRE} from '../genre-list/genre-list';
-import {getGenres} from './app-utils';
+import {DEFAULT_GENRE} from '../components/genre-list/genre-list';
+import {getGenres} from './selectors';
 
 describe(`Check getGenres`, () => {
   it(`should return genres by films`, () => {
@@ -23,7 +23,7 @@ describe(`Check getGenres`, () => {
         }
       }
     ];
-    const genres = getGenres(films);
+    const genres = getGenres({films});
     expect(genres).toEqual([DEFAULT_GENRE, `Kids & Family`, `Comedies`]);
   });
 
@@ -57,7 +57,7 @@ describe(`Check getGenres`, () => {
         }
       }
     ];
-    const genres = getGenres(films);
+    const genres = getGenres({films});
     expect(genres).toEqual([DEFAULT_GENRE, `Kids & Family`, `Dramas`]);
   });
 
@@ -82,7 +82,7 @@ describe(`Check getGenres`, () => {
         }
       }
     ];
-    const genres = getGenres(films);
+    const genres = getGenres({films});
     expect(genres).toEqual([DEFAULT_GENRE, `Dramas`]);
   });
 
@@ -107,13 +107,13 @@ describe(`Check getGenres`, () => {
         }
       }
     ];
-    const genres = getGenres(films);
+    const genres = getGenres({films});
     expect(genres).toEqual([DEFAULT_GENRE, `Dramas`]);
   });
 
   it(`should return default genres by invalid output data`, () => {
     const films = 1;
-    const genres = getGenres(films);
+    const genres = getGenres({films});
     expect(genres).toEqual([DEFAULT_GENRE]);
   });
 
