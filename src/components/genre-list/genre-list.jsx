@@ -1,4 +1,4 @@
-import CustomButton from "../custom-button/custom-button";
+import CustomLink from "../custom-link/custom-link";
 
 export const DEFAULT_GENRE = `All genres`;
 
@@ -10,7 +10,7 @@ const GenreList = (props) => {
       {genres.map((genre, index) => {
         return (
           <li key={index} className={`catalog__genres-item${genre === activeGenre ? ` catalog__genres-item--active` : ``}`}>
-            <CustomButton className={`catalog__genres-link`} title={genre} onClick={changeSelectedGenre}/>
+            <CustomLink className={`catalog__genres-link`} title={genre} onClick={changeSelectedGenre}/>
           </li>
         );
       })}

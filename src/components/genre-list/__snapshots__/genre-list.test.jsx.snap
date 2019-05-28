@@ -7,102 +7,102 @@ exports[`render correctly GenreList component 1`] = `
   <li
     className="catalog__genres-item catalog__genres-item--active"
   >
-    <button
+    <a
       className="catalog__genres-link"
       onClick={[Function]}
     >
       All genres
-    </button>
+    </a>
   </li>
   <li
     className="catalog__genres-item"
   >
-    <button
+    <a
       className="catalog__genres-link"
       onClick={[Function]}
     >
       Comedies
-    </button>
+    </a>
   </li>
   <li
     className="catalog__genres-item"
   >
-    <button
+    <a
       className="catalog__genres-link"
       onClick={[Function]}
     >
       Crime
-    </button>
+    </a>
   </li>
   <li
     className="catalog__genres-item"
   >
-    <button
+    <a
       className="catalog__genres-link"
       onClick={[Function]}
     >
       Documentary
-    </button>
+    </a>
   </li>
   <li
     className="catalog__genres-item"
   >
-    <button
+    <a
       className="catalog__genres-link"
       onClick={[Function]}
     >
       Dramas
-    </button>
+    </a>
   </li>
   <li
     className="catalog__genres-item"
   >
-    <button
+    <a
       className="catalog__genres-link"
       onClick={[Function]}
     >
       Horror
-    </button>
+    </a>
   </li>
   <li
     className="catalog__genres-item"
   >
-    <button
+    <a
       className="catalog__genres-link"
       onClick={[Function]}
     >
       Kids & Family
-    </button>
+    </a>
   </li>
   <li
     className="catalog__genres-item"
   >
-    <button
+    <a
       className="catalog__genres-link"
       onClick={[Function]}
     >
       Romance
-    </button>
+    </a>
   </li>
   <li
     className="catalog__genres-item"
   >
-    <button
+    <a
       className="catalog__genres-link"
       onClick={[Function]}
     >
       Sci-Fi
-    </button>
+    </a>
   </li>
   <li
     className="catalog__genres-item"
   >
-    <button
+    <a
       className="catalog__genres-link"
       onClick={[Function]}
     >
       Thrillers
-    </button>
+    </a>
   </li>
 </ul>
 `;

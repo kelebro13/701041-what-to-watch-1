@@ -1,5 +1,5 @@
 import renderer from "react-test-renderer";
-import CustomButton from './custom-button';
+import CustomLink from './custom-link';
 
 it(`render correctly CustomLink componen`, () => {
   const id = `test_button`;
@@ -8,7 +8,7 @@ it(`render correctly CustomLink componen`, () => {
   const handleButtonClick = () => {};
 
   const tree = renderer
-    .create(<CustomButton id={id} className={className} title={title} onClick={handleButtonClick}/>)
+    .create(<CustomLink id={id} className={className} title={title} onClick={handleButtonClick}/>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

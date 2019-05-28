@@ -1,4 +1,4 @@
-const CustomButton = (props) => {
+const CustomLink = (props) => {
   const {id, className, title, onClick, ...rest} = props;
 
   const _handleLinkClick = (evt) => {
@@ -6,14 +6,14 @@ const CustomButton = (props) => {
     onClick(title);
   };
 
-  return <button id={id} className={className} onClick={_handleLinkClick} {...rest}>{title}</button>;
+  return <a id={id} className={className} onClick={_handleLinkClick} {...rest}>{title}</a>;
 };
 
-CustomButton.propTypes = {
+CustomLink.propTypes = {
   id: PropTypes.string,
   className: PropTypes.string,
   title: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired
 };
 
-export default CustomButton;
+export default CustomLink;
