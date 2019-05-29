@@ -1,17 +1,19 @@
 const CustomLink = (props) => {
-  const {title, onLinkClick} = props;
+  const {id, className, title, onClick, ...rest} = props;
 
   const _handleLinkClick = (evt) => {
     evt.preventDefault();
-    onLinkClick(title);
+    onClick(title);
   };
 
-  return <a href="#" className="catalog__genres-link" onClick={_handleLinkClick}>{title}</a>;
+  return <a id={id} className={className} onClick={_handleLinkClick} {...rest}>{title}</a>;
 };
 
 CustomLink.propTypes = {
+  id: PropTypes.string,
+  className: PropTypes.string,
   title: PropTypes.string.isRequired,
-  onLinkClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired
 };
 
 export default CustomLink;

@@ -13,11 +13,10 @@ const MovieListWrapped = withSelectItem(
     })(MovieList));
 
 const App = (props) => {
-  const {genre, genres, films, filmsByGenre, changeSelectedGenre, setFilmsByGenre} = props;
+  const {genre, genres, filmsByGenre, changeSelectedGenre} = props;
 
   const _handleChangeSelectedGenre = (selectedGenre) => {
     changeSelectedGenre(selectedGenre);
-    setFilmsByGenre(selectedGenre, films);
   };
 
   return (
@@ -150,14 +149,6 @@ const App = (props) => {
 App.propTypes = {
   genre: PropTypes.string.isRequired,
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-  films: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    posterSrc: PropTypes.string.isRequired,
-    sources: PropTypes.shape({
-      mp4: PropTypes.string,
-      webm: PropTypes.string
-    }).isRequired
-  })).isRequired,
   filmsByGenre: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     posterSrc: PropTypes.string.isRequired,
@@ -166,8 +157,7 @@ App.propTypes = {
       webm: PropTypes.string
     }).isRequired
   })).isRequired,
-  changeSelectedGenre: PropTypes.func,
-  setFilmsByGenre: PropTypes.func
+  changeSelectedGenre: PropTypes.func
 };
 
 export default App;

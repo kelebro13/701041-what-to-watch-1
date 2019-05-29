@@ -276,7 +276,6 @@ Array [
         >
           <a
             className="catalog__genres-link"
-            href="#"
             onClick={[Function]}
           >
             All genres
@@ -287,7 +286,6 @@ Array [
         >
           <a
             className="catalog__genres-link"
-            href="#"
             onClick={[Function]}
           >
             Kids & Family
@@ -298,7 +296,6 @@ Array [
         >
           <a
             className="catalog__genres-link"
-            href="#"
             onClick={[Function]}
           >
             Comedies

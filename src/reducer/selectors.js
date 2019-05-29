@@ -1,6 +1,7 @@
-import {DEFAULT_GENRE} from '../genre-list/genre-list';
+import {DEFAULT_GENRE} from "../components/genre-list/genre-list";
 
-export const getGenres = (films) => {
+export const getGenres = (state) => {
+  const {films} = state;
   const defaultGenresList = [DEFAULT_GENRE];
 
   if (!Array.isArray(films)) {

@@ -9,7 +9,6 @@ exports[`render correctly GenreList component 1`] = `
   >
     <a
       className="catalog__genres-link"
-      href="#"
       onClick={[Function]}
     >
       All genres
@@ -20,7 +19,6 @@ exports[`render correctly GenreList component 1`] = `
   >
     <a
       className="catalog__genres-link"
-      href="#"
       onClick={[Function]}
     >
       Comedies
@@ -31,7 +29,6 @@ exports[`render correctly GenreList component 1`] = `
   >
     <a
       className="catalog__genres-link"
-      href="#"
       onClick={[Function]}
     >
       Crime
@@ -42,7 +39,6 @@ exports[`render correctly GenreList component 1`] = `
   >
     <a
       className="catalog__genres-link"
-      href="#"
       onClick={[Function]}
     >
       Documentary
@@ -53,7 +49,6 @@ exports[`render correctly GenreList component 1`] = `
   >
     <a
       className="catalog__genres-link"
-      href="#"
       onClick={[Function]}
     >
       Dramas
@@ -64,7 +59,6 @@ exports[`render correctly GenreList component 1`] = `
   >
     <a
       className="catalog__genres-link"
-      href="#"
       onClick={[Function]}
     >
       Horror
@@ -75,7 +69,6 @@ exports[`render correctly GenreList component 1`] = `
   >
     <a
       className="catalog__genres-link"
-      href="#"
       onClick={[Function]}
     >
       Kids & Family
@@ -86,7 +79,6 @@ exports[`render correctly GenreList component 1`] = `
   >
     <a
       className="catalog__genres-link"
-      href="#"
       onClick={[Function]}
     >
       Romance
@@ -97,7 +89,6 @@ exports[`render correctly GenreList component 1`] = `
   >
     <a
       className="catalog__genres-link"
-      href="#"
       onClick={[Function]}
     >
       Sci-Fi
@@ -108,7 +99,6 @@ exports[`render correctly GenreList component 1`] = `
   >
     <a
       className="catalog__genres-link"
-      href="#"
       onClick={[Function]}
     >
       Thrillers

@@ -10,7 +10,7 @@ const GenreList = (props) => {
       {genres.map((genre, index) => {
         return (
           <li key={index} className={`catalog__genres-item${genre === activeGenre ? ` catalog__genres-item--active` : ``}`}>
-            <CustomLink title={genre} onLinkClick={changeSelectedGenre}/>
+            <CustomLink className={`catalog__genres-link`} title={genre} onClick={changeSelectedGenre}/>
           </li>
         );
       })}
