@@ -2,8 +2,7 @@ import {DEFAULT_GENRE} from "../components/genre-list/genre-list";
 
 export const initialState = {
   genre: `All genres`,
-  films: [],
-  filmsByGenre: [],
+  films: []
 };
 
 export const Actions = {
@@ -31,26 +30,16 @@ export const loadFilms = () => (dispatch, _getState, api) => {
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case Actions.CHANGE_GENRE: {
-      const {payload: genre} = action;
-      const {films: allFilms} = state;
-      let filmsByGenre;
-      if (typeof genre !== `string` || genre === DEFAULT_GENRE || genre === ``) {
-        filmsByGenre = allFilms.slice(0);
-      } else {
-        filmsByGenre = allFilms.filter((film) => film.genre === genre);
-      }
       return {
         ...state,
-        genre,
-        filmsByGenre
+        genre: action.payload
       };
     }
     case Actions.LOAD_FILMS: {
       return {
         ...state,
         genre: DEFAULT_GENRE,
-        films: action.payload, // todo нужно доделать особенно
-        filmsByGenre: action.payload
+        films: action.payload
       };
     }
   }
