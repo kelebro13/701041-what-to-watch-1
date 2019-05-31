@@ -316,18 +316,10 @@ Array [
             <video
               height="175"
               muted={true}
-              poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              poster="img/the-grand-budapest-hotel.jpg"
+              src="https://some-link"
               width="280"
-            >
-              <source
-                src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
-                type="video/webm; codecs=\\"vp8, vorbis\\""
-              />
-              <source
-                src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-                type="video/mp4; codecs=\\"avc1.42E01E, mp4a.40.2\\""
-              />
-            </video>
+            />
           </div>
           <h3
             className="small-movie-card__title"
@@ -336,42 +328,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              Fantastic Beasts: The Crimes of Grindelwald
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              height="175"
-              muted={true}
-              poster="img/johnny-english.jpg"
-              width="280"
-            >
-              <source
-                src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
-                type="video/webm; codecs=\\"vp8, vorbis\\""
-              />
-              <source
-                src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-                type="video/mp4; codecs=\\"avc1.42E01E, mp4a.40.2\\""
-              />
-            </video>
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Johnny English
+              The Grand Budapest Hotel
             </a>
           </h3>
         </article>

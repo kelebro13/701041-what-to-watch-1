@@ -5,7 +5,6 @@ exports[`render correctly withVideo hoc 1`] = `
   <video
     height="175"
     muted={true}
-    poster=""
     width="280"
   />
 </div>

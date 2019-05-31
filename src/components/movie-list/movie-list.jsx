@@ -20,7 +20,6 @@ const MovieList = (props) => {
         films.map((film, index) => {
           return <MovieCardWrapped
             key={index}
-            id={index}
             film={film}
             onActiveCardChange={onActiveCardChange}/>;
         })
@@ -31,12 +30,23 @@ const MovieList = (props) => {
 
 MovieList.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    posterSrc: PropTypes.string.isRequired,
-    sources: PropTypes.shape({
-      mp4: PropTypes.string,
-      webm: PropTypes.string
-    }).isRequired
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    posterImage: PropTypes.string,
+    previewImage: PropTypes.string,
+    backgroundImage: PropTypes.string,
+    backgroundColor: PropTypes.string,
+    videoLink: PropTypes.string,
+    previewVideoLink: PropTypes.string,
+    description: PropTypes.string,
+    rating: PropTypes.number,
+    scoresCount: PropTypes.number,
+    director: PropTypes.string,
+    starring: PropTypes.arrayOf(PropTypes.string),
+    runTime: PropTypes.number,
+    genre: PropTypes.string.isRequired,
+    released: PropTypes.number,
+    isFavorite: PropTypes.bool,
   })).isRequired,
   activeCard: PropTypes.number.isRequired,
   onActiveCardChange: PropTypes.func

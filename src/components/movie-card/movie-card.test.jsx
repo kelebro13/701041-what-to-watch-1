@@ -2,18 +2,16 @@ import renderer from "react-test-renderer";
 import MovieCard from "./movie-card";
 
 it(`render correctly MovieCard component`, () => {
-  const id = 1;
   const film = {
-    title: `Aviator`,
-    posterSrc: ``,
-    sources: {
-      mp4: ``,
-      webm: ``
-    }
+    id: 1,
+    name: `The Grand Budapest Hotel`,
+    previewImage: `img/the-grand-budapest-hotel.jpg`,
+    previewVideoLink: `https://some-link`,
+    genre: `Comedy`,
   };
 
   const tree = renderer
-    .create(<MovieCard id={id} film={film} isPlaying={false}/>)
+    .create(<MovieCard film={film} isPlaying={false}/>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

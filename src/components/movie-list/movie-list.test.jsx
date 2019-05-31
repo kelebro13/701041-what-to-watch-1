@@ -4,20 +4,11 @@ import MovieList from "./movie-list";
 it(`render correctly MovieList component`, () => {
   const films = [
     {
-      title: `Aviator`,
-      posterSrc: `img/aviator.jpg`,
-      sources: {
-        mp4: ``,
-        webm: ``
-      }
-    },
-    {
-      title: `We need to talk about Kevin`,
-      posterSrc: `img/we-need-to-talk-about-kevin.jpg`,
-      sources: {
-        mp4: ``,
-        webm: ``
-      }
+      id: 1,
+      name: `The Grand Budapest Hotel`,
+      previewImage: `img/the-grand-budapest-hotel.jpg`,
+      previewVideoLink: `https://some-link`,
+      genre: `Comedy`,
     }
   ];
 
