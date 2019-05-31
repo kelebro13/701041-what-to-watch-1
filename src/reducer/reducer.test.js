@@ -24,7 +24,7 @@ describe(`ActionCreators`, () => {
       .onGet(`/films`)
       .reply(200, [{fake: true}]);
 
-    return loadFilms(dispatch, null, api)
+    return loadFilms()(dispatch, null, api)
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {

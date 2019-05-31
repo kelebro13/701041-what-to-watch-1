@@ -18,7 +18,7 @@ export const changeSelectedGenre = (genreType) => {
   };
 };
 
-export const loadFilms = (dispatch, _getState, api) => {
+export const loadFilms = () => (dispatch, _getState, api) => {
   return api.get(`/films`)
     .then((response) => {
       dispatch({
