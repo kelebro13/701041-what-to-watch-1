@@ -1,14 +1,14 @@
-import films from '../mocks/films';
 import {DEFAULT_GENRE} from "../components/genre-list/genre-list";
 
 export const initialState = {
   genre: `All genres`,
-  films,
-  filmsByGenre: films
+  films: [],
+  filmsByGenre: [],
 };
 
 export const Actions = {
-  CHANGE_GENRE: `CHANGE_GENRE`
+  CHANGE_GENRE: `CHANGE_GENRE`,
+  LOAD_FILMS: `LOAD_FILMS`,
 };
 
 export const changeSelectedGenre = (genreType) => {
@@ -16,6 +16,16 @@ export const changeSelectedGenre = (genreType) => {
     type: Actions.CHANGE_GENRE,
     payload: genreType
   };
+};
+
+export const loadFilms = (dispatch, _getState, api) => {
+  return api.get(`/films`)
+    .then((response) => {
+      dispatch({
+        type: Actions.LOAD_FILMS,
+        payload: response.data
+      });
+    });
 };
 
 export const reducer = (state = initialState, action) => {
@@ -33,6 +43,14 @@ export const reducer = (state = initialState, action) => {
         ...state,
         genre,
         filmsByGenre
+      };
+    }
+    case Actions.LOAD_FILMS: {
+      return {
+        ...state,
+        genre: DEFAULT_GENRE,
+        films: action.payload, // todo нужно доделать особенно
+        filmsByGenre: action.payload
       };
     }
   }

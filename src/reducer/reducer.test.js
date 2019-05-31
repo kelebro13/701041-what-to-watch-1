@@ -1,17 +1,37 @@
-import {reducer, Actions, changeSelectedGenre} from "./reducer";
+import MockAdapter from 'axios-mock-adapter';
+import {reducer, Actions, changeSelectedGenre, loadFilms} from "./reducer";
 import {DEFAULT_GENRE} from "../components/genre-list/genre-list";
+import configureAPI from '../api';
 
 describe(`ActionCreators`, () => {
-  describe(`check CHANGE_GENRE`, () => {
-    it(`check return action`, () => {
-      const newGenre = `Comedies`;
-      const action = changeSelectedGenre(newGenre);
 
-      expect(action).toEqual({
-        type: Actions.CHANGE_GENRE,
-        payload: newGenre
-      });
+  it(`check return action CHANGE_GENRE`, () => {
+    const newGenre = `Comedies`;
+    const action = changeSelectedGenre(newGenre);
+
+    expect(action).toEqual({
+      type: Actions.CHANGE_GENRE,
+      payload: newGenre
     });
+  });
+
+  it(`check return action LOAD_FILMS`, () => {
+    const api = configureAPI();
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+
+    apiMock
+      .onGet(`/films`)
+      .reply(200, [{fake: true}]);
+
+    return loadFilms(dispatch, null, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: Actions.LOAD_FILMS,
+          payload: [{fake: true}],
+        });
+      });
   });
 });
 
