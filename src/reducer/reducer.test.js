@@ -1,149 +1,136 @@
-import {reducer, Actions, changeSelectedGenre} from "./reducer";
-import {DEFAULT_GENRE} from "../components/genre-list/genre-list";
+import MockAdapter from 'axios-mock-adapter';
+import {reducer, Actions, changeSelectedGenre, loadFilms} from "./reducer";
+import configureAPI from '../api';
 
 describe(`ActionCreators`, () => {
-  describe(`check CHANGE_GENRE`, () => {
-    it(`check return action`, () => {
-      const newGenre = `Comedies`;
-      const action = changeSelectedGenre(newGenre);
 
-      expect(action).toEqual({
-        type: Actions.CHANGE_GENRE,
-        payload: newGenre
-      });
+  it(`check return action CHANGE_GENRE`, () => {
+    const newGenre = `Comedies`;
+    const action = changeSelectedGenre(newGenre);
+
+    expect(action).toEqual({
+      type: Actions.CHANGE_GENRE,
+      payload: newGenre
     });
+  });
+
+  it(`check return action LOAD_FILMS`, () => {
+    const api = configureAPI();
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+
+    apiMock
+      .onGet(`/films`)
+      .reply(200, [{fake: true}]);
+
+    return loadFilms()(dispatch, null, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: Actions.LOAD_FILMS,
+          payload: [{fake: true}],
+        });
+      });
   });
 });
 
 describe(`reducer`, () => {
-  const films = [
-    {
-      title: `Fantastic Beasts: The Crimes of Grindelwald`,
-      genre: `Kids & Family`,
-      posterSrc: ``,
-      sources: {
-        mp4: ``,
-        webm: ``
-      }
-    },
-    {
-      title: `Aviator`,
-      genre: `Dramas`,
-      posterSrc: ``,
-      sources: {
-        mp4: ``,
-        webm: ``
-      }
-    },
-    {
-      title: `We need to talk about Kevin`,
-      genre: `Dramas`,
-      posterSrc: ``,
-      sources: {
-        mp4: ``,
-        webm: ``
-      }
-    }
-  ];
-
   const initialState = {
     genre: `All genres`,
-    films,
-    filmsByGenre: films
+    films: []
   };
 
-  it(`should set correct films by genre`, () => {
+  it(`should set correct genre`, () => {
     const genre = `Dramas`;
 
     const store = reducer(initialState, changeSelectedGenre(genre));
 
     expect(store).toEqual({
       ...initialState,
-      genre,
-      filmsByGenre: [
-        {
-          title: `Aviator`,
-          genre: `Dramas`,
-          posterSrc: ``,
-          sources: {
-            mp4: ``,
-            webm: ``
-          }
-        },
-        {
-          title: `We need to talk about Kevin`,
-          genre: `Dramas`,
-          posterSrc: ``,
-          sources: {
-            mp4: ``,
-            webm: ``
-          }
-        }
-      ]
+      genre
     });
   });
 
-  it(`should return films only certain genre`, () => {
-    const genre = `Dramas`;
-    const store = reducer(initialState, changeSelectedGenre(genre));
-
-    expect(store).toEqual({
-      ...initialState,
-      genre,
-      filmsByGenre: [
-        {
-          title: `Aviator`,
-          genre: `Dramas`,
-          posterSrc: ``,
-          sources: {
-            mp4: ``,
-            webm: ``
-          }
-        },
-        {
-          title: `We need to talk about Kevin`,
-          genre: `Dramas`,
-          posterSrc: ``,
-          sources: {
-            mp4: ``,
-            webm: ``
-          }
-        }
-      ]
+  it(`should set loaded films`, () => {
+    const films = [
+      {
+        name: `We need to talk about Kevin`,
+        posterImage: `https://es31-server.appspot.com/wtw/static/film/poster/We_need_to_talk_about_Kevin.jpg`,
+        previewImage: `https://es31-server.appspot.com/wtw/static/film/preview/we-need-to-talk-about-kevin.jpg`,
+        backgroundImage: `https://es31-server.appspot.com/wtw/static/film/background/We_need_to_talk_about_Kevin.jpg`,
+        backgroundColor: `#E1DFDE`,
+        description: `Kevin's mother struggles to love her strange child, despite the increasingly dangerous things he says and does as he grows up. But Kevin is just getting started, and his final act will be beyond anything anyone imagined.`,
+        rating: 7.5,
+        scoresCount: 123240,
+        director: `Lynne Ramsay`,
+        starring: [
+          `Tilda Swinton`,
+          `John C. Reilly`,
+          `Ezra Miller`
+        ],
+        runTime: 112,
+        genre: `Drama`,
+        released: 2011,
+        id: 2,
+        isFavorite: false,
+        videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
+        previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+      },
+      {
+        name: `The Revenant`,
+        posterImage: `https://es31-server.appspot.com/wtw/static/film/poster/Revenant.jpg`,
+        previewImage: `https://es31-server.appspot.com/wtw/static/film/preview/revenant.jpg`,
+        backgroundImage: `https://es31-server.appspot.com/wtw/static/film/background/Revenant.jpg`,
+        backgroundColor: `#92918B`,
+        description: `A frontiersman on a fur trading expedition in the 1820s fights for survival after being mauled by a bear and left for dead by members of his own hunting team.`,
+        rating: 8,
+        scoresCount: 618498,
+        director: `Alejandro G. Iñárritu`,
+        starring: [
+          `Leonardo DiCaprio`,
+          `Tom Hardy`,
+          `Will Poulter`
+        ],
+        runTime: 156,
+        genre: `Action`,
+        released: 2015,
+        id: 3,
+        isFavorite: false,
+        videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
+        previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+      },
+      {
+        name: `Bronson`,
+        posterImage: `https://es31-server.appspot.com/wtw/static/film/poster/bronson.jpg`,
+        previewImage: `https://es31-server.appspot.com/wtw/static/film/preview/bronson.jpg`,
+        backgroundImage: `https://es31-server.appspot.com/wtw/static/film/background/bronson.jpg`,
+        backgroundColor: `#73B39A`,
+        description: `A young man who was sentenced to seven years in prison for robbing a post office ends up spending three decades in solitary confinement. During this time, his own personality is supplanted by his alter-ego, Charles Bronson.`,
+        rating: 7.1,
+        scoresCount: 109661,
+        director: `Nicolas Winding Refn`,
+        starring: [
+          `Tom Hardy`,
+          `Kelly Adams`,
+          `Luing Andrews`
+        ],
+        runTime: 92,
+        genre: `Action`,
+        released: 2008,
+        id: 4,
+        isFavorite: false,
+        videoLink: `http://media.xiph.org/mango/tears_of_steel_1080p.webm`,
+        previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+      },
+    ];
+    const store = reducer(initialState, {
+      type: Actions.LOAD_FILMS,
+      payload: films
     });
-  });
-
-  it(`should return all films by default genre`, () => {
-    const genre = DEFAULT_GENRE;
-
-    const store = reducer(initialState, changeSelectedGenre(genre));
 
     expect(store).toEqual({
       ...initialState,
-      genre,
-      filmsByGenre: films
-    });
-  });
-
-  it(`should return all films by empty genre`, () => {
-    const genre = ``;
-    const store = reducer(initialState, changeSelectedGenre(genre));
-
-    expect(store).toEqual({
-      ...initialState,
-      genre,
-      filmsByGenre: films
-    });
-  });
-
-  it(`should return all films by invalid genre`, () => {
-    const genre = null;
-    const store = reducer(initialState, changeSelectedGenre(genre));
-
-    expect(store).toEqual({
-      ...initialState,
-      genre,
-      filmsByGenre: films
+      films
     });
   });
 

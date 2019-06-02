@@ -16,7 +16,7 @@ exports[`render correctly MovieCard component 1`] = `
       className="small-movie-card__link"
       href="movie-page.html"
     >
-      Aviator
+      The Grand Budapest Hotel
     </a>
   </h3>
 </article>

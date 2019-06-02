@@ -3,18 +3,16 @@ import MovieCard from "./movie-card";
 
 
 it(`check the onTitleClick callback`, () => {
-  const id = 1;
   const film = {
-    title: `Aviator`,
-    posterSrc: ``,
-    sources: {
-      mp4: ``,
-      webm: ``
-    }
+    id: 1,
+    name: `The Grand Budapest Hotel`,
+    previewImage: `img/the-grand-budapest-hotel.jpg`,
+    previewVideoLink: `https://some-link`,
+    genre: `Comedy`,
   };
   const handleTitleClick = jest.fn();
 
-  const movieCard = shallow(<MovieCard id={id} film={film} onTitleClick={handleTitleClick} isPlaying={false}/>);
+  const movieCard = shallow(<MovieCard film={film} onTitleClick={handleTitleClick} isPlaying={false}/>);
 
   movieCard.find(`a`).simulate(`click`);
 
@@ -22,18 +20,16 @@ it(`check the onTitleClick callback`, () => {
 });
 
 it(`check the onPreviewClick callback`, () => {
-  const id = 1;
   const film = {
-    title: `Aviator`,
-    posterSrc: ``,
-    sources: {
-      mp4: ``,
-      webm: ``
-    }
+    id: 1,
+    name: `The Grand Budapest Hotel`,
+    previewImage: `img/the-grand-budapest-hotel.jpg`,
+    previewVideoLink: `https://some-link`,
+    genre: `Comedy`,
   };
   const handlePreviewClick = jest.fn();
 
-  const movieCard = shallow(<MovieCard id={id} film={film} onPreviewClick={handlePreviewClick} isPlaying={false}/>);
+  const movieCard = shallow(<MovieCard film={film} onPreviewClick={handlePreviewClick} isPlaying={false}/>);
 
   movieCard.simulate(`mouseEnter`);
 

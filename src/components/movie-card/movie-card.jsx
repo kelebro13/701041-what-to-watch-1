@@ -14,10 +14,10 @@ class MovieCard extends React.PureComponent {
     return (
       <article className="small-movie-card catalog__movies-card" onMouseEnter={this._handleCardMouseEnter} onMouseLeave={this._handleCardMouseLeave}>
         <div className="small-movie-card__image">
-          {renderVideo && renderVideo(film)}
+          {renderVideo && renderVideo(film.previewImage, film.previewVideoLink)}
         </div>
         <h3 className="small-movie-card__title">
-          <a className="small-movie-card__link" href="movie-page.html" onClick={onTitleClick}>{film.title}</a>
+          <a className="small-movie-card__link" href="movie-page.html" onClick={onTitleClick}>{film.name}</a>
         </h3>
       </article>
     );
@@ -49,22 +49,32 @@ class MovieCard extends React.PureComponent {
   }
 
   _changeActiveCard(isActive) {
-    const {id, onActiveCardChange} = this.props;
+    const {film, onActiveCardChange} = this.props;
     if (onActiveCardChange) {
-      onActiveCardChange(isActive ? id : undefined);
+      onActiveCardChange(isActive ? film.id : undefined);
     }
   }
 }
 
 MovieCard.propTypes = {
-  id: PropTypes.number.isRequired,
   film: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    posterSrc: PropTypes.string.isRequired,
-    sources: PropTypes.shape({
-      mp4: PropTypes.string,
-      webm: PropTypes.string
-    }).isRequired
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    posterImage: PropTypes.string,
+    previewImage: PropTypes.string,
+    backgroundImage: PropTypes.string,
+    backgroundColor: PropTypes.string,
+    videoLink: PropTypes.string,
+    previewVideoLink: PropTypes.string,
+    description: PropTypes.string,
+    rating: PropTypes.number,
+    scoresCount: PropTypes.number,
+    director: PropTypes.string,
+    starring: PropTypes.arrayOf(PropTypes.string),
+    runTime: PropTypes.number,
+    genre: PropTypes.string.isRequired,
+    released: PropTypes.number,
+    isFavorite: PropTypes.bool,
   }).isRequired,
   renderVideo: PropTypes.func,
   isPlaying: PropTypes.bool.isRequired,

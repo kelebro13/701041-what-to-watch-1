@@ -15,7 +15,8 @@ exports[`render correctly MovieList component 1`] = `
       <video
         height="175"
         muted={true}
-        poster="img/aviator.jpg"
+        poster="img/the-grand-budapest-hotel.jpg"
+        src="https://some-link"
         width="280"
       />
     </div>
@@ -26,33 +27,7 @@ exports[`render correctly MovieList component 1`] = `
         className="small-movie-card__link"
         href="movie-page.html"
       >
-        Aviator
-      </a>
-    </h3>
-  </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-  >
-    <div
-      className="small-movie-card__image"
-    >
-      <video
-        height="175"
-        muted={true}
-        poster="img/we-need-to-talk-about-kevin.jpg"
-        width="280"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
-    >
-      <a
-        className="small-movie-card__link"
-        href="movie-page.html"
-      >
-        We need to talk about Kevin
+        The Grand Budapest Hotel
       </a>
     </h3>
   </article>

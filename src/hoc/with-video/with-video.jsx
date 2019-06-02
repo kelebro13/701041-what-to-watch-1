@@ -16,13 +16,9 @@ const withVideo = (Component) => {
       }
     }
 
-    renderVideo() {
-      const {posterSrc, sources} = this.props.film;
+    renderVideo(previewImage, previewVideoLink) {
       return (
-        <video ref={this.videoRef} poster={posterSrc} muted={true} width="280" height="175">
-          {sources.webm.length > 0 && <source src={sources.webm} type='video/webm; codecs="vp8, vorbis"'/>}
-          {sources.mp4.length > 0 && <source src={sources.mp4} type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'/>}
-        </video>
+        <video ref={this.videoRef} poster={previewImage} muted={true} width="280" height="175" src={previewVideoLink} />
       );
     }
     render() {
@@ -36,13 +32,6 @@ const withVideo = (Component) => {
   }
 
   WithVideo.propTypes = {
-    film: PropTypes.shape({
-      posterSrc: PropTypes.string.isRequired,
-      sources: PropTypes.shape({
-        mp4: PropTypes.string,
-        webm: PropTypes.string
-      }).isRequired
-    }).isRequired,
     isPlaying: PropTypes.bool.isRequired,
   };
 
