@@ -1,9 +1,9 @@
 import {connect} from "react-redux";
-import {singIn} from '../../reducer/user/user';
+import {singInRequest} from '../../reducer/user/operations';
 import SingIn from "./sing-in";
 
 const mapDispatchToProps = {
-  singIn
+  singInRequest
 };
 
 export default connect(null, mapDispatchToProps)(SingIn);

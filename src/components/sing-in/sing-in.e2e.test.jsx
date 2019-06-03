@@ -5,7 +5,7 @@ describe(`SingIn form filling`, () => {
   it(`should call singIn when submit form (all field are filling correct)`, () => {
     const singIn = jest.fn();
 
-    const wrapper = mount(<SingIn singIn={singIn}/>);
+    const wrapper = mount(<SingIn singInRequest={singIn}/>);
 
     const email = `Oliver.conner@gmail.com`;
     const password = `12345`;
@@ -22,7 +22,7 @@ describe(`SingIn form filling`, () => {
   it(`should't call singIn when submit form if password not fill`, () => {
     const singIn = jest.fn();
 
-    const wrapper = mount(<SingIn singIn={singIn}/>);
+    const wrapper = mount(<SingIn singInRequest={singIn}/>);
 
     const email = `Oliver.conner@gmail.com`;
     wrapper.instance().emailInputRef.current.value = email;
@@ -35,7 +35,7 @@ describe(`SingIn form filling`, () => {
   it(`should't call singIn when submit form if email not fill`, () => {
     const singIn = jest.fn();
 
-    const wrapper = mount(<SingIn singIn={singIn}/>);
+    const wrapper = mount(<SingIn singInRequest={singIn}/>);
 
     const password = `12345`;
     wrapper.instance().passwordInputRef.current.value = password;

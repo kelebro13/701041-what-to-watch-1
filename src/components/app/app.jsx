@@ -21,9 +21,9 @@ class App extends React.PureComponent {
   }
 
   componentDidMount() {
-    const {loadFilms} = this.props;
-    if (loadFilms) {
-      loadFilms();
+    const {loadFilmsRequest} = this.props;
+    if (loadFilmsRequest) {
+      loadFilmsRequest();
     }
   }
 
@@ -200,7 +200,7 @@ App.propTypes = {
     isFavorite: PropTypes.bool,
   })).isRequired,
   changeSelectedGenre: PropTypes.func,
-  loadFilms: PropTypes.func
+  loadFilmsRequest: PropTypes.func
 };
 
 export default App;

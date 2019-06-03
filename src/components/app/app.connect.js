@@ -1,6 +1,7 @@
 import {connect} from "react-redux";
 import {filmsByGenreSelector, genreSelector, genresSelector} from "../../reducer/data/selectors";
-import {changeSelectedGenre, loadFilms} from "../../reducer/data/data";
+import {changeSelectedGenre} from "../../reducer/data/data";
+import {loadFilmsRequest} from "../../reducer/data/operations";
 import {isAuthorizationRequiredSelector} from "../../reducer/user/selectors";
 import App from "./app";
 
@@ -15,7 +16,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   changeSelectedGenre,
-  loadFilms
+  loadFilmsRequest
 };
 
 export default connect(

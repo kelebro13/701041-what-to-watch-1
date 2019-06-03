@@ -1,6 +1,4 @@
 import {Actions, reducer, requireAuthorization, singIn} from "./user";
-import configureAPI from "../../api";
-import MockAdapter from "axios-mock-adapter";
 
 describe(`ActionCreators`, () => {
   it(`check return action REQUIRED_AUTHORIZATION`, () => {
@@ -11,22 +9,17 @@ describe(`ActionCreators`, () => {
   });
 
   it(`check return action SING_IN`, () => {
-    const api = configureAPI();
-    const apiMock = new MockAdapter(api);
-    const dispatch = jest.fn();
+    const user = {
+      id: 1,
+      email: `Oliver.conner@gmail.com`,
+      name: `Oliver.conner`,
+      avatarUrl: `img/1.png`
+    };
 
-    apiMock
-      .onPost(`/login`)
-      .reply(200, {fake: true});
-
-    return singIn()(dispatch, null, api)
-      .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(1);
-        expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: Actions.SING_IN,
-          payload: {fake: true}
-        });
-      });
+    expect(singIn(user)).toEqual({
+      type: Actions.SING_IN,
+      payload: user
+    });
   });
 });
 

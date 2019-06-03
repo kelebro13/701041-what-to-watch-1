@@ -17,14 +17,11 @@ const changeSelectedGenre = (genreType) => {
   };
 };
 
-const loadFilms = () => (dispatch, _getState, api) => {
-  return api.get(`/films`)
-    .then((response) => {
-      dispatch({
-        type: Actions.LOAD_FILMS,
-        payload: response.data
-      });
-    });
+const loadFilms = (films) => {
+  return {
+    type: Actions.LOAD_FILMS,
+    payload: films
+  };
 };
 
 const reducer = (state = initialState, action) => {

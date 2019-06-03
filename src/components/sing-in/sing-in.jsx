@@ -107,10 +107,10 @@ class SingIn extends React.PureComponent {
 
   _handleFormSubmit(evt) {
     evt.preventDefault();
-    const {singIn} = this.props;
+    const {singInRequest} = this.props;
     // checkValidity пришлось добавить только чтобы правильно работали jest тесты
-    if (singIn && this.formRef.current.checkValidity()) {
-      singIn(
+    if (singInRequest && this.formRef.current.checkValidity()) {
+      singInRequest(
           this.emailInputRef.current.value,
           this.passwordInputRef.current.value);
     }
@@ -120,7 +120,7 @@ class SingIn extends React.PureComponent {
 
 
 SingIn.propTypes = {
-  singIn: PropTypes.func
+  singInRequest: PropTypes.func
 };
 
 export default SingIn;

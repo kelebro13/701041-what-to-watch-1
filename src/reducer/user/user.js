@@ -15,17 +15,11 @@ const requireAuthorization = (status) => {
   };
 };
 
-const singIn = (email, password) => (dispatch, _getState, api) => {
-  return api.post(`/login`, {
-    email,
-    password
-  })
-    .then((response) => {
-      dispatch({
-        type: Actions.SING_IN,
-        payload: response.data
-      });
-    });
+const singIn = (user) => {
+  return {
+    type: Actions.SING_IN,
+    payload: user
+  };
 };
 
 const reducer = (state = initialState, action) => {
