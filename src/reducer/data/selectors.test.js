@@ -1,5 +1,8 @@
-import {DEFAULT_GENRE} from '../components/genre-list/genre-list';
+import {DEFAULT_GENRE} from '../../components/genre-list/genre-list';
 import {genresSelector, filmsByGenreSelector} from './selectors';
+import NameSpace from '../name-spaces';
+
+const NAME_SPACE = NameSpace.DATA;
 
 describe(`Check genresSelector`, () => {
   it(`should return genres by films`, () => {
@@ -11,7 +14,7 @@ describe(`Check genresSelector`, () => {
         genre: `Action`,
       },
     ];
-    const genres = genresSelector({films});
+    const genres = genresSelector({[NAME_SPACE]: {films}});
     expect(genres).toEqual([DEFAULT_GENRE, `Drama`, `Action`]);
   });
 
@@ -27,7 +30,7 @@ describe(`Check genresSelector`, () => {
         genre: `Action`,
       },
     ];
-    const genres = genresSelector({films});
+    const genres = genresSelector({[NAME_SPACE]: {films}});
     expect(genres).toEqual([DEFAULT_GENRE, `Drama`, `Action`]);
   });
 
@@ -40,7 +43,7 @@ describe(`Check genresSelector`, () => {
         genre: `Dramas`,
       }
     ];
-    const genres = genresSelector({films});
+    const genres = genresSelector({[NAME_SPACE]: {films}});
     expect(genres).toEqual([DEFAULT_GENRE, `Dramas`]);
   });
 
@@ -53,13 +56,13 @@ describe(`Check genresSelector`, () => {
         genre: `Dramas`,
       }
     ];
-    const genres = genresSelector({films});
+    const genres = genresSelector({[NAME_SPACE]: {films}});
     expect(genres).toEqual([DEFAULT_GENRE, `Dramas`]);
   });
 
   it(`should return default genres by invalid output data`, () => {
     const films = 1;
-    const genres = genresSelector({films});
+    const genres = genresSelector({[NAME_SPACE]: {films}});
     expect(genres).toEqual([DEFAULT_GENRE]);
   });
 
@@ -83,7 +86,7 @@ describe(`Check filmsByGenreSelector`, () => {
       }
     ];
 
-    const filmsByGenre = filmsByGenreSelector({genre, films});
+    const filmsByGenre = filmsByGenreSelector({[NAME_SPACE]: {genre, films}});
     expect(filmsByGenre).toHaveLength(2);
     expect(filmsByGenre[0].name).toEqual(`Aviator`);
     expect(filmsByGenre[1].name).toEqual(`We need to talk about Kevin`);
@@ -106,7 +109,7 @@ describe(`Check filmsByGenreSelector`, () => {
       }
     ];
 
-    const filmsByGenre = filmsByGenreSelector({genre, films});
+    const filmsByGenre = filmsByGenreSelector({[NAME_SPACE]: {films, genre}});
     expect(filmsByGenre).toEqual(films);
   });
 
@@ -127,7 +130,7 @@ describe(`Check filmsByGenreSelector`, () => {
       }
     ];
 
-    const filmsByGenre = filmsByGenreSelector({genre, films});
+    const filmsByGenre = filmsByGenreSelector({[NAME_SPACE]: {films, genre}});
     expect(filmsByGenre).toEqual(films);
   });
 
@@ -148,7 +151,7 @@ describe(`Check filmsByGenreSelector`, () => {
       }
     ];
 
-    const filmsByGenre = filmsByGenreSelector({genre, films});
+    const filmsByGenre = filmsByGenreSelector({[NAME_SPACE]: {films, genre}});
     expect(filmsByGenre).toEqual(films);
   });
 
@@ -156,7 +159,7 @@ describe(`Check filmsByGenreSelector`, () => {
     const genre = DEFAULT_GENRE;
     const films = [];
 
-    const filmsByGenre = filmsByGenreSelector({genre, films});
+    const filmsByGenre = filmsByGenreSelector({[NAME_SPACE]: {films, genre}});
     expect(filmsByGenre).toEqual([]);
   });
 
@@ -164,7 +167,7 @@ describe(`Check filmsByGenreSelector`, () => {
     const genre = null;
     const films = `test`;
 
-    const filmsByGenre = filmsByGenreSelector({genre, films});
+    const filmsByGenre = filmsByGenreSelector({[NAME_SPACE]: {films, genre}});
     expect(filmsByGenre).toEqual([]);
   });
 });

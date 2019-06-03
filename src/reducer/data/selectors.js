@@ -1,13 +1,12 @@
-import {createSelector} from 'reselect';
-import {DEFAULT_GENRE} from "../components/genre-list/genre-list";
+import {createSelector} from 'reselect/lib/index';
+import {DEFAULT_GENRE} from "../../components/genre-list/genre-list";
+import NameSpace from '../name-spaces';
 
-export const filmsSelector = (state) => {
-  return state.films;
-};
+const NAME_SPACE = NameSpace.DATA;
 
-export const genreSelector = (state) => {
-  return state.genre;
-};
+export const filmsSelector = (state) => state[NAME_SPACE].films;
+
+export const genreSelector = (state) => state[NAME_SPACE].genre;
 
 export const genresSelector = createSelector(
     filmsSelector,
