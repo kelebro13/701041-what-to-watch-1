@@ -1,5 +1,6 @@
 import axios from 'axios';
 import humps from 'humps';
+import RoutePath from "./routes";
 
 const ResponseCode = {
   FORBIDDEN: 403
@@ -23,7 +24,7 @@ const configureAPI = () => {
   const onSuccess = (response) => response;
   const onFail = (error) => {
     if (error.response.status === ResponseCode.FORBIDDEN) {
-      history.pushState(null, null, `/login`);
+      history.pushState(null, null, RoutePath.LOGIN);
     }
     return error;
   };

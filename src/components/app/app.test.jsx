@@ -7,6 +7,7 @@ import thunk from 'redux-thunk';
 import MockAdapter from "axios-mock-adapter";
 import configureAPI from '../../api';
 import NameSpace from "../../reducer/name-spaces";
+import RoutePath from "../../routes";
 import SingIn from "../sing-in/sing-in.connect";
 import MyList from "../my-list/my-list";
 import MainPage from "../main-page/main-page";
@@ -124,7 +125,7 @@ describe(`App`, () => {
   it(`should render App if path '/'`, () => {
     const tree = mount(
         <Provider store={mockStore(store)}>
-          <MemoryRouter initialEntries={[`/`]}>
+          <MemoryRouter initialEntries={[RoutePath.INDEX]}>
             <App/>
           </MemoryRouter>
         </Provider>
@@ -136,7 +137,7 @@ describe(`App`, () => {
   it(`should render SingIn if path '/login'`, () => {
     const tree = mount(
         <Provider store={mockStore(store)}>
-          <MemoryRouter initialEntries={[`/login`]}>
+          <MemoryRouter initialEntries={[RoutePath.LOGIN]}>
             <App/>
           </MemoryRouter>
         </Provider>
@@ -148,7 +149,7 @@ describe(`App`, () => {
   it(`should render MyList if path '/mylist'`, () => {
     const tree = mount(
         <Provider store={mockStore(store)}>
-          <MemoryRouter initialEntries={[`/mylist`]}>
+          <MemoryRouter initialEntries={[RoutePath.MY_LIST]}>
             <App/>
           </MemoryRouter>
         </Provider>

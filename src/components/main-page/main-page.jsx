@@ -2,6 +2,7 @@ import {Link} from 'react-router-dom';
 import GenreList from "../genre-list/genre-list";
 import withSelectItem from "../../hoc/with-select-item/with-select-item";
 import withTransformProps from "../../hoc/with-transform-props/with-transform-props";
+import RoutePath from "../../routes";
 import MovieList from "../movie-list/movie-list";
 
 const MovieListWrapped = withSelectItem(
@@ -98,7 +99,7 @@ class MainPage extends React.PureComponent {
             </div>
 
             <div className="user-block">
-              <Link to={`/mylist`}>
+              <Link to={RoutePath.MY_LIST}>
                 <div className="user-block__avatar">
                   <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
                 </div>
