@@ -1,5 +1,7 @@
 import renderer from "react-test-renderer";
+import {shallow} from 'enzyme';
 import App from "./app";
+import SingIn from "../sing-in/sing-in.connect";
 
 it(`render correctly App component`, () => {
   const genre = `All genres`;
@@ -77,9 +79,24 @@ it(`render correctly App component`, () => {
   ];
 
   const tree = renderer
-    .create(<App genre={genre} genres={genres} filmsByGenre={films} changeSelectedGenre={() => {}} setFilmsByGenre={() => {}}/>)
+    .create(<App isAuthorizationRequired={false} genre={genre} genres={genres} filmsByGenre={films} changeSelectedGenre={() => {}} setFilmsByGenre={() => {}}/>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();
 });
 
+it(`should be render SingIn if authorization is require`, () => {
+  const wrapper = shallow(<App isAuthorizationRequired={true} genre={``} genres={[``]} filmsByGenre={[]}/>);
+
+  expect(wrapper.find(SingIn)).toHaveLength(1);
+  expect(wrapper.find(`.movie-card`)).toHaveLength(0);
+  expect(wrapper.find(`.page-content`)).toHaveLength(0);
+});
+
+it(`should be render Main if authorization is not require `, () => {
+  const wrapper = shallow(<App isAuthorizationRequired={false} genre={``} genres={[``]} filmsByGenre={[]}/>);
+
+  expect(wrapper.find(SingIn)).toHaveLength(0);
+  expect(wrapper.find(`.movie-card`)).toHaveLength(1);
+  expect(wrapper.find(`.page-content`)).toHaveLength(1);
+});

@@ -2,6 +2,7 @@ import MovieList from "../movie-list/movie-list";
 import GenreList from "../genre-list/genre-list";
 import withSelectItem from "../../hoc/with-select-item/with-select-item";
 import withTransformProps from "../../hoc/with-transform-props/with-transform-props";
+import SingIn from "../sing-in/sing-in.connect";
 
 const MovieListWrapped = withSelectItem(
     withTransformProps((props) => {
@@ -34,6 +35,15 @@ class App extends React.PureComponent {
   }
 
   render() {
+    const {isAuthorizationRequired} = this.props;
+    return (
+      isAuthorizationRequired
+        ? <SingIn/>
+        : this._renderMain()
+    );
+  }
+
+  _renderMain() {
     const {genre, genres, filmsByGenre} = this.props;
     return (
       <>
@@ -167,6 +177,7 @@ class App extends React.PureComponent {
 }
 
 App.propTypes = {
+  isAuthorizationRequired: PropTypes.bool.isRequired,
   genre: PropTypes.string.isRequired,
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
   filmsByGenre: PropTypes.arrayOf(PropTypes.shape({

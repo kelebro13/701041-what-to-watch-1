@@ -4,7 +4,7 @@ import {Provider} from "react-redux";
 import thunk from 'redux-thunk';
 import {composeWithDevTools} from "redux-devtools-extension";
 import App from './components/app/app.connect';
-import {reducer} from "./reducer/reducer";
+import reducer from "./reducer";
 import configureAPI from './api';
 
 const api = configureAPI((...args) => store.dispatch(...args));
