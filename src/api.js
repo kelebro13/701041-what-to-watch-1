@@ -1,6 +1,10 @@
 import axios from 'axios';
 import humps from 'humps';
 
+const ResponseCode = {
+  FORBIDDEN: 403
+};
+
 const configureAPI = () => {
   const api = axios.create({
     baseURL: `https://es31-server.appspot.com/wtw`,
@@ -18,7 +22,7 @@ const configureAPI = () => {
 
   const onSuccess = (response) => response;
   const onFail = (error) => {
-    if (error.response.status === 403) {
+    if (error.response.status === ResponseCode.FORBIDDEN) {
       // редирект на страницу авторизации
     }
     return error;
