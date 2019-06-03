@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 import GenreList from "../genre-list/genre-list";
 import withSelectItem from "../../hoc/with-select-item/with-select-item";
 import withTransformProps from "../../hoc/with-transform-props/with-transform-props";
@@ -97,9 +98,11 @@ class MainPage extends React.PureComponent {
             </div>
 
             <div className="user-block">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-              </div>
+              <Link to={`/mylist`}>
+                <div className="user-block__avatar">
+                  <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
+                </div>
+              </Link>
             </div>
           </header>
 

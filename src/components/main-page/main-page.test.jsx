@@ -1,4 +1,5 @@
 import renderer from "react-test-renderer";
+import {MemoryRouter} from 'react-router-dom';
 import MainPage from "./main-page";
 
 it(`render correctly App component`, () => {
@@ -77,7 +78,10 @@ it(`render correctly App component`, () => {
   ];
 
   const tree = renderer
-    .create(<MainPage genre={genre} genres={genres} filmsByGenre={films} changeSelectedGenre={() => {}} setFilmsByGenre={() => {}}/>)
+    .create(
+        <MemoryRouter>
+          <MainPage genre={genre} genres={genres} filmsByGenre={films} changeSelectedGenre={() => {}} setFilmsByGenre={() => {}}/>
+        </MemoryRouter>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();
