@@ -1,6 +1,6 @@
-import MockAdapter from 'axios-mock-adapter';
-import {reducer, Actions, changeSelectedGenre, loadFilms} from "./reducer";
-import configureAPI from '../api';
+import MockAdapter from "axios-mock-adapter";
+import configureAPI from "../../api";
+import {Actions, changeSelectedGenre, loadFilms, reducer} from "./data";
 
 describe(`ActionCreators`, () => {
 
