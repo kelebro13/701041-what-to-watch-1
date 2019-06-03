@@ -17,9 +17,9 @@ const MovieList = (props) => {
   return (
     <div className="catalog__movies-list">
       {
-        films.map((film, index) => {
+        films.map((film) => {
           return <MovieCardWrapped
-            key={index}
+            key={film.id}
             film={film}
             onActiveCardChange={onActiveCardChange}/>;
         })
