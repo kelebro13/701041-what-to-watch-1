@@ -1,12 +1,11 @@
 import axios from 'axios';
 import humps from 'humps';
-import {requireAuthorization} from "./reducer/user/user";
 
 const ResponseCode = {
   FORBIDDEN: 403
 };
 
-const configureAPI = (dispatch) => {
+const configureAPI = () => {
   const api = axios.create({
     baseURL: `https://es31-server.appspot.com/wtw`,
     timeout: 5000,
@@ -24,7 +23,7 @@ const configureAPI = (dispatch) => {
   const onSuccess = (response) => response;
   const onFail = (error) => {
     if (error.response.status === ResponseCode.FORBIDDEN) {
-      dispatch(requireAuthorization(true));
+      history.pushState(null, null, `/login`);
     }
     return error;
   };
