@@ -2,12 +2,13 @@ import ReactDOM from "react-dom";
 import {createStore, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
 import thunk from 'redux-thunk';
+import {BrowserRouter} from 'react-router-dom';
 import {composeWithDevTools} from "redux-devtools-extension";
-import App from './components/app/app.connect';
+import App from './components/app/app';
 import reducer from "./reducer";
 import configureAPI from './api';
 
-const api = configureAPI((...args) => store.dispatch(...args));
+const api = configureAPI();
 
 const store = createStore(
     reducer,
@@ -17,7 +18,9 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-      <App/>
+      <BrowserRouter>
+        <App/>
+      </BrowserRouter>
     </Provider>,
     document.getElementById(`root`)
 );

@@ -1,11 +1,11 @@
 import {mount} from 'enzyme';
-import SingIn from './sing-in';
+import SingInForm from './sing-in-form';
 
-describe(`SingIn form filling`, () => {
+describe(`SingInForm form filling`, () => {
   it(`should call singIn when submit form (all field are filling correct)`, () => {
-    const singIn = jest.fn();
+    const singInRequest = jest.fn(() => Promise.resolve());
 
-    const wrapper = mount(<SingIn singInRequest={singIn}/>);
+    const wrapper = mount(<SingInForm singInRequest={singInRequest}/>);
 
     const email = `Oliver.conner@gmail.com`;
     const password = `12345`;
@@ -15,14 +15,14 @@ describe(`SingIn form filling`, () => {
     wrapper.find(`#user-password`).simulate(`change`, {target: {value: password}});
     wrapper.find(`form`).simulate(`submit`, {preventDefault: () => {}});
 
-    expect(singIn).toHaveBeenCalledTimes(1);
-    expect(singIn).toHaveBeenCalledWith(email, password);
+    expect(singInRequest).toHaveBeenCalledTimes(1);
+    expect(singInRequest).toHaveBeenCalledWith(email, password);
   });
 
   it(`should't call singIn when submit form if password not fill`, () => {
-    const singIn = jest.fn();
+    const singIn = jest.fn(() => Promise.resolve());
 
-    const wrapper = mount(<SingIn singInRequest={singIn}/>);
+    const wrapper = mount(<SingInForm singInRequest={singIn}/>);
 
     const email = `Oliver.conner@gmail.com`;
     wrapper.instance().emailInputRef.current.value = email;
@@ -33,9 +33,9 @@ describe(`SingIn form filling`, () => {
   });
 
   it(`should't call singIn when submit form if email not fill`, () => {
-    const singIn = jest.fn();
+    const singIn = jest.fn(() => Promise.resolve());
 
-    const wrapper = mount(<SingIn singInRequest={singIn}/>);
+    const wrapper = mount(<SingInForm singInRequest={singIn}/>);
 
     const password = `12345`;
     wrapper.instance().passwordInputRef.current.value = password;

@@ -1,15 +1,12 @@
-class SingIn extends React.PureComponent {
+import {Link} from "react-router-dom";
+import RoutePath from "../../routes";
+import SingInForm from "../sing-in-form/sing-in-form.connection";
+import withRedirectBack from '../../hoc/with-redirect-back/with-redirect-back';
 
-  constructor(props) {
-    super(props);
-    this.formRef = React.createRef();
-    this.emailInputRef = React.createRef();
-    this.passwordInputRef = React.createRef();
-    this._handleFormSubmit = this._handleFormSubmit.bind(this);
-  }
+const SingInFormWrapped = withRedirectBack(SingInForm);
 
-  render() {
-    return (
+const SingIn = () => {
+  return (
       <>
         <div className="visually-hidden">
           <svg xmlns="http://www.w3.org/2000/svg">
@@ -57,43 +54,27 @@ class SingIn extends React.PureComponent {
         <div className="user-page">
           <header className="page-header user-page__head">
             <div className="logo">
-              <a href="main.html" className="logo__link">
+              <Link to={RoutePath.INDEX} className="logo__link">
                 <span className="logo__letter logo__letter--1">W</span>
                 <span className="logo__letter logo__letter--2">T</span>
                 <span className="logo__letter logo__letter--3">W</span>
-              </a>
+              </Link>
             </div>
 
             <h1 className="page-title user-page__title">Sign in</h1>
           </header>
 
           <div className="sign-in user-page__content">
-            <form ref={this.formRef} action="#" className="sign-in__form" onSubmit={this._handleFormSubmit}>
-              <div className="sign-in__fields">
-                <div className="sign-in__field">
-                  <input ref={this.emailInputRef} className="sign-in__input" type="email" placeholder="Email address" name="user-email"
-                    id="user-email" required={true}/>
-                  <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
-                </div>
-                <div className="sign-in__field">
-                  <input ref={this.passwordInputRef} className="sign-in__input" type="password" placeholder="Password" name="user-password"
-                    id="user-password" required={true}/>
-                  <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
-                </div>
-              </div>
-              <div className="sign-in__submit">
-                <button className="sign-in__btn" type="submit">Sign in</button>
-              </div>
-            </form>
+            <SingInFormWrapped />
           </div>
 
           <footer className="page-footer">
             <div className="logo">
-              <a href="main.html" className="logo__link logo__link--light">
+              <Link to={RoutePath.INDEX} className="logo__link logo__link--light">
                 <span className="logo__letter logo__letter--1">W</span>
                 <span className="logo__letter logo__letter--2">T</span>
                 <span className="logo__letter logo__letter--3">W</span>
-              </a>
+              </Link>
             </div>
 
             <div className="copyright">
@@ -102,25 +83,7 @@ class SingIn extends React.PureComponent {
           </footer>
         </div>
       </>
-    );
-  }
-
-  _handleFormSubmit(evt) {
-    evt.preventDefault();
-    const {singInRequest} = this.props;
-    // checkValidity пришлось добавить только чтобы правильно работали jest тесты
-    if (singInRequest && this.formRef.current.checkValidity()) {
-      singInRequest(
-          this.emailInputRef.current.value,
-          this.passwordInputRef.current.value);
-    }
-  }
-
-}
-
-
-SingIn.propTypes = {
-  singInRequest: PropTypes.func
+  );
 };
 
 export default SingIn;
