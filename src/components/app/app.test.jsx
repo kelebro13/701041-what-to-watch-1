@@ -8,7 +8,7 @@ import MockAdapter from "axios-mock-adapter";
 import configureAPI from '../../api';
 import NameSpace from "../../reducer/name-spaces";
 import RoutePath from "../../routes";
-import SingIn from "../sing-in/sing-in.connect";
+import SingIn from "../sing-in/sing-in";
 import MyList from "../my-list/my-list";
 import MainPage from "../main-page/main-page";
 import {DEFAULT_GENRE} from "../genre-list/genre-list";
