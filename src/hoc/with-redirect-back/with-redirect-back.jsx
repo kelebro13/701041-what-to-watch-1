@@ -11,7 +11,10 @@ const withRedirectBack = (Component) => {
 
     redirect() {
       const {location, history} = this.props;
-      const {pathname} = location.state.from || RoutePath.INDEX;
+      let pathname = RoutePath.INDEX;
+      if (!location.state === false) {
+        pathname = location.state.from.pathname;
+      }
       history.push(pathname);
     }
 

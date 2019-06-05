@@ -1,9 +1,8 @@
-import {Link} from 'react-router-dom';
 import GenreList from "../genre-list/genre-list";
 import withSelectItem from "../../hoc/with-select-item/with-select-item";
 import withTransformProps from "../../hoc/with-transform-props/with-transform-props";
-import RoutePath from "../../routes";
 import MovieList from "../movie-list/movie-list";
+import UserBlock from "../user-block/user-block";
 
 const MovieListWrapped = withSelectItem(
     withTransformProps((props) => {
@@ -36,7 +35,7 @@ class MainPage extends React.PureComponent {
   }
 
   render() {
-    const {genre, genres, filmsByGenre} = this.props;
+    const {genre, genres, filmsByGenre, user} = this.props;
     return (
       <>
         <div className="visually-hidden">
@@ -98,13 +97,7 @@ class MainPage extends React.PureComponent {
               </a>
             </div>
 
-            <div className="user-block">
-              <Link to={RoutePath.MY_LIST}>
-                <div className="user-block__avatar">
-                  <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-                </div>
-              </Link>
-            </div>
+            <UserBlock user={user}/>
           </header>
 
           <div className="movie-card__wrap">
@@ -193,7 +186,13 @@ MainPage.propTypes = {
     isFavorite: PropTypes.bool,
   })).isRequired,
   changeSelectedGenre: PropTypes.func,
-  loadFilmsRequest: PropTypes.func
+  loadFilmsRequest: PropTypes.func,
+  user: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    email: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    avatarUrl: PropTypes.string.isRequired
+  })
 };
 
 export default MainPage;

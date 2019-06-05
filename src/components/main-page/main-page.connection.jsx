@@ -3,12 +3,14 @@ import {filmsByGenreSelector, genreSelector, genresSelector} from "../../reducer
 import {changeSelectedGenre} from "../../reducer/data/data";
 import {loadFilmsRequest} from "../../reducer/data/operations";
 import MainPage from "./main-page";
+import {userSelector} from "../../reducer/user/selectors";
 
 const mapStateToProps = (state) => {
   return {
     genre: genreSelector(state),
     genres: genresSelector(state),
-    filmsByGenre: filmsByGenreSelector(state)
+    filmsByGenre: filmsByGenreSelector(state),
+    user: userSelector(state)
   };
 };
 
