@@ -1,8 +1,22 @@
 import renderer from "react-test-renderer";
 import {MemoryRouter} from 'react-router-dom';
+import {Provider} from "react-redux";
+import {mockStore} from "../../test/test-utils";
 import MainPage from "./main-page";
+import NameSpace from "../../reducer/name-spaces";
 
 it(`render correctly App component`, () => {
+  const store = {
+    [NameSpace.USER]: {
+      user: {
+        id: 1,
+        email: `Oliver.conner@gmail.com`,
+        name: `Oliver.conner`,
+        avatarUrl: `img/1.png`
+      }
+    }
+  };
+
   const genre = `All genres`;
   const genres = [`All genres`, `Kids & Family`, `Comedies`];
   const films = [
@@ -79,9 +93,11 @@ it(`render correctly App component`, () => {
 
   const tree = renderer
     .create(
-        <MemoryRouter>
-          <MainPage genre={genre} genres={genres} filmsByGenre={films} changeSelectedGenre={() => {}} setFilmsByGenre={() => {}}/>
-        </MemoryRouter>)
+        <Provider store={mockStore(store)}>
+          <MemoryRouter>
+            <MainPage genre={genre} genres={genres} filmsByGenre={films} changeSelectedGenre={() => {}} setFilmsByGenre={() => {}}/>
+          </MemoryRouter>
+        </Provider>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

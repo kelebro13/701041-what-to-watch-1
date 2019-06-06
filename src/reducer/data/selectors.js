@@ -42,3 +42,10 @@ export const filmsByGenreSelector = createSelector(
       return films.filter((film) => film.genre === genre);
     }
 );
+
+export const filmForMainPageSelector = createSelector(
+    filmsSelector,
+    (films) => {
+      return films.filter((film) => film.isFavorite === false)[0];
+    }
+);
