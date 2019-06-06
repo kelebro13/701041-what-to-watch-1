@@ -1,10 +1,10 @@
 import axios from 'axios/index';
 import humps from 'humps';
 import RoutePath from "../routes";
+export const SERVER_URL = `https://es31-server.appspot.com`;
 
-export const SERVER_URL = `https://es31-server.appspot.com/`;
-
-const ResponseCode = {
+export const ResponseCode = {
+  OK: 200,
   FORBIDDEN: 403
 };
 
@@ -28,7 +28,7 @@ const configureAPI = () => {
     if (error.response.status === ResponseCode.FORBIDDEN) {
       history.pushState(null, null, RoutePath.LOGIN);
     }
-    return error;
+    throw error;
   };
 
   api.interceptors.response.use(onSuccess, onFail);

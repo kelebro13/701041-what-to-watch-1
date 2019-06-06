@@ -1,4 +1,4 @@
-import {Actions, changeSelectedGenre, loadFilms, reducer} from "./data";
+import {Actions, changeSelectedGenre, loadFilms, reducer, updateFilm} from "./data";
 
 describe(`ActionCreators`, () => {
 
@@ -88,6 +88,37 @@ describe(`ActionCreators`, () => {
     expect(loadFilms(films)).toEqual({
       type: Actions.LOAD_FILMS,
       payload: films
+    });
+  });
+
+  it(`check return action UPDATE_FILM`, () => {
+    const film = {
+      name: `We need to talk about Kevin`,
+      posterImage: `https://es31-server.appspot.com/wtw/static/film/poster/We_need_to_talk_about_Kevin.jpg`,
+      previewImage: `https://es31-server.appspot.com/wtw/static/film/preview/we-need-to-talk-about-kevin.jpg`,
+      backgroundImage: `https://es31-server.appspot.com/wtw/static/film/background/We_need_to_talk_about_Kevin.jpg`,
+      backgroundColor: `#E1DFDE`,
+      description: `Kevin's mother struggles to love her strange child, despite the increasingly dangerous things he says and does as he grows up. But Kevin is just getting started, and his final act will be beyond anything anyone imagined.`,
+      rating: 7.5,
+      scoresCount: 123240,
+      director: `Lynne Ramsay`,
+      starring: [
+        `Tilda Swinton`,
+        `John C. Reilly`,
+        `Ezra Miller`
+      ],
+      runTime: 112,
+      genre: `Drama`,
+      released: 2011,
+      id: 2,
+      isFavorite: false,
+      videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
+      previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    };
+
+    expect(updateFilm(film)).toEqual({
+      type: Actions.UPDATE_FILM,
+      payload: film
     });
   });
 });
@@ -189,6 +220,71 @@ describe(`reducer`, () => {
     expect(store).toEqual({
       ...initialState,
       films
+    });
+  });
+
+  it(`should update film`, () => {
+    const firstFilm = {
+      name: `We need to talk about Kevin`,
+      posterImage: `https://es31-server.appspot.com/wtw/static/film/poster/We_need_to_talk_about_Kevin.jpg`,
+      previewImage: `https://es31-server.appspot.com/wtw/static/film/preview/we-need-to-talk-about-kevin.jpg`,
+      backgroundImage: `https://es31-server.appspot.com/wtw/static/film/background/We_need_to_talk_about_Kevin.jpg`,
+      backgroundColor: `#E1DFDE`,
+      description: `Kevin's mother struggles to love her strange child, despite the increasingly dangerous things he says and does as he grows up. But Kevin is just getting started, and his final act will be beyond anything anyone imagined.`,
+      rating: 7.5,
+      scoresCount: 123240,
+      director: `Lynne Ramsay`,
+      starring: [
+        `Tilda Swinton`,
+        `John C. Reilly`,
+        `Ezra Miller`
+      ],
+      runTime: 112,
+      genre: `Drama`,
+      released: 2011,
+      id: 2,
+      isFavorite: false,
+      videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
+      previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    };
+
+    const secondFilm = {
+      name: `The Revenant`,
+      posterImage: `https://es31-server.appspot.com/wtw/static/film/poster/Revenant.jpg`,
+      previewImage: `https://es31-server.appspot.com/wtw/static/film/preview/revenant.jpg`,
+      backgroundImage: `https://es31-server.appspot.com/wtw/static/film/background/Revenant.jpg`,
+      backgroundColor: `#92918B`,
+      description: `A frontiersman on a fur trading expedition in the 1820s fights for survival after being mauled by a bear and left for dead by members of his own hunting team.`,
+      rating: 8,
+      scoresCount: 618498,
+      director: `Alejandro G. Iñárritu`,
+      starring: [
+        `Leonardo DiCaprio`,
+        `Tom Hardy`,
+        `Will Poulter`
+      ],
+      runTime: 156,
+      genre: `Action`,
+      released: 2015,
+      id: 3,
+      isFavorite: false,
+      videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
+      previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    };
+
+    const updateSecondFilm = {
+      ...secondFilm,
+      isFavorite: true
+    };
+
+    const store = reducer({...initialState, films: [firstFilm, secondFilm]}, {
+      type: Actions.UPDATE_FILM,
+      payload: updateSecondFilm
+    });
+
+    expect(store).toEqual({
+      ...initialState,
+      films: [firstFilm, updateSecondFilm]
     });
   });
 

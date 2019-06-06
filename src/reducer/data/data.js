@@ -8,6 +8,7 @@ const initialState = {
 const Actions = {
   CHANGE_GENRE: `CHANGE_GENRE`,
   LOAD_FILMS: `LOAD_FILMS`,
+  UPDATE_FILM: `UPDATE_FILM`
 };
 
 const changeSelectedGenre = (genreType) => {
@@ -21,6 +22,13 @@ const loadFilms = (films) => {
   return {
     type: Actions.LOAD_FILMS,
     payload: films
+  };
+};
+
+const updateFilm = (film) => {
+  return {
+    type: Actions.UPDATE_FILM,
+    payload: film
   };
 };
 
@@ -39,6 +47,17 @@ const reducer = (state = initialState, action) => {
         films: action.payload
       };
     }
+    case Actions.UPDATE_FILM: {
+      return {
+        ...state,
+        films: state.films.map((film) => {
+          if (film.id === action.payload.id) {
+            return action.payload;
+          }
+          return film;
+        })
+      };
+    }
   }
   return state;
 };
@@ -47,5 +66,6 @@ export {
   Actions,
   changeSelectedGenre,
   loadFilms,
+  updateFilm,
   reducer
 };

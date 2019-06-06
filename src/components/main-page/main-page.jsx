@@ -37,11 +37,11 @@ class MainPage extends React.PureComponent {
   }
 
   render() {
-    const {genre, genres, filmsByGenre, filmForMain} = this.props;
+    const {genre, genres, filmsByGenre, filmForMain, addFavoriteFilmRequest} = this.props;
     return (
       <>
         <InjectSvg/>
-        <MainHeader film={filmForMain}/>
+        <MainHeader film={filmForMain} addFavoriteFilmRequest={addFavoriteFilmRequest}/>
         <div className="page-content">
           <section className="catalog">
             <h2 className="catalog__title visually-hidden">Catalog</h2>
@@ -103,7 +103,8 @@ MainPage.propTypes = {
     genre: PropTypes.string.isRequired,
     released: PropTypes.number,
     isFavorite: PropTypes.bool,
-  })
+  }),
+  addFavoriteFilmRequest: PropTypes.func
 };
 
 export default MainPage;

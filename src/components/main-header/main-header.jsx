@@ -1,7 +1,13 @@
 import Header from "../header/header.connect";
 
 const MainHeader = (props) => {
-  const {film} = props;
+  const {film, addFavoriteFilmRequest} = props;
+
+  const handleAddButtonClick = () => {
+    if (addFavoriteFilmRequest) {
+      addFavoriteFilmRequest(film.id, 1);
+    }
+  };
 
   const renderHeader = () => <>
     <h1 className="visually-hidden">WTW</h1>
@@ -19,7 +25,7 @@ const MainHeader = (props) => {
       <div className="movie-card__wrap">
         <div className="movie-card__info">
           <div className="movie-card__poster">
-            <img src="img/the-grand-budapest-hotel-poster.jpg" alt={film.name} width="218"
+            <img src={film.posterImage} alt={film.name} width="218"
               height="327"/>
           </div>
 
@@ -37,7 +43,7 @@ const MainHeader = (props) => {
                 </svg>
                 <span>Play</span>
               </button>
-              <button className="btn btn--list movie-card__button" type="button">
+              <button className="btn btn--list movie-card__button" type="button" onClick={handleAddButtonClick}>
                 <svg viewBox="0 0 19 20" width="19" height="20">
                   <use xlinkHref="#add"></use>
                 </svg>
@@ -76,7 +82,8 @@ MainHeader.propTypes = {
     genre: PropTypes.string.isRequired,
     released: PropTypes.number,
     isFavorite: PropTypes.bool,
-  })
+  }),
+  addFavoriteFilmRequest: PropTypes.func
 };
 
 export default MainHeader;

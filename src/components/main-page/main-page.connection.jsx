@@ -6,7 +6,7 @@ import {
   genresSelector
 } from "../../reducer/data/selectors";
 import {changeSelectedGenre} from "../../reducer/data/data";
-import {loadFilmsRequest} from "../../api/operations";
+import {loadFilmsRequest, addFavoriteFilmRequest} from "../../api/operations";
 import MainPage from "./main-page";
 import {userSelector} from "../../reducer/user/selectors";
 
@@ -22,7 +22,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   changeSelectedGenre,
-  loadFilmsRequest
+  loadFilmsRequest,
+  addFavoriteFilmRequest
 };
 
 export default connect(

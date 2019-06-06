@@ -1,5 +1,6 @@
-import {loadFilms} from "../reducer/data/data";
+import {loadFilms, updateFilm} from "../reducer/data/data";
 import {singIn} from "../reducer/user/user";
+import {ResponseCode} from './api';
 
 const loadFilmsRequest = () => (dispatch, _getState, api) => {
   return api.get(`/films`)
@@ -18,7 +19,17 @@ const singInRequest = (email, password) => (dispatch, _getState, api) => {
     });
 };
 
+const addFavoriteFilmRequest = (filmId, status) => (dispatch, _getState, api) => {
+  return api.post(`/favorite/${filmId}/${status}`)
+    .then((response) => {
+      if (response.status === ResponseCode.OK) {
+        dispatch(updateFilm(response.data));
+      }
+    });
+};
+
 export {
   loadFilmsRequest,
-  singInRequest
+  singInRequest,
+  addFavoriteFilmRequest
 };
