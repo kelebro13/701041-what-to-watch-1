@@ -6,7 +6,7 @@ import {
   genresSelector
 } from "../../reducer/data/selectors";
 import {changeSelectedGenre} from "../../reducer/data/data";
-import {loadFilmsRequest} from "../../reducer/data/operations";
+import {loadFilmsRequest} from "../../api/operations";
 import MainPage from "./main-page";
 import {userSelector} from "../../reducer/user/selectors";
 

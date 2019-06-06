@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 import RoutePath from "../../routes";
-import {SERVER_URL} from "../../api";
+import {SERVER_URL} from "../../api/api";
 
 const UserBlock = (props) => {
   const {user} = props;

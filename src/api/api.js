@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from 'axios/index';
 import humps from 'humps';
-import RoutePath from "./routes";
+import RoutePath from "../routes";
 
 export const SERVER_URL = `https://es31-server.appspot.com/`;
 

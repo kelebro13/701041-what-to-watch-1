@@ -1,4 +1,4 @@
-import configureAPI from "../api";
+import configureAPI from "../api/api";
 import MockAdapter from "axios-mock-adapter";
 import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
