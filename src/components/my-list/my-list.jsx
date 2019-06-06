@@ -1,10 +1,12 @@
 import Footer from "../footer/footer";
 import Header from "../header/header.connect";
+import InjectSvg from "../inject-svg/inject-svg";
 
 const MyList = () => {
   const renderTitle = () => <h1 className="page-title user-page__title">My list</h1>;
   return (
     <>
+      <InjectSvg/>
       <div className="user-page">
         <Header className={`user-page__head`} renderTitle={renderTitle}/>
         <section className="catalog">

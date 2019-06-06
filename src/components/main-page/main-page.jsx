@@ -4,6 +4,7 @@ import withTransformProps from "../../hoc/with-transform-props/with-transform-pr
 import MovieList from "../movie-list/movie-list";
 import MainHeader from "../main-header/main-header";
 import Footer from "../footer/footer";
+import InjectSvg from "../inject-svg/inject-svg";
 
 const MovieListWrapped = withSelectItem(
     withTransformProps((props) => {
@@ -39,6 +40,7 @@ class MainPage extends React.PureComponent {
     const {genre, genres, filmsByGenre, filmForMain} = this.props;
     return (
       <>
+        <InjectSvg/>
         <MainHeader film={filmForMain}/>
         <div className="page-content">
           <section className="catalog">

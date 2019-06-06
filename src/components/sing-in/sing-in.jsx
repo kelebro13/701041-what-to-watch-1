@@ -2,6 +2,7 @@ import SingInForm from "../sing-in-form/sing-in-form.connection";
 import withRedirectBack from '../../hoc/with-redirect-back/with-redirect-back';
 import Footer from "../footer/footer";
 import Header from "../header/header.connect";
+import InjectSvg from "../inject-svg/inject-svg";
 
 const SingInFormWrapped = withRedirectBack(SingInForm);
 
@@ -11,6 +12,7 @@ const SingIn = () => {
 
   return (
       <>
+        <InjectSvg/>
         <div className="user-page">
           <Header className={`user-page__head`} hiddenUserBlock={true} renderTitle={renderTitle}/>
           <div className="sign-in user-page__content">
