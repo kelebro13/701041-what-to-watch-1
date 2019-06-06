@@ -56,7 +56,7 @@ exports[`renders properly 1`] = `
           <img
             alt="Oliver.conner"
             height="63"
-            src="https://es31-server.appspot.com//img/1.png"
+            src="https://es31-server.appspot.com/img/1.png"
             width="63"
           />
         </div>
@@ -75,7 +75,7 @@ exports[`renders properly 1`] = `
         <img
           alt="We need to talk about Kevin"
           height="327"
-          src="img/the-grand-budapest-hotel-poster.jpg"
+          src="https://es31-server.appspot.com/wtw/static/film/poster/We_need_to_talk_about_Kevin.jpg"
           width="218"
         />
       </div>
@@ -123,6 +123,7 @@ exports[`renders properly 1`] = `
           </button>
           <button
             className="btn btn--list movie-card__button"
+            onClick={[Function]}
             type="button"
           >
             <svg

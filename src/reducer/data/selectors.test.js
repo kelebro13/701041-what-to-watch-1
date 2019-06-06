@@ -1,5 +1,5 @@
 import {DEFAULT_GENRE} from '../../components/genre-list/genre-list';
-import {genresSelector, filmsByGenreSelector} from './selectors';
+import {genresSelector, filmsByGenreSelector, filmForMainPageSelector} from './selectors';
 import NameSpace from '../name-spaces';
 
 const NAME_SPACE = NameSpace.DATA;
@@ -169,5 +169,30 @@ describe(`Check filmsByGenreSelector`, () => {
 
     const filmsByGenre = filmsByGenreSelector({[NAME_SPACE]: {films, genre}});
     expect(filmsByGenre).toEqual([]);
+  });
+});
+
+describe(`Check filmForMainPageSelector`, () => {
+  it(`should return first not favorite film`, () => {
+    const films = [
+      {
+        name: `Fantastic Beasts: The Crimes of Grindelwald`,
+        isFavorite: true,
+      },
+      {
+        name: `Aviator`,
+        isFavorite: false,
+      },
+      {
+        name: `We need to talk about Kevin`,
+        isFavorite: true,
+      }
+    ];
+
+    const filmForMainPage = filmForMainPageSelector({[NAME_SPACE]: {films}});
+    expect(filmForMainPage).toEqual({
+      name: `Aviator`,
+      isFavorite: false,
+    });
   });
 });

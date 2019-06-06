@@ -8,6 +8,8 @@ export const filmsSelector = (state) => state[NAME_SPACE].films;
 
 export const genreSelector = (state) => state[NAME_SPACE].genre;
 
+export const favoriteFilmsSelector = (state) => state[NAME_SPACE].favoriteFilms;
+
 export const genresSelector = createSelector(
     filmsSelector,
     (films) => {

@@ -1,6 +1,6 @@
 import configureAPI from "./api";
 import MockAdapter from "axios-mock-adapter";
-import {loadFilmsRequest, singInRequest, addFavoriteFilmRequest} from './operations';
+import {loadFilmsRequest, singInRequest, addFavoriteFilmRequest, loadFavoriteFilmsRequest} from './operations';
 import {Actions as DataActions} from "../reducer/data/data";
 import {Actions as UserActions} from "../reducer/user/user";
 
@@ -63,6 +63,22 @@ describe(`Operations`, () => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: DataActions.UPDATE_FILM,
+          payload: {fake: true}
+        });
+      });
+  });
+
+  it(`check return action LOAD_FAVORITE_FILMS`, () => {
+    const dispatch = jest.fn();
+    apiMock
+      .onGet(`/favorite`)
+      .reply(200, {fake: true});
+
+    return loadFavoriteFilmsRequest()(dispatch, null, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: DataActions.LOAD_FAVORITE_FILMS,
           payload: {fake: true}
         });
       });

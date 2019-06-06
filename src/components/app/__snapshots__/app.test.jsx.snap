@@ -186,7 +186,7 @@ Array [
           <img
             alt="We need to talk about Kevin"
             height="327"
-            src="img/the-grand-budapest-hotel-poster.jpg"
+            src="https://es31-server.appspot.com/wtw/static/film/poster/We_need_to_talk_about_Kevin.jpg"
             width="218"
           />
         </div>
@@ -234,6 +234,7 @@ Array [
             </button>
             <button
               className="btn btn--list movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg

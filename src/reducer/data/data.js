@@ -3,12 +3,14 @@ import {DEFAULT_GENRE} from "../../components/genre-list/genre-list";
 const initialState = {
   genre: DEFAULT_GENRE,
   films: [],
+  favoriteFilms: null
 };
 
 const Actions = {
   CHANGE_GENRE: `CHANGE_GENRE`,
   LOAD_FILMS: `LOAD_FILMS`,
-  UPDATE_FILM: `UPDATE_FILM`
+  UPDATE_FILM: `UPDATE_FILM`,
+  LOAD_FAVORITE_FILMS: `LOAD_FAVORITE_FILMS`
 };
 
 const changeSelectedGenre = (genreType) => {
@@ -29,6 +31,13 @@ const updateFilm = (film) => {
   return {
     type: Actions.UPDATE_FILM,
     payload: film
+  };
+};
+
+const loadFavoriteFilms = (films) => {
+  return {
+    type: Actions.LOAD_FAVORITE_FILMS,
+    payload: films
   };
 };
 
@@ -55,7 +64,14 @@ const reducer = (state = initialState, action) => {
             return action.payload;
           }
           return film;
-        })
+        }),
+        favoriteFilms: null
+      };
+    }
+    case Actions.LOAD_FAVORITE_FILMS: {
+      return {
+        ...state,
+        favoriteFilms: action.payload
       };
     }
   }
@@ -67,5 +83,6 @@ export {
   changeSelectedGenre,
   loadFilms,
   updateFilm,
+  loadFavoriteFilms,
   reducer
 };

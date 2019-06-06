@@ -1,4 +1,4 @@
-import {loadFilms, updateFilm} from "../reducer/data/data";
+import {loadFavoriteFilms, loadFilms, updateFilm} from "../reducer/data/data";
 import {singIn} from "../reducer/user/user";
 import {ResponseCode} from './api';
 
@@ -28,8 +28,16 @@ const addFavoriteFilmRequest = (filmId, status) => (dispatch, _getState, api) =>
     });
 };
 
+const loadFavoriteFilmsRequest = () => (dispatch, _getState, api) => {
+  return api.get(`/favorite`)
+    .then((response) => {
+      dispatch(loadFavoriteFilms(response.data));
+    });
+};
+
 export {
   loadFilmsRequest,
   singInRequest,
-  addFavoriteFilmRequest
+  addFavoriteFilmRequest,
+  loadFavoriteFilmsRequest
 };
