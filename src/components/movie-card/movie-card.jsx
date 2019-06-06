@@ -1,3 +1,6 @@
+import {Link} from 'react-router-dom';
+import RoutePath from "../../routes";
+
 class MovieCard extends React.PureComponent {
 
   static DELAY = 1000;
@@ -17,7 +20,7 @@ class MovieCard extends React.PureComponent {
           {renderVideo && renderVideo(film.previewImage, film.previewVideoLink)}
         </div>
         <h3 className="small-movie-card__title">
-          <a className="small-movie-card__link" href="movie-page.html" onClick={onTitleClick}>{film.name}</a>
+          <Link className="small-movie-card__link" to={`${RoutePath.FILM}/${film.id}`} onClick={onTitleClick}>{film.name}</Link>
         </h3>
       </article>
     );
