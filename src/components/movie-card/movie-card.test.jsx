@@ -1,4 +1,5 @@
 import renderer from "react-test-renderer";
+import {MemoryRouter} from 'react-router-dom';
 import MovieCard from "./movie-card";
 
 it(`render correctly MovieCard component`, () => {
@@ -11,7 +12,7 @@ it(`render correctly MovieCard component`, () => {
   };
 
   const tree = renderer
-    .create(<MovieCard film={film} isPlaying={false}/>)
+    .create(<MemoryRouter><MovieCard film={film} isPlaying={false}/></MemoryRouter>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

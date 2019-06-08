@@ -42,3 +42,12 @@ export const filmsByGenreSelector = createSelector(
       return films.filter((film) => film.genre === genre);
     }
 );
+
+const idSelector = (state, id) => parseInt(id, 10);
+
+export const filmSelector = createSelector(
+    [filmsSelector, idSelector],
+    (films, id) => {
+      return films.find((film) => film.id === id) || null;
+    }
+);

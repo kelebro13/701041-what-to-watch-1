@@ -12,6 +12,7 @@ import SingIn from "../sing-in/sing-in";
 import MyList from "../my-list/my-list";
 import MainPage from "../main-page/main-page";
 import {DEFAULT_GENRE} from "../genre-list/genre-list";
+import MoviePageDetails from "../movie-page-details/movie-page-details";
 import App from "./app";
 
 describe(`App`, () => {
@@ -156,5 +157,17 @@ describe(`App`, () => {
     );
 
     expect(tree.find(MyList)).toHaveLength(1);
+  });
+
+  it(`should render MoviePageDetails if path '/film/:id'`, () => {
+    const tree = mount(
+        <Provider store={mockStore(store)}>
+          <MemoryRouter initialEntries={[`${RoutePath.FILM}/1`]}>
+            <App/>
+          </MemoryRouter>
+        </Provider>
+    );
+
+    expect(tree.find(MoviePageDetails)).toHaveLength(1);
   });
 });

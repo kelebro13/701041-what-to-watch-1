@@ -1,24 +1,6 @@
 import {shallow} from "enzyme";
 import MovieCard from "./movie-card";
 
-
-it(`check the onTitleClick callback`, () => {
-  const film = {
-    id: 1,
-    name: `The Grand Budapest Hotel`,
-    previewImage: `img/the-grand-budapest-hotel.jpg`,
-    previewVideoLink: `https://some-link`,
-    genre: `Comedy`,
-  };
-  const handleTitleClick = jest.fn();
-
-  const movieCard = shallow(<MovieCard film={film} onTitleClick={handleTitleClick} isPlaying={false}/>);
-
-  movieCard.find(`a`).simulate(`click`);
-
-  expect(handleTitleClick).toHaveBeenCalledTimes(1);
-});
-
 it(`check the onPreviewClick callback`, () => {
   const film = {
     id: 1,

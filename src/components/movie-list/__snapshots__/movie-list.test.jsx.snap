@@ -12,20 +12,26 @@ exports[`render correctly MovieList component 1`] = `
     <div
       className="small-movie-card__image"
     >
-      <video
-        height="175"
-        muted={true}
-        poster="img/the-grand-budapest-hotel.jpg"
-        src="https://some-link"
-        width="280"
-      />
+      <a
+        href="/film/1"
+        onClick={[Function]}
+      >
+        <video
+          height="175"
+          muted={true}
+          poster="img/the-grand-budapest-hotel.jpg"
+          src="https://some-link"
+          width="280"
+        />
+      </a>
     </div>
     <h3
       className="small-movie-card__title"
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/film/1"
+        onClick={[Function]}
       >
         The Grand Budapest Hotel
       </a>

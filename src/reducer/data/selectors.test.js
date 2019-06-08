@@ -1,5 +1,5 @@
 import {DEFAULT_GENRE} from '../../components/genre-list/genre-list';
-import {genresSelector, filmsByGenreSelector} from './selectors';
+import {genresSelector, filmsByGenreSelector, filmSelector} from './selectors';
 import NameSpace from '../name-spaces';
 
 const NAME_SPACE = NameSpace.DATA;
@@ -169,5 +169,45 @@ describe(`Check filmsByGenreSelector`, () => {
 
     const filmsByGenre = filmsByGenreSelector({[NAME_SPACE]: {films, genre}});
     expect(filmsByGenre).toEqual([]);
+  });
+});
+
+describe(`Check filmSelector`, () => {
+  it(`should return film by id`, () => {
+    const films = [
+      {
+        id: 1
+      },
+      {
+        id: 2
+      },
+      {
+        id: 3
+      }
+    ];
+
+    expect(filmSelector({[NAME_SPACE]: {films}}, 2)).toEqual({
+      id: 2
+    });
+  });
+
+  it(`should return null if id invalid`, () => {
+    const films = [
+      {
+        id: 1
+      },
+      {
+        id: 2
+      },
+      {
+        id: 3
+      }
+    ];
+
+    expect(filmSelector({[NAME_SPACE]: {films}}, 4)).toEqual(null);
+  });
+
+  it(`should return null if films empty`, () => {
+    expect(filmSelector({[NAME_SPACE]: {films: []}}, 1)).toEqual(null);
   });
 });
