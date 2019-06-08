@@ -1,3 +1,6 @@
+import {Link} from 'react-router-dom';
+import RoutePath from "../../routes";
+
 class MovieCard extends React.PureComponent {
 
   static DELAY = 1000;
@@ -9,15 +12,18 @@ class MovieCard extends React.PureComponent {
   }
 
   render() {
-    const {film, onTitleClick, renderVideo} = this.props;
-
+    const {film, renderVideo} = this.props;
+    const url = `${RoutePath.FILM}/${film.id}`;
     return (
       <article className="small-movie-card catalog__movies-card" onMouseEnter={this._handleCardMouseEnter} onMouseLeave={this._handleCardMouseLeave}>
+
         <div className="small-movie-card__image">
-          {renderVideo && renderVideo(film.previewImage, film.previewVideoLink)}
+          <Link to={url}>
+            {renderVideo && renderVideo(film.previewImage, film.previewVideoLink)}
+          </Link>
         </div>
         <h3 className="small-movie-card__title">
-          <a className="small-movie-card__link" href="movie-page.html" onClick={onTitleClick}>{film.name}</a>
+          <Link className="small-movie-card__link" to={url}>{film.name}</Link>
         </h3>
       </article>
     );
@@ -79,7 +85,6 @@ MovieCard.propTypes = {
   renderVideo: PropTypes.func,
   isPlaying: PropTypes.bool.isRequired,
   switchPlayer: PropTypes.func,
-  onTitleClick: PropTypes.func,
   onPreviewClick: PropTypes.func,
   onActiveCardChange: PropTypes.func,
 };

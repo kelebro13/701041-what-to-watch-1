@@ -1,4 +1,5 @@
 import renderer from "react-test-renderer";
+import {MemoryRouter} from 'react-router-dom';
 import MovieList from "./movie-list";
 
 it(`render correctly MovieList component`, () => {
@@ -13,7 +14,7 @@ it(`render correctly MovieList component`, () => {
   ];
 
   const tree = renderer
-    .create(<MovieList films={films} activeCard={-1} onActiveCardChange={() => {}}/>)
+    .create(<MemoryRouter><MovieList films={films} activeCard={-1} onActiveCardChange={() => {}}/></MemoryRouter>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();
