@@ -1,10 +1,12 @@
 import {connect} from "react-redux";
 import MoviePageDetails from "./movie-page-details";
-import {filmSelector} from "../../reducer/data/selectors";
+import {similarFilmsSelector, filmSelector} from "../../reducer/data/selectors";
 
 const mapStateToProps = (state, ownProps) => {
+  const film = filmSelector(state, ownProps.match.params.id);
   return {
-    film: filmSelector(state, ownProps.match.params.id)
+    film,
+    similarFilms: similarFilmsSelector(state, film)
   };
 };
 

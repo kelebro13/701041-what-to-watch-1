@@ -162,7 +162,7 @@ describe(`App`, () => {
   it(`should render MoviePageDetails if path '/film/:id'`, () => {
     const tree = mount(
         <Provider store={mockStore(store)}>
-          <MemoryRouter initialEntries={[`${RoutePath.FILM}/1`]}>
+          <MemoryRouter initialEntries={[`${RoutePath.FILM}/2`]}>
             <App/>
           </MemoryRouter>
         </Provider>

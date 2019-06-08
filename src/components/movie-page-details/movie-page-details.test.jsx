@@ -23,7 +23,7 @@ it(`renders properly`, () => {
   };
 
   const tree = renderer
-    .create(<MoviePageDetails film={film}/>)
+    .create(<MoviePageDetails film={film} similarFilms={[]}/>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

@@ -6,7 +6,7 @@ const NAME_SPACE = NameSpace.DATA;
 
 export const filmsSelector = (state) => state[NAME_SPACE].films;
 
-export const genreSelector = (state) => state[NAME_SPACE].genre;
+export const genreSelector = (state, genre) => genre || state[NAME_SPACE].genre;
 
 export const genresSelector = createSelector(
     filmsSelector,
@@ -49,5 +49,16 @@ export const filmSelector = createSelector(
     [filmsSelector, idSelector],
     (films, id) => {
       return films.find((film) => film.id === id) || null;
+    }
+);
+
+const currentFilmSelector = (state, film) => film;
+
+export const similarFilmsSelector = createSelector(
+    [filmsSelector, currentFilmSelector],
+    (films, currentFilm) => {
+      return films.filter((film) => {
+        return film.genre === currentFilm.genre && film.id !== currentFilm.id;
+      });
     }
 );
