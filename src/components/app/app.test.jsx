@@ -12,7 +12,7 @@ import SingIn from "../sing-in/sing-in";
 import MyList from "../my-list/my-list";
 import MainPage from "../main-page/main-page";
 import {DEFAULT_GENRE} from "../genre-list/genre-list";
-import MoviePageDetails from "../movie-page-details/movie-page-details";
+import MoviePage from "../movie-page/movie-page";
 import App from "./app";
 
 describe(`App`, () => {
@@ -168,6 +168,6 @@ describe(`App`, () => {
         </Provider>
     );
 
-    expect(tree.find(MoviePageDetails)).toHaveLength(1);
+    expect(tree.find(MoviePage)).toHaveLength(1);
   });
 });
