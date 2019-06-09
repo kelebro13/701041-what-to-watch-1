@@ -1,5 +1,5 @@
 import renderer from 'react-test-renderer';
-import MoviePageDetails from './movie-page-details';
+import MoviePage from './movie-page';
 
 it(`renders properly`, () => {
   const film = {
@@ -23,7 +23,7 @@ it(`renders properly`, () => {
   };
 
   const tree = renderer
-    .create(<MoviePageDetails film={film} similarFilms={[]}/>)
+    .create(<MoviePage film={film} similarFilms={[]}/>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

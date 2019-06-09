@@ -11,6 +11,10 @@ class MovieCard extends React.PureComponent {
     this._handleCardMouseLeave = this._handleCardMouseLeave.bind(this);
   }
 
+  componentWillUnmount() {
+    clearTimeout(this.timerId);
+  }
+
   render() {
     const {film, renderVideo} = this.props;
     const url = `${RoutePath.FILM}/${film.id}`;

@@ -3,15 +3,17 @@ const withSelectItem = (Component) => {
     constructor(props) {
       super(props);
       this.state = {
-        selectedItem: -1
+        selectedItem: 0
       };
       this.handleSelectedItemChange = this.handleSelectedItemChange.bind(this);
     }
 
-    handleSelectedItemChange(id = -1) {
-      this.setState((prevState) => ({
-        selectedItem: prevState.selectedItem !== id ? id : -1
-      }));
+    handleSelectedItemChange(id = 0) {
+      if (this.state.selectedItem !== id) {
+        this.setState({
+          selectedItem: id
+        });
+      }
     }
 
     render() {

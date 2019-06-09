@@ -1,36 +1,11 @@
 import MovieList from "../movie-list/movie-list";
+import Tabs from "../tabs/tabs";
+import MovieDetails from "./movie-details/movie-details";
+import MovieOverview from "./movie-overview/movie-overview";
+import MovieReviews from "./movie-reviews/movie-reviews";
 
-const Level = {
-  BAD: `Bad`,
-  NORMAL: `Normal`,
-  GOOD: `Good`,
-  VERY_GOOD: `Very good`,
-  AWESOME: `Awesome`
-};
-
-const MoviePageDetails = (props) => {
+const MoviePage = (props) => {
   const {film, similarFilms} = props;
-  const getRatingLevel = () => {
-    const {rating} = film;
-    if (rating <= 3) {
-      return Level.BAD;
-    } else if (rating <= 5) {
-      return Level.NORMAL;
-    } else if (rating <= 8) {
-      return Level.GOOD;
-    } else if (rating <= 10) {
-      return Level.VERY_GOOD;
-    }
-    return Level.AWESOME;
-  };
-
-  const getMovieStarring = () => {
-    const {starring} = film;
-    if (starring.length === 3) {
-      return `Starring: ${starring.join(`, `)}`;
-    }
-    return `Starring: ${starring.slice(0, 3).join(`, `)} and other`;
-  };
 
   return (
     film && <>
@@ -136,35 +111,11 @@ const MoviePageDetails = (props) => {
             </div>
 
             <div className="movie-card__desc">
-              <nav className="movie-nav movie-card__nav">
-                <ul className="movie-nav__list">
-                  <li className="movie-nav__item movie-nav__item--active">
-                    <a href="#" className="movie-nav__link">Overview</a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Details</a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Reviews</a>
-                  </li>
-                </ul>
-              </nav>
-
-              <div className="movie-rating">
-                <div className="movie-rating__score">{film.rating}</div>
-                <p className="movie-rating__meta">
-                  <span className="movie-rating__level">{getRatingLevel()}</span>
-                  <span className="movie-rating__count">{`${film.scoresCount} ratings`}</span>
-                </p>
-              </div>
-
-              <div className="movie-card__text">
-                <p>{film.description}</p>
-
-                <p className="movie-card__director"><strong>{`Director: ${film.director}`}</strong></p>
-
-                <p className="movie-card__starring"><strong>{getMovieStarring()}</strong></p>
-              </div>
+              <Tabs key={film.id} items={[`Overview`, `Details`, `Reviews`]}>
+                <MovieOverview film={film}/>
+                <MovieDetails film={film}/>
+                <MovieReviews/>
+              </Tabs>
             </div>
           </div>
         </div>
@@ -195,7 +146,7 @@ const MoviePageDetails = (props) => {
   );
 };
 
-MoviePageDetails.propTypes = {
+MoviePage.propTypes = {
   film: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
@@ -236,4 +187,4 @@ MoviePageDetails.propTypes = {
   }))
 };
 
-export default MoviePageDetails;
+export default MoviePage;
