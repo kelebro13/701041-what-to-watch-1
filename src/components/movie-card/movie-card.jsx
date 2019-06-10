@@ -1,5 +1,6 @@
 import {Link} from 'react-router-dom';
 import RoutePath from "../../routes";
+import {filmType} from "../../types/types";
 
 class MovieCard extends React.PureComponent {
 
@@ -67,25 +68,7 @@ class MovieCard extends React.PureComponent {
 }
 
 MovieCard.propTypes = {
-  film: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    posterImage: PropTypes.string,
-    previewImage: PropTypes.string,
-    backgroundImage: PropTypes.string,
-    backgroundColor: PropTypes.string,
-    videoLink: PropTypes.string,
-    previewVideoLink: PropTypes.string,
-    description: PropTypes.string,
-    rating: PropTypes.number,
-    scoresCount: PropTypes.number,
-    director: PropTypes.string,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    runTime: PropTypes.number,
-    genre: PropTypes.string.isRequired,
-    released: PropTypes.number,
-    isFavorite: PropTypes.bool,
-  }).isRequired,
+  film: filmType.isRequired,
   renderVideo: PropTypes.func,
   isPlaying: PropTypes.bool.isRequired,
   switchPlayer: PropTypes.func,

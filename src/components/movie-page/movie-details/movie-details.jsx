@@ -1,4 +1,6 @@
+import {filmType} from "../../../types/types";
 import {getTime} from '../movie-utils';
+
 const MovieDetails = (props) => {
   const {film} = props;
 
@@ -41,25 +43,7 @@ const MovieDetails = (props) => {
 };
 
 MovieDetails.propTypes = {
-  film: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    posterImage: PropTypes.string,
-    previewImage: PropTypes.string,
-    backgroundImage: PropTypes.string,
-    backgroundColor: PropTypes.string,
-    videoLink: PropTypes.string,
-    previewVideoLink: PropTypes.string,
-    description: PropTypes.string,
-    rating: PropTypes.number,
-    scoresCount: PropTypes.number,
-    director: PropTypes.string,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    runTime: PropTypes.number,
-    genre: PropTypes.string.isRequired,
-    released: PropTypes.number,
-    isFavorite: PropTypes.bool,
-  }),
+  film: filmType,
 };
 
 export default MovieDetails;

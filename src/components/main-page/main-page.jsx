@@ -3,6 +3,7 @@ import GenreList from "../genre-list/genre-list";
 import withSelectItem from "../../hoc/with-select-item/with-select-item";
 import withTransformProps from "../../hoc/with-transform-props/with-transform-props";
 import RoutePath from "../../routes";
+import {filmType} from "../../types/types";
 import MovieList from "../movie-list/movie-list";
 
 const MovieListWrapped = withSelectItem(
@@ -144,7 +145,7 @@ class MainPage extends React.PureComponent {
             <h2 className="catalog__title visually-hidden">Catalog</h2>
 
             <GenreList genres={genres} activeGenre={genre} changeSelectedGenre={this.handleChangeSelectedGenre}/>
-            <MovieListWrapped films={filmsByGenre}/>
+            <MovieListWrapped films={filmsByGenre.slice(0, 20)}/>
 
             <div className="catalog__more">
               <button className="catalog__button" type="button">Show more</button>
@@ -173,25 +174,7 @@ class MainPage extends React.PureComponent {
 MainPage.propTypes = {
   genre: PropTypes.string.isRequired,
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-  filmsByGenre: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    posterImage: PropTypes.string,
-    previewImage: PropTypes.string,
-    backgroundImage: PropTypes.string,
-    backgroundColor: PropTypes.string,
-    videoLink: PropTypes.string,
-    previewVideoLink: PropTypes.string,
-    description: PropTypes.string,
-    rating: PropTypes.number,
-    scoresCount: PropTypes.number,
-    director: PropTypes.string,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    runTime: PropTypes.number,
-    genre: PropTypes.string.isRequired,
-    released: PropTypes.number,
-    isFavorite: PropTypes.bool,
-  })).isRequired,
+  filmsByGenre: PropTypes.arrayOf(filmType).isRequired,
   changeSelectedGenre: PropTypes.func,
   loadFilmsRequest: PropTypes.func
 };
