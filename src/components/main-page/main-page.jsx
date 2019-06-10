@@ -1,20 +1,11 @@
 import {Link} from 'react-router-dom';
 import GenreList from "../genre-list/genre-list";
-import withSelectItem from "../../hoc/with-select-item/with-select-item";
-import withTransformProps from "../../hoc/with-transform-props/with-transform-props";
 import RoutePath from "../../routes";
 import {filmType} from "../../types/types";
-import MovieList from "../movie-list/movie-list";
+import withShowMore from "../../hoc/with-show-more/with-show-more";
+import MovieListWithShowMore from "../movie-list-with-show-more/movie-list-with-show-more";
 
-const MovieListWrapped = withSelectItem(
-    withTransformProps((props) => {
-      return {
-        ...props,
-        activeCard: props.selectedItem,
-        onActiveCardChange: props.onSelectedItemChange
-      };
-    })(MovieList));
-
+const MovieListWithShowMoreWrapped = withShowMore(MovieListWithShowMore);
 
 class MainPage extends React.PureComponent {
   constructor(props) {
@@ -145,11 +136,7 @@ class MainPage extends React.PureComponent {
             <h2 className="catalog__title visually-hidden">Catalog</h2>
 
             <GenreList genres={genres} activeGenre={genre} changeSelectedGenre={this.handleChangeSelectedGenre}/>
-            <MovieListWrapped films={filmsByGenre.slice(0, 20)}/>
-
-            <div className="catalog__more">
-              <button className="catalog__button" type="button">Show more</button>
-            </div>
+            <MovieListWithShowMoreWrapped key={`movie-list-by-${genre}`} films={filmsByGenre} initCount={20} stepCount={20}/>
           </section>
 
           <footer className="page-footer">
