@@ -1,19 +1,11 @@
 import {Link} from 'react-router-dom';
 import GenreList from "../genre-list/genre-list";
-import withSelectItem from "../../hoc/with-select-item/with-select-item";
-import withTransformProps from "../../hoc/with-transform-props/with-transform-props";
 import RoutePath from "../../routes";
-import MovieList from "../movie-list/movie-list";
+import {filmType} from "../../types/types";
+import withShowMore from "../../hoc/with-show-more/with-show-more";
+import MovieListWithShowMore from "../movie-list-with-show-more/movie-list-with-show-more";
 
-const MovieListWrapped = withSelectItem(
-    withTransformProps((props) => {
-      return {
-        ...props,
-        activeCard: props.selectedItem,
-        onActiveCardChange: props.onSelectedItemChange
-      };
-    })(MovieList));
-
+const MovieListWithShowMoreWrapped = withShowMore(MovieListWithShowMore);
 
 class MainPage extends React.PureComponent {
   constructor(props) {
@@ -144,11 +136,7 @@ class MainPage extends React.PureComponent {
             <h2 className="catalog__title visually-hidden">Catalog</h2>
 
             <GenreList genres={genres} activeGenre={genre} changeSelectedGenre={this.handleChangeSelectedGenre}/>
-            <MovieListWrapped films={filmsByGenre}/>
-
-            <div className="catalog__more">
-              <button className="catalog__button" type="button">Show more</button>
-            </div>
+            <MovieListWithShowMoreWrapped key={`movie-list-by-${genre}`} films={filmsByGenre} initCount={20} stepCount={20}/>
           </section>
 
           <footer className="page-footer">
@@ -173,25 +161,7 @@ class MainPage extends React.PureComponent {
 MainPage.propTypes = {
   genre: PropTypes.string.isRequired,
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-  filmsByGenre: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    posterImage: PropTypes.string,
-    previewImage: PropTypes.string,
-    backgroundImage: PropTypes.string,
-    backgroundColor: PropTypes.string,
-    videoLink: PropTypes.string,
-    previewVideoLink: PropTypes.string,
-    description: PropTypes.string,
-    rating: PropTypes.number,
-    scoresCount: PropTypes.number,
-    director: PropTypes.string,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    runTime: PropTypes.number,
-    genre: PropTypes.string.isRequired,
-    released: PropTypes.number,
-    isFavorite: PropTypes.bool,
-  })).isRequired,
+  filmsByGenre: PropTypes.arrayOf(filmType).isRequired,
   changeSelectedGenre: PropTypes.func,
   loadFilmsRequest: PropTypes.func
 };
