@@ -4,7 +4,7 @@ import {MemoryRouter} from 'react-router-dom';
 import SingInPage from './sing-in-page';
 import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
-import configureAPI from "../../api";
+import configureAPI from "../../api/api";
 import MockAdapter from "axios-mock-adapter";
 import NameSpace from "../../reducer/name-spaces";
 

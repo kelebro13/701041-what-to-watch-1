@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import {filmsByGenreSelector, genreSelector, genresSelector} from "../../reducer/data/selectors";
 import {changeSelectedGenre} from "../../reducer/data/data";
-import {loadFilmsRequest} from "../../reducer/data/operations";
+import {loadFilmsRequest} from "../../api/operations";
 import MainPage from "./main-page";
 
 const mapStateToProps = (state) => {

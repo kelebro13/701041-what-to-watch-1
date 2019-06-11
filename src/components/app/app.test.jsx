@@ -5,7 +5,7 @@ import configureMockStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import MockAdapter from "axios-mock-adapter";
-import configureAPI from '../../api';
+import configureAPI from '../../api/api';
 import NameSpace from "../../reducer/name-spaces";
 import RoutePath from "../../routes";
 import SingInPage from "../sing-in-page/sing-in-page";

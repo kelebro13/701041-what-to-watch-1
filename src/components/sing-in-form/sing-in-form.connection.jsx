@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {singInRequest} from '../../reducer/user/operations';
+import {singInRequest} from '../../api/operations';
 import SingInForm from "./sing-in-form";
 
 const mapDispatchToProps = {

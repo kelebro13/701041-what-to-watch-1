@@ -1,6 +1,8 @@
-import axios from 'axios';
+import axios from 'axios/index';
 import humps from 'humps';
-import RoutePath from "./routes";
+import RoutePath from "../routes";
+
+export const SERVER_URL = `https://es31-server.appspot.com`;
 
 const ResponseCode = {
   FORBIDDEN: 403
@@ -8,7 +10,7 @@ const ResponseCode = {
 
 const configureAPI = () => {
   const api = axios.create({
-    baseURL: `https://es31-server.appspot.com/wtw`,
+    baseURL: `${SERVER_URL}/wtw`,
     timeout: 5000,
     withCredentials: true,
     transformRequest: [
