@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom';
 import RoutePath from "../../routes";
 import InjectSvg from "../inject-svg/inject-svg";
 
-const MyList = () => {
+const MyListPage = () => {
   return (
     <>
       <InjectSvg/>
@@ -145,4 +145,4 @@ const MyList = () => {
   );
 };
 
-export default MyList;
+export default MyListPage;

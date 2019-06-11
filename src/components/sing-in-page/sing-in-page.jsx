@@ -6,7 +6,7 @@ import InjectSvg from "../inject-svg/inject-svg";
 
 const SingInFormWrapped = withRedirectBack(SingInForm);
 
-const SingIn = () => {
+const SingInPage = () => {
   return (
       <>
         <InjectSvg/>
@@ -46,4 +46,4 @@ const SingIn = () => {
   );
 };
 
-export default SingIn;
+export default SingInPage;

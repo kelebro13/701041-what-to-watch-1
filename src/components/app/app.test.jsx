@@ -8,8 +8,8 @@ import MockAdapter from "axios-mock-adapter";
 import configureAPI from '../../api';
 import NameSpace from "../../reducer/name-spaces";
 import RoutePath from "../../routes";
-import SingIn from "../sing-in/sing-in";
-import MyList from "../my-list/my-list";
+import SingInPage from "../sing-in-page/sing-in-page";
+import MyListPage from "../my-list-page/my-list-page";
 import MainPage from "../main-page/main-page";
 import {DEFAULT_GENRE} from "../genre-list/genre-list";
 import MoviePage from "../movie-page/movie-page";
@@ -144,7 +144,7 @@ describe(`App`, () => {
         </Provider>
     );
 
-    expect(tree.find(SingIn)).toHaveLength(1);
+    expect(tree.find(SingInPage)).toHaveLength(1);
   });
 
   it(`should render MyList if path '/mylist'`, () => {
@@ -156,7 +156,7 @@ describe(`App`, () => {
         </Provider>
     );
 
-    expect(tree.find(MyList)).toHaveLength(1);
+    expect(tree.find(MyListPage)).toHaveLength(1);
   });
 
   it(`should render MoviePageDetails if path '/film/:id'`, () => {
