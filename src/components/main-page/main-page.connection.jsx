@@ -1,5 +1,10 @@
 import {connect} from "react-redux";
-import {filmsByGenreSelector, genreSelector, genresSelector} from "../../reducer/data/selectors";
+import {
+  filmForMainPageSelector,
+  filmsByGenreSelector,
+  genreSelector,
+  genresSelector
+} from "../../reducer/data/selectors";
 import {changeSelectedGenre} from "../../reducer/data/data";
 import {loadFilmsRequest} from "../../api/operations";
 import MainPage from "./main-page";
@@ -8,7 +13,8 @@ const mapStateToProps = (state) => {
   return {
     genre: genreSelector(state),
     genres: genresSelector(state),
-    filmsByGenre: filmsByGenreSelector(state)
+    filmsByGenre: filmsByGenreSelector(state),
+    film: filmForMainPageSelector(state) // todo поправить когда будет логика избранных фильмов
   };
 };
 
