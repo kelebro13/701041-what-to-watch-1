@@ -5,8 +5,11 @@ import {filmType} from "../../types/types";
 import withShowMore from "../../hoc/with-show-more/with-show-more";
 import MovieListWithShowMore from "../movie-list-with-show-more/movie-list-with-show-more";
 import InjectSvg from "../inject-svg/inject-svg";
+import withActiveItem from "../../hoc/with-active-item/with-active-item";
+import VideoPlayer from "../video-player/video-player";
 
 const MovieListWithShowMoreWrapped = withShowMore(MovieListWithShowMore);
+const VideoPlayerWrapped = withActiveItem(VideoPlayer);
 
 class MainPage extends React.PureComponent {
   constructor(props) {
@@ -29,7 +32,7 @@ class MainPage extends React.PureComponent {
   }
 
   render() {
-    const {genre, genres, filmsByGenre, film} = this.props;
+    const {genre, genres, filmsByGenre, film, isActive, onActiveStatusChange} = this.props;
     return (
       <>
         <InjectSvg/>
@@ -75,7 +78,7 @@ class MainPage extends React.PureComponent {
                   </p>
 
                   <div className="movie-card__buttons">
-                    <button className="btn btn--play movie-card__button" type="button">
+                    <button className="btn btn--play movie-card__button" type="button" onClick={onActiveStatusChange}>
                       <svg viewBox="0 0 19 19" width="19" height="19">
                         <use xlinkHref="#play-s"></use>
                       </svg>
@@ -91,6 +94,9 @@ class MainPage extends React.PureComponent {
                 </div>
               </div>
             </div>
+            { film && isActive
+              ? <VideoPlayerWrapped name={film.name} poster={film.posterImage} videoLink={film.videoLink} onExit={onActiveStatusChange}/>
+              : null}
           </section>
         }
         <div className="page-content">
@@ -126,7 +132,9 @@ MainPage.propTypes = {
   filmsByGenre: PropTypes.arrayOf(filmType).isRequired,
   film: filmType,
   changeSelectedGenre: PropTypes.func,
-  loadFilmsRequest: PropTypes.func
+  loadFilmsRequest: PropTypes.func,
+  isActive: PropTypes.bool,
+  onActiveStatusChange: PropTypes.func
 };
 
 export default MainPage;

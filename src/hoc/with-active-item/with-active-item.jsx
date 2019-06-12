@@ -8,8 +8,10 @@ const withActiveItem = (Component) => {
       this.handleActiveStatusChange = this.handleActiveStatusChange.bind(this);
     }
 
-    handleActiveStatusChange(isActive) {
-      this.setState({isActive});
+    handleActiveStatusChange() {
+      this.setState((prevState) => ({
+        isActive: !prevState.isActive
+      }));
     }
 
     render() {

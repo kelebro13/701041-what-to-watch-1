@@ -5,9 +5,13 @@ import InjectSvg from "../inject-svg/inject-svg";
 import MovieDetails from "./movie-details/movie-details";
 import MovieOverview from "./movie-overview/movie-overview";
 import MovieReviews from "./movie-reviews/movie-reviews";
+import withActiveItem from "../../hoc/with-active-item/with-active-item";
+import VideoPlayer from "../video-player/video-player";
+
+const VideoPlayerWrapped = withActiveItem(VideoPlayer);
 
 const MoviePage = (props) => {
-  const {film, similarFilms} = props;
+  const {film, similarFilms, onActiveStatusChange, isActive} = props;
 
   return (
     film && <>
@@ -46,7 +50,7 @@ const MoviePage = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <button className="btn btn--play movie-card__button" type="button" onClick={onActiveStatusChange}>
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
@@ -80,6 +84,7 @@ const MoviePage = (props) => {
             </div>
           </div>
         </div>
+        {isActive && <VideoPlayerWrapped name={film.name} poster={film.posterImage} videoLink={film.videoLink} onExit={onActiveStatusChange}/>}
       </section>
 
       <div className="page-content">
@@ -109,7 +114,9 @@ const MoviePage = (props) => {
 
 MoviePage.propTypes = {
   film: filmType,
-  similarFilms: PropTypes.arrayOf(filmType)
+  similarFilms: PropTypes.arrayOf(filmType),
+  isActive: PropTypes.bool,
+  onActiveStatusChange: PropTypes.func
 };
 
 export default MoviePage;

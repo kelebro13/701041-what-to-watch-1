@@ -7,6 +7,7 @@ import {
 } from "../../reducer/data/selectors";
 import {changeSelectedGenre} from "../../reducer/data/data";
 import {loadFilmsRequest} from "../../api/operations";
+import withActiveItem from "../../hoc/with-active-item/with-active-item";
 import MainPage from "./main-page";
 
 const mapStateToProps = (state) => {
@@ -25,4 +26,4 @@ const mapDispatchToProps = {
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps)(MainPage);
+    mapDispatchToProps)(withActiveItem(MainPage));
