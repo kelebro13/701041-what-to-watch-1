@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 import MovieList from "../movie-list/movie-list";
 import Tabs from "../tabs/tabs";
 import {filmType} from "../../types/types";
@@ -7,11 +8,12 @@ import MovieOverview from "./movie-overview/movie-overview";
 import MovieReviews from "./movie-reviews/movie-reviews";
 import withActiveItem from "../../hoc/with-active-item/with-active-item";
 import VideoPlayer from "../video-player/video-player";
+import RoutePath from "../../routes";
 
 const VideoPlayerWrapped = withActiveItem(VideoPlayer);
 
 const MoviePage = (props) => {
-  const {film, similarFilms, onActiveStatusChange, isActive} = props;
+  const {film, similarFilms, onActiveStatusChange, isActive, isAuthorizationRequired} = props;
 
   return (
     film && <>
@@ -62,7 +64,7 @@ const MoviePage = (props) => {
                   </svg>
                   <span>My list</span>
                 </button>
-                <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                {!isAuthorizationRequired && <Link to={RoutePath.ADD_REVIEW} className="btn movie-card__button">Add review</Link>}
               </div>
             </div>
           </div>
@@ -116,7 +118,8 @@ MoviePage.propTypes = {
   film: filmType,
   similarFilms: PropTypes.arrayOf(filmType),
   isActive: PropTypes.bool,
-  onActiveStatusChange: PropTypes.func
+  onActiveStatusChange: PropTypes.func,
+  isAuthorizationRequired: PropTypes.bool
 };
 
 export default MoviePage;

@@ -1,4 +1,5 @@
 import renderer from 'react-test-renderer';
+import {MemoryRouter} from 'react-router-dom';
 import MoviePage from './movie-page';
 
 it(`renders properly`, () => {
@@ -23,7 +24,7 @@ it(`renders properly`, () => {
   };
 
   const tree = renderer
-    .create(<MoviePage film={film} similarFilms={[]}/>)
+    .create(<MemoryRouter><MoviePage film={film} similarFilms={[]} isAuthorizationRequired={false}/></MemoryRouter>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

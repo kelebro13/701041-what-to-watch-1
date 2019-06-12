@@ -14,6 +14,7 @@ import MainPage from "../main-page/main-page";
 import {DEFAULT_GENRE} from "../genre-list/genre-list";
 import MoviePage from "../movie-page/movie-page";
 import App from "./app";
+import AddReviewPage from "../add-review-page/add-review-page";
 
 describe(`App`, () => {
   const api = configureAPI();
@@ -159,7 +160,7 @@ describe(`App`, () => {
     expect(tree.find(MyListPage)).toHaveLength(1);
   });
 
-  it(`should render MoviePageDetails if path '/film/:id'`, () => {
+  it(`should render MoviePage if path '/film/:id'`, () => {
     const tree = mount(
         <Provider store={mockStore(store)}>
           <MemoryRouter initialEntries={[`${RoutePath.FILM}/2`]}>
@@ -169,5 +170,17 @@ describe(`App`, () => {
     );
 
     expect(tree.find(MoviePage)).toHaveLength(1);
+  });
+
+  it(`should render AddReviewPage if path '/reviews/add'`, () => {
+    const tree = mount(
+        <Provider store={mockStore(store)}>
+          <MemoryRouter initialEntries={[RoutePath.ADD_REVIEW]}>
+            <App/>
+          </MemoryRouter>
+        </Provider>
+    );
+
+    expect(tree.find(AddReviewPage)).toHaveLength(1);
   });
 });
