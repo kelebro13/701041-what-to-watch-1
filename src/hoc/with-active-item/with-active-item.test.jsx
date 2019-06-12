@@ -9,9 +9,9 @@ it(`should change isPlaying when call switchPlayer`, () => {
 
   expect(wrapper.props().isActive).toEqual(false);
 
-  wrapper.props().onActiveStatusChange(true);
+  wrapper.props().onActiveStatusChange();
   expect(wrapper.props().isActive).toEqual(true);
 
-  wrapper.props().onActiveStatusChange(false);
+  wrapper.props().onActiveStatusChange();
   expect(wrapper.props().isActive).toEqual(false);
 });

@@ -1,10 +1,10 @@
 import renderer from "react-test-renderer";
 import {Provider} from 'react-redux';
 import {MemoryRouter} from 'react-router-dom';
-import SingIn from './sing-in';
+import SingInPage from './sing-in-page';
 import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
-import configureAPI from "../../api";
+import configureAPI from "../../api/api";
 import MockAdapter from "axios-mock-adapter";
 import NameSpace from "../../reducer/name-spaces";
 
@@ -26,7 +26,7 @@ const store = {
 
 it(`render correctly SingIn component`, () => {
   const wrapper = renderer
-    .create(<Provider store={mockStore(store)}><MemoryRouter><SingIn/></MemoryRouter></Provider>)
+    .create(<Provider store={mockStore(store)}><MemoryRouter><SingInPage/></MemoryRouter></Provider>)
     .toJSON();
 
   expect(wrapper).toMatchSnapshot();

@@ -80,7 +80,7 @@ it(`render correctly App component`, () => {
   const tree = renderer
     .create(
         <MemoryRouter>
-          <MainPage genre={genre} genres={genres} filmsByGenre={films} changeSelectedGenre={() => {}} setFilmsByGenre={() => {}}/>
+          <MainPage genre={genre} genres={genres} filmsByGenre={films} film={films[0]} changeSelectedGenre={() => {}} setFilmsByGenre={() => {}}/>
         </MemoryRouter>)
     .toJSON();
 

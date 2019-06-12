@@ -1,6 +1,7 @@
 import {connect} from "react-redux";
 import MoviePage from "./movie-page";
 import {similarFilmsSelector, filmSelector} from "../../reducer/data/selectors";
+import withActiveItem from "../../hoc/with-active-item/with-active-item";
 
 const mapStateToProps = (state, ownProps) => {
   const film = filmSelector(state, ownProps.match.params.id);
@@ -10,4 +11,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(MoviePage);
+export default connect(mapStateToProps)(withActiveItem(MoviePage));

@@ -62,3 +62,5 @@ export const similarFilmsSelector = createSelector(
       });
     }
 );
+
+export const filmForMainPageSelector = (state) => state[NAME_SPACE].films[0]; // todo поправить когда будет логика избранных фильмов
