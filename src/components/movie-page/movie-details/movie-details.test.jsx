@@ -1,5 +1,5 @@
 import renderer from "react-test-renderer";
-import {film} from "../../test/mock";
+import {film} from "../../../test/mock";
 import MovieDetails from "./movie-details";
 
 it(`renders properly`, () => {
