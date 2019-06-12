@@ -1,6 +1,8 @@
-import renderer from 'react-test-renderer';
-import {MemoryRouter} from 'react-router-dom';
-import MoviePage from './movie-page';
+import renderer from "react-test-renderer";
+import {Provider} from "react-redux";
+import {MemoryRouter} from "react-router-dom";
+import MoviePage from "./movie-page";
+import {mockStore, store} from "../../test/mock";
 
 it(`renders properly`, () => {
   const film = {
@@ -24,7 +26,11 @@ it(`renders properly`, () => {
   };
 
   const tree = renderer
-    .create(<MemoryRouter><MoviePage film={film} similarFilms={[]} isAuthorizationRequired={false}/></MemoryRouter>)
+    .create(<Provider store={mockStore(store)}>
+      <MemoryRouter>
+        <MoviePage film={film} similarFilms={[]} isAuthorizationRequired={false}/>
+      </MemoryRouter>
+    </Provider>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

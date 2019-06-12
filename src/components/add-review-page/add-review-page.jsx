@@ -1,4 +1,5 @@
 import InjectSvg from "../inject-svg/inject-svg";
+import Header from "../header/header.connect";
 
 const AddReviewPage = () => {
   return (
@@ -11,16 +12,7 @@ const AddReviewPage = () => {
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
-
-          <header className="page-header">
-            <div className="logo">
-              <a href="main.html" className="logo__link">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </a>
-            </div>
-
+          <Header>
             <nav className="breadcrumbs">
               <ul className="breadcrumbs__list">
                 <li className="breadcrumbs__item">
@@ -31,13 +23,7 @@ const AddReviewPage = () => {
                 </li>
               </ul>
             </nav>
-
-            <div className="user-block">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-              </div>
-            </div>
-          </header>
+          </Header>
 
           <div className="movie-card__poster movie-card__poster--small">
             <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218"

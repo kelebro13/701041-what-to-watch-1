@@ -122,6 +122,7 @@ export const store = {
     ]
   },
   [NameSpace.USER]: {
-    isAuthorizationRequired: false
+    isAuthorizationRequired: false,
+    user
   }
 };

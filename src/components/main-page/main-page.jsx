@@ -1,12 +1,11 @@
-import {Link} from 'react-router-dom';
 import GenreList from "../genre-list/genre-list";
-import RoutePath from "../../routes";
 import {filmType} from "../../types/types";
 import withShowMore from "../../hoc/with-show-more/with-show-more";
 import MovieListWithShowMore from "../movie-list-with-show-more/movie-list-with-show-more";
 import InjectSvg from "../inject-svg/inject-svg";
 import withActiveItem from "../../hoc/with-active-item/with-active-item";
 import VideoPlayer from "../video-player/video-player";
+import Header from "../header/header.connect";
 
 const MovieListWithShowMoreWrapped = withShowMore(MovieListWithShowMore);
 const VideoPlayerWrapped = withActiveItem(VideoPlayer);
@@ -45,23 +44,7 @@ class MainPage extends React.PureComponent {
 
             <h1 className="visually-hidden">WTW</h1>
 
-            <header className="page-header movie-card__head">
-              <div className="logo">
-                <a className="logo__link">
-                  <span className="logo__letter logo__letter--1">W</span>
-                  <span className="logo__letter logo__letter--2">T</span>
-                  <span className="logo__letter logo__letter--3">W</span>
-                </a>
-              </div>
-
-              <div className="user-block">
-                <Link to={RoutePath.MY_LIST}>
-                  <div className="user-block__avatar">
-                    <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-                  </div>
-                </Link>
-              </div>
-            </header>
+            <Header className={`movie-card__head`} isIndexPage={true} />
 
             <div className="movie-card__wrap">
               <div className="movie-card__info">

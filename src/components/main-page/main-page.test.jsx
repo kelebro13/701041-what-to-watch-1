@@ -1,6 +1,8 @@
 import renderer from "react-test-renderer";
-import {MemoryRouter} from 'react-router-dom';
+import {MemoryRouter} from "react-router-dom";
+import {Provider} from "react-redux";
 import MainPage from "./main-page";
+import {mockStore, store} from "../../test/mock";
 
 it(`render correctly App component`, () => {
   const genre = `All genres`;
@@ -79,9 +81,11 @@ it(`render correctly App component`, () => {
 
   const tree = renderer
     .create(
-        <MemoryRouter>
-          <MainPage genre={genre} genres={genres} filmsByGenre={films} film={films[0]} changeSelectedGenre={() => {}} setFilmsByGenre={() => {}}/>
-        </MemoryRouter>)
+        <Provider store={mockStore(store)}>
+          <MemoryRouter>
+            <MainPage genre={genre} genres={genres} filmsByGenre={films} film={films[0]} changeSelectedGenre={() => {}} setFilmsByGenre={() => {}}/>
+          </MemoryRouter>
+        </Provider>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

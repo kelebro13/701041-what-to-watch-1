@@ -1,6 +1,5 @@
 import {compose} from 'recompose';
 import {withRouter} from 'react-router-dom';
-import RoutePath from "../../routes";
 
 const withRedirectBack = (Component) => {
   class WithRedirectBack extends React.PureComponent {
@@ -11,8 +10,11 @@ const withRedirectBack = (Component) => {
 
     redirect() {
       const {location, history} = this.props;
-      const {pathname} = location.state.from || RoutePath.INDEX;
-      history.push(pathname);
+      if (!location.state === false) {
+        history.push(location.state.from.pathname);
+      } else {
+        history.goBack();
+      }
     }
 
     render() {

@@ -140,14 +140,15 @@ Array [
         WTW
       </h1>
       <header
-        className="page-header"
+        className="page-header "
       >
         <div
           className="logo"
         >
           <a
             className="logo__link"
-            href="main.html"
+            href="/"
+            onClick={[Function]}
           >
             <span
               className="logo__letter logo__letter--1"
@@ -196,16 +197,21 @@ Array [
         <div
           className="user-block"
         >
-          <div
-            className="user-block__avatar"
+          <a
+            href="/mylist"
+            onClick={[Function]}
           >
-            <img
-              alt="User avatar"
-              height="63"
-              src="img/avatar.jpg"
-              width="63"
-            />
-          </div>
+            <div
+              className="user-block__avatar"
+            >
+              <img
+                alt="Oliver.conner"
+                height="63"
+                src="https://es31-server.appspot.com/img/1.png"
+                width="63"
+              />
+            </div>
+          </a>
         </div>
       </header>
       <div

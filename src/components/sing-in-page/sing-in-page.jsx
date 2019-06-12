@@ -3,6 +3,7 @@ import RoutePath from "../../routes";
 import withRedirectBack from '../../hoc/with-redirect-back/with-redirect-back';
 import SingInForm from "../sing-in-form/sing-in-form.connection";
 import InjectSvg from "../inject-svg/inject-svg";
+import Header from "../header/header.connect";
 
 const SingInFormWrapped = withRedirectBack(SingInForm);
 
@@ -12,17 +13,10 @@ const SingInPage = () => {
         <InjectSvg/>
 
         <div className="user-page">
-          <header className="page-header user-page__head">
-            <div className="logo">
-              <Link to={RoutePath.INDEX} className="logo__link">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </Link>
-            </div>
 
+          <Header className={`user-page__head`} hiddenUserProfile={true}>
             <h1 className="page-title user-page__title">Sign in</h1>
-          </header>
+          </Header>
 
           <div className="sign-in user-page__content">
             <SingInFormWrapped />
