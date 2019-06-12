@@ -3,28 +3,40 @@ import {DEFAULT_GENRE} from "../../components/genre-list/genre-list";
 const initialState = {
   genre: DEFAULT_GENRE,
   films: [],
+  reviews: {}
 };
 
-const Actions = {
+export const Actions = {
   CHANGE_GENRE: `CHANGE_GENRE`,
   LOAD_FILMS: `LOAD_FILMS`,
+  ADD_REVIEW_BY_FILM: `ADD_REVIEW_BY_FILM`
 };
 
-const changeSelectedGenre = (genreType) => {
+export const changeSelectedGenre = (genreType) => {
   return {
     type: Actions.CHANGE_GENRE,
     payload: genreType
   };
 };
 
-const loadFilms = (films) => {
+export const loadFilms = (films) => {
   return {
     type: Actions.LOAD_FILMS,
     payload: films
   };
 };
 
-const reducer = (state = initialState, action) => {
+export const addReviewsByFilm = (filmId, reviews) => {
+  return {
+    type: Actions.ADD_REVIEW_BY_FILM,
+    payload: {
+      filmId,
+      reviews
+    }
+  };
+};
+
+export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case Actions.CHANGE_GENRE: {
       return {
@@ -39,13 +51,15 @@ const reducer = (state = initialState, action) => {
         films: action.payload
       };
     }
+    case Actions.ADD_REVIEW_BY_FILM: {
+      return {
+        ...state,
+        reviews: {
+          ...state.reviews,
+          [action.payload.filmId]: action.payload.reviews
+        }
+      };
+    }
   }
   return state;
-};
-
-export {
-  Actions,
-  changeSelectedGenre,
-  loadFilms,
-  reducer
 };
