@@ -24,3 +24,14 @@ export const userType = PropTypes.shape({
   name: PropTypes.string.isRequired,
   avatarUrl: PropTypes.string.isRequired
 });
+
+export const reviewType = PropTypes.shape({
+  id: PropTypes.number.isRequired,
+  user: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+  rating: PropTypes.number.isRequired,
+  comment: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired
+});

@@ -7,7 +7,7 @@ import Tabs from "../tabs/tabs";
 import InjectSvg from "../inject-svg/inject-svg";
 import VideoPlayer from "../video-player/video-player";
 import Header from "../header/header.connect";
-import MovieReviews from "./movie-reviews/movie-reviews";
+import MovieReviews from "./movie-reviews/movie-reviews.connect";
 import MovieOverview from "./movie-overview/movie-overview";
 import MovieDetails from "./movie-details/movie-details";
 
@@ -68,7 +68,7 @@ const MoviePage = (props) => {
               <Tabs key={film.id} items={[`Overview`, `Details`, `Reviews`]}>
                 <MovieOverview film={film}/>
                 <MovieDetails film={film}/>
-                <MovieReviews/>
+                <MovieReviews filmId={film.id}/>
               </Tabs>
             </div>
           </div>

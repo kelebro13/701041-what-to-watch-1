@@ -10,7 +10,7 @@ const AddReviewForm = (props) => {
     if (addReviewRequest) {
       addReviewRequest(
           filmId,
-          formData.get(RATING_INPUT),
+          parseInt(formData.get(RATING_INPUT), 10),
           formData.get(REVIEW_TEXT_INPUT))
         .then(() => {
           _redirect();

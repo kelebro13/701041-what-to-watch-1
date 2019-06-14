@@ -217,7 +217,7 @@ describe(`reducer`, () => {
     });
   });
 
-  it(`should set loaded comments by film`, () => {
+  it(`should set loaded reviews by film`, () => {
     const filmId = 1;
     const reviews = [
       {
