@@ -73,10 +73,10 @@ describe(`App`, () => {
     expect(tree.find(MoviePage)).toHaveLength(1);
   });
 
-  it(`should render AddReviewPage if path '/reviews/add'`, () => {
+  it(`should render AddReviewPage if path 'film/2/review'`, () => {
     const tree = mount(
         <Provider store={mockStore(store)}>
-          <MemoryRouter initialEntries={[RoutePath.ADD_REVIEW]}>
+          <MemoryRouter initialEntries={[`${RoutePath.FILM}/2${RoutePath.ADD_REVIEW}`]}>
             <App/>
           </MemoryRouter>
         </Provider>

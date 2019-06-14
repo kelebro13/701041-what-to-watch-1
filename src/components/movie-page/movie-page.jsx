@@ -51,7 +51,7 @@ const MoviePage = (props) => {
                   </svg>
                   <span>My list</span>
                 </button>
-                {!isAuthorizationRequired && <Link to={RoutePath.ADD_REVIEW} className="btn movie-card__button">Add review</Link>}
+                {!isAuthorizationRequired && <Link to={`${RoutePath.FILM}/${film.id}${RoutePath.ADD_REVIEW}`} className="btn movie-card__button">Add review</Link>}
               </div>
             </div>
           </div>

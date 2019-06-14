@@ -1,58 +1,51 @@
-class SingInForm extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.formRef = React.createRef();
-    this.emailInputRef = React.createRef();
-    this.passwordInputRef = React.createRef();
+import Form from "../form/form";
 
-    this._handleFormSubmit = this._handleFormSubmit.bind(this);
-    this._redirect = this._redirect.bind(this);
-  }
+const USER_EMAIL_INPUT = `user-email`;
+const USER_PASSWORD_INPUT = `user-password`;
 
-  render() {
-    return (
-      <form ref={this.formRef} action="#" className="sign-in__form" onSubmit={this._handleFormSubmit}>
-        <div className="sign-in__fields">
-          <div className="sign-in__field">
-            <input ref={this.emailInputRef} className="sign-in__input" type="email" placeholder="Email address"
-              name="user-email"
-              id="user-email" required={true}/>
-            <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
-          </div>
-          <div className="sign-in__field">
-            <input ref={this.passwordInputRef} className="sign-in__input" type="password" placeholder="Password"
-              name="user-password"
-              id="user-password" required={true}/>
-            <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
-          </div>
-        </div>
-        <div className="sign-in__submit">
-          <button className="sign-in__btn" type="submit">Sign in</button>
-        </div>
-      </form>
-    );
-  }
+const SingInForm = (props) => {
 
-  _handleFormSubmit(evt) {
-    evt.preventDefault();
-    const {singInRequest} = this.props;
-    // checkValidity пришлось добавить только чтобы правильно работали jest тесты
-    if (singInRequest && this.formRef.current.checkValidity()) {
+  const _handleFormSubmit = (formData) => {
+    const {singInRequest} = props;
+    if (singInRequest) {
       singInRequest(
-          this.emailInputRef.current.value,
-          this.passwordInputRef.current.value)
+          formData.get(USER_EMAIL_INPUT),
+          formData.get(USER_PASSWORD_INPUT))
         .then(() => {
-          this._redirect();
+          _redirect();
         });
     }
-  }
-  _redirect() {
-    const {redirect} = this.props;
+  };
+
+  const _redirect = () => {
+    const {redirect} = props;
     if (redirect) {
       redirect();
     }
-  }
-}
+  };
+
+  return (
+    <Form className={`sign-in__form`} onSubmit={_handleFormSubmit}>
+      <div className="sign-in__fields">
+        <div className="sign-in__field">
+          <input className="sign-in__input" type="email" placeholder="Email address"
+            name={USER_EMAIL_INPUT}
+            id={USER_EMAIL_INPUT} required={true}/>
+          <label className="sign-in__label visually-hidden" htmlFor={USER_EMAIL_INPUT}>Email address</label>
+        </div>
+        <div className="sign-in__field">
+          <input className="sign-in__input" type="password" placeholder="Password"
+            name={USER_PASSWORD_INPUT}
+            id={USER_PASSWORD_INPUT} required={true}/>
+          <label className="sign-in__label visually-hidden" htmlFor={USER_PASSWORD_INPUT}>Password</label>
+        </div>
+      </div>
+      <div className="sign-in__submit">
+        <button className="sign-in__btn" type="submit">Sign in</button>
+      </div>
+    </Form>
+  );
+};
 
 SingInForm.propTypes = {
   singInRequest: PropTypes.func,
