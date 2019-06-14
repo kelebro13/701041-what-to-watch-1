@@ -1,4 +1,4 @@
-import {addReviewsByFilm, loadFilms} from "../reducer/data/data";
+import {loadFilms, loadReviewsByFilm} from "../reducer/data/data";
 import {singIn} from "../reducer/user/user";
 
 export const loadFilmsRequest = () => (dispatch, _getState, api) => {
@@ -24,8 +24,13 @@ export const addReviewRequest = (filmId, rating, comment) => (dispatch, _getStat
     comment
   })
     .then((response) => {
-      dispatch(addReviewsByFilm(filmId, response.data));
+      dispatch(loadReviewsByFilm(filmId, response.data));
     });
 };
 
-
+export const loadReviewsByFilmRequest = (filmId) => (dispatch, _getState, api) => {
+  return api.get(`/comments/${filmId}`)
+    .then((response) => {
+      dispatch(loadReviewsByFilm(filmId, response.data));
+    });
+};

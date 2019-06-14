@@ -1,4 +1,4 @@
-import {Actions, changeSelectedGenre, loadFilms, reducer, addReviewsByFilm} from "./data";
+import {Actions, changeSelectedGenre, loadFilms, reducer, loadReviewsByFilm} from "./data";
 
 describe(`ActionCreators`, () => {
 
@@ -91,7 +91,7 @@ describe(`ActionCreators`, () => {
     });
   });
 
-  it(`check return action ADD_REVIEW_BY_FILM`, () => {
+  it(`check return action LOAD_REVIEWS_BY_FILM`, () => {
     const filmId = 1;
     const reviews = [
       {
@@ -105,10 +105,10 @@ describe(`ActionCreators`, () => {
         date: `2019-05-08T14:13:56.569Z`
       }
     ];
-    const action = addReviewsByFilm(filmId, reviews);
+    const action = loadReviewsByFilm(filmId, reviews);
 
     expect(action).toEqual({
-      type: Actions.ADD_REVIEW_BY_FILM,
+      type: Actions.LOAD_REVIEWS_BY_FILM,
       payload: {
         filmId,
         reviews
@@ -217,7 +217,7 @@ describe(`reducer`, () => {
     });
   });
 
-  it(`should set add reviews by film`, () => {
+  it(`should set loaded comments by film`, () => {
     const filmId = 1;
     const reviews = [
       {
@@ -232,7 +232,7 @@ describe(`reducer`, () => {
       }
     ];
 
-    const store = reducer(initialState, addReviewsByFilm(filmId, reviews));
+    const store = reducer(initialState, loadReviewsByFilm(filmId, reviews));
 
     expect(store).toEqual({
       ...initialState,

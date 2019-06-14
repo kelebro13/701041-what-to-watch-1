@@ -9,7 +9,7 @@ const initialState = {
 export const Actions = {
   CHANGE_GENRE: `CHANGE_GENRE`,
   LOAD_FILMS: `LOAD_FILMS`,
-  ADD_REVIEW_BY_FILM: `ADD_REVIEW_BY_FILM`
+  LOAD_REVIEWS_BY_FILM: `LOAD_REVIEWS_BY_FILM`
 };
 
 export const changeSelectedGenre = (genreType) => {
@@ -26,9 +26,9 @@ export const loadFilms = (films) => {
   };
 };
 
-export const addReviewsByFilm = (filmId, reviews) => {
+export const loadReviewsByFilm = (filmId, reviews) => {
   return {
-    type: Actions.ADD_REVIEW_BY_FILM,
+    type: Actions.LOAD_REVIEWS_BY_FILM,
     payload: {
       filmId,
       reviews
@@ -51,7 +51,7 @@ export const reducer = (state = initialState, action) => {
         films: action.payload
       };
     }
-    case Actions.ADD_REVIEW_BY_FILM: {
+    case Actions.LOAD_REVIEWS_BY_FILM: {
       return {
         ...state,
         reviews: {
