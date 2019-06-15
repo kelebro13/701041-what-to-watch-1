@@ -7,6 +7,7 @@ import withActiveItem from "../../hoc/with-active-item/with-active-item";
 import VideoPlayer from "../video-player/video-player";
 import Header from "../header/header.connect";
 import AddFavoriteFilmButton from "../add-favorite-button/add-favorite-button.connect";
+import Footer from "../footer/footer";
 
 const MovieListWithShowMoreWrapped = withShowMore(MovieListWithShowMore);
 const VideoPlayerWrapped = withActiveItem(VideoPlayer);
@@ -90,19 +91,7 @@ class MainPage extends React.PureComponent {
             <MovieListWithShowMoreWrapped key={`movie-list-by-${genre}`} films={filmsByGenre} initCount={20} stepCount={20}/>
           </section>
 
-          <footer className="page-footer">
-            <div className="logo">
-              <a className="logo__link logo__link--light">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </a>
-            </div>
-
-            <div className="copyright">
-              <p>© 2019 What to watch Ltd.</p>
-            </div>
-          </footer>
+          <Footer isIndexPage={true}/>
         </div>
       </>
     );

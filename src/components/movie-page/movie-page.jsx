@@ -11,6 +11,7 @@ import MovieReviews from "./movie-reviews/movie-reviews.connect";
 import MovieOverview from "./movie-overview/movie-overview";
 import MovieDetails from "./movie-details/movie-details";
 import AddFavoriteFilmButton from "../add-favorite-button/add-favorite-button.connect";
+import Footer from "../footer/footer";
 
 const VideoPlayerWrapped = withActiveItem(VideoPlayer);
 
@@ -79,19 +80,7 @@ const MoviePage = (props) => {
           <MovieList films={similarFilms} activeCard={1} />
         </section>
 
-        <footer className="page-footer">
-          <div className="logo">
-            <a href="main.html" className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <Footer isIndexPage={false}/>
       </div>
     </>
   );
