@@ -2,7 +2,7 @@ import {DEFAULT_GENRE} from "../../components/genre-list/genre-list";
 
 const initialState = {
   genre: DEFAULT_GENRE,
-  films: null,
+  films: [],
   favoriteFilms: null,
   reviews: {},
   promoFilmId: -1

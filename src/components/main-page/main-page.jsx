@@ -6,6 +6,7 @@ import InjectSvg from "../inject-svg/inject-svg";
 import withActiveItem from "../../hoc/with-active-item/with-active-item";
 import VideoPlayer from "../video-player/video-player";
 import Header from "../header/header.connect";
+import AddFavoriteFilmButton from "../add-favorite-button/add-favorite-button.connect";
 
 const MovieListWithShowMoreWrapped = withShowMore(MovieListWithShowMore);
 const VideoPlayerWrapped = withActiveItem(VideoPlayer);
@@ -18,7 +19,7 @@ class MainPage extends React.PureComponent {
 
   componentDidMount() {
     const {filmsByGenre, loadFilmsRequest, film, loadPromoFilmRequest} = this.props;
-    if (filmsByGenre === null && loadFilmsRequest) {
+    if (filmsByGenre.length === 0 && loadFilmsRequest) {
       loadFilmsRequest();
     }
 
@@ -71,12 +72,7 @@ class MainPage extends React.PureComponent {
                       </svg>
                       <span>Play</span>
                     </button>
-                    <button className="btn btn--list movie-card__button" type="button">
-                      <svg viewBox="0 0 19 20" width="19" height="20">
-                        <use xlinkHref="#add"></use>
-                      </svg>
-                      <span>My list</span>
-                    </button>
+                    <AddFavoriteFilmButton filmId={film.id} isFavorite={film.isFavorite}/>
                   </div>
                 </div>
               </div>
