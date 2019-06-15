@@ -18,7 +18,7 @@ class MainPage extends React.PureComponent {
 
   componentDidMount() {
     const {filmsByGenre, loadFilmsRequest, film, loadPromoFilmRequest} = this.props;
-    if (filmsByGenre.length === 0 && loadFilmsRequest) {
+    if (filmsByGenre === null && loadFilmsRequest) {
       loadFilmsRequest();
     }
 

@@ -1,5 +1,13 @@
 import {film as mockFilm} from "../../test/mock";
-import {Actions, changeSelectedGenre, loadFilms, reducer, loadReviewsByFilm, loadPromoFilm} from "./data";
+import {
+  Actions,
+  changeSelectedGenre,
+  loadFilms,
+  reducer,
+  loadReviewsByFilm,
+  loadPromoFilm,
+  updateFavoriteFilm
+} from "./data";
 
 describe(`ActionCreators`, () => {
 
@@ -125,12 +133,22 @@ describe(`ActionCreators`, () => {
       payload: mockFilm
     });
   });
+
+  it(`should return action UPDATE_FAVORITE_FILM`, () => {
+    const action = updateFavoriteFilm(mockFilm);
+
+    expect(action).toEqual({
+      type: Actions.UPDATE_FAVORITE_FILM,
+      payload: mockFilm
+    });
+  });
 });
 
 describe(`reducer`, () => {
   const initialState = {
     genre: `All genres`,
     films: [],
+    favoriteFilms: null,
     promoFilmId: -1
   };
 
@@ -318,6 +336,73 @@ describe(`reducer`, () => {
       promoFilmId: promoFilm.id
     });
   });
+
+  it(`should update favorite films`, () => {
+    const firstFilm = {
+      name: `We need to talk about Kevin`,
+      posterImage: `https://es31-server.appspot.com/wtw/static/film/poster/We_need_to_talk_about_Kevin.jpg`,
+      previewImage: `https://es31-server.appspot.com/wtw/static/film/preview/we-need-to-talk-about-kevin.jpg`,
+      backgroundImage: `https://es31-server.appspot.com/wtw/static/film/background/We_need_to_talk_about_Kevin.jpg`,
+      backgroundColor: `#E1DFDE`,
+      description: `Kevin's mother struggles to love her strange child, despite the increasingly dangerous things he says and does as he grows up. But Kevin is just getting started, and his final act will be beyond anything anyone imagined.`,
+      rating: 7.5,
+      scoresCount: 123240,
+      director: `Lynne Ramsay`,
+      starring: [
+        `Tilda Swinton`,
+        `John C. Reilly`,
+        `Ezra Miller`
+      ],
+      runTime: 112,
+      genre: `Drama`,
+      released: 2011,
+      id: 2,
+      isFavorite: false,
+      videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
+      previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    };
+
+    const secondFilm = {
+      name: `The Revenant`,
+      posterImage: `https://es31-server.appspot.com/wtw/static/film/poster/Revenant.jpg`,
+      previewImage: `https://es31-server.appspot.com/wtw/static/film/preview/revenant.jpg`,
+      backgroundImage: `https://es31-server.appspot.com/wtw/static/film/background/Revenant.jpg`,
+      backgroundColor: `#92918B`,
+      description: `A frontiersman on a fur trading expedition in the 1820s fights for survival after being mauled by a bear and left for dead by members of his own hunting team.`,
+      rating: 8,
+      scoresCount: 618498,
+      director: `Alejandro G. Iñárritu`,
+      starring: [
+        `Leonardo DiCaprio`,
+        `Tom Hardy`,
+        `Will Poulter`
+      ],
+      runTime: 156,
+      genre: `Action`,
+      released: 2015,
+      id: 3,
+      isFavorite: false,
+      videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
+      previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    };
+
+    const updateSecondFilm = {
+      ...secondFilm,
+      isFavorite: true
+    };
+
+    const store = reducer({...initialState, films: [firstFilm, secondFilm]}, {
+      type: Actions.UPDATE_FAVORITE_FILM,
+      payload: updateSecondFilm
+    });
+
+    expect(store).toEqual({
+      ...initialState,
+      films: [firstFilm, updateSecondFilm],
+      favoriteFilms: null
+    });
+  });
+
 
   it(`should return the initial state`, () => {
     expect(reducer(initialState, {})).toEqual(initialState);
