@@ -17,9 +17,13 @@ class MainPage extends React.PureComponent {
   }
 
   componentDidMount() {
-    const {loadFilmsRequest} = this.props;
-    if (loadFilmsRequest) {
+    const {filmsByGenre, loadFilmsRequest, film, loadPromoFilmRequest} = this.props;
+    if (filmsByGenre.length === 0 && loadFilmsRequest) {
       loadFilmsRequest();
+    }
+
+    if (film === undefined && loadPromoFilmRequest) {
+      loadPromoFilmRequest();
     }
   }
 
@@ -116,6 +120,7 @@ MainPage.propTypes = {
   film: filmType,
   changeSelectedGenre: PropTypes.func,
   loadFilmsRequest: PropTypes.func,
+  loadPromoFilmRequest: PropTypes.func,
   isActive: PropTypes.bool,
   onActiveStatusChange: PropTypes.func
 };

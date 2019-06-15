@@ -1,8 +1,9 @@
-import {Actions, changeSelectedGenre, loadFilms, reducer, loadReviewsByFilm} from "./data";
+import {film as mockFilm} from "../../test/mock";
+import {Actions, changeSelectedGenre, loadFilms, reducer, loadReviewsByFilm, loadPromoFilm} from "./data";
 
 describe(`ActionCreators`, () => {
 
-  it(`check return action CHANGE_GENRE`, () => {
+  it(`should return action CHANGE_GENRE`, () => {
     const newGenre = `Comedies`;
     const action = changeSelectedGenre(newGenre);
 
@@ -12,7 +13,7 @@ describe(`ActionCreators`, () => {
     });
   });
 
-  it(`check return action LOAD_FILMS`, () => {
+  it(`should return action LOAD_FILMS`, () => {
     const films = [
       {
         name: `We need to talk about Kevin`,
@@ -91,7 +92,7 @@ describe(`ActionCreators`, () => {
     });
   });
 
-  it(`check return action LOAD_REVIEWS_BY_FILM`, () => {
+  it(`should return action LOAD_REVIEWS_BY_FILM`, () => {
     const filmId = 1;
     const reviews = [
       {
@@ -115,12 +116,22 @@ describe(`ActionCreators`, () => {
       }
     });
   });
+
+  it(`should return action LOAD_PROMO_FILM`, () => {
+    const action = loadPromoFilm(mockFilm);
+
+    expect(action).toEqual({
+      type: Actions.LOAD_PROMO_FILM,
+      payload: mockFilm
+    });
+  });
 });
 
 describe(`reducer`, () => {
   const initialState = {
     genre: `All genres`,
-    films: []
+    films: [],
+    promoFilmId: -1
   };
 
   it(`should set correct genre`, () => {
@@ -239,6 +250,72 @@ describe(`reducer`, () => {
       reviews: {
         [filmId]: reviews
       }
+    });
+  });
+
+  it(`should set promoFilmId and update films`, () => {
+    const firstFilm = {
+      name: `We need to talk about Kevin`,
+      posterImage: `https://es31-server.appspot.com/wtw/static/film/poster/We_need_to_talk_about_Kevin.jpg`,
+      previewImage: `https://es31-server.appspot.com/wtw/static/film/preview/we-need-to-talk-about-kevin.jpg`,
+      backgroundImage: `https://es31-server.appspot.com/wtw/static/film/background/We_need_to_talk_about_Kevin.jpg`,
+      backgroundColor: `#E1DFDE`,
+      description: `Kevin's mother struggles to love her strange child, despite the increasingly dangerous things he says and does as he grows up. But Kevin is just getting started, and his final act will be beyond anything anyone imagined.`,
+      rating: 7.5,
+      scoresCount: 123240,
+      director: `Lynne Ramsay`,
+      starring: [
+        `Tilda Swinton`,
+        `John C. Reilly`,
+        `Ezra Miller`
+      ],
+      runTime: 112,
+      genre: `Drama`,
+      released: 2011,
+      id: 2,
+      isFavorite: false,
+      videoLink: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
+      previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    };
+
+    const secondFilm = {
+      name: `Bronson`,
+      posterImage: `https://es31-server.appspot.com/wtw/static/film/poster/bronson.jpg`,
+      previewImage: `https://es31-server.appspot.com/wtw/static/film/preview/bronson.jpg`,
+      backgroundImage: `https://es31-server.appspot.com/wtw/static/film/background/bronson.jpg`,
+      backgroundColor: `#73B39A`,
+      description: `A young man who was sentenced to seven years in prison for robbing a post office ends up spending three decades in solitary confinement. During this time, his own personality is supplanted by his alter-ego, Charles Bronson.`,
+      rating: 7.1,
+      scoresCount: 109661,
+      director: `Nicolas Winding Refn`,
+      starring: [
+        `Tom Hardy`,
+        `Kelly Adams`,
+        `Luing Andrews`
+      ],
+      runTime: 92,
+      genre: `Action`,
+      released: 2008,
+      id: 4,
+      isFavorite: false,
+      videoLink: `http://media.xiph.org/mango/tears_of_steel_1080p.webm`,
+      previewVideoLink: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+    };
+
+    const promoFilm = {
+      ...secondFilm,
+      isFavorite: true
+    };
+
+    const store = reducer({
+      ...initialState,
+      films: [firstFilm, secondFilm]
+    }, loadPromoFilm(promoFilm));
+
+    expect(store).toEqual({
+      ...initialState,
+      films: [firstFilm, promoFilm],
+      promoFilmId: promoFilm.id
     });
   });
 

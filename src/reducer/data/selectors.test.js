@@ -4,7 +4,7 @@ import NameSpace from '../name-spaces';
 
 const NAME_SPACE = NameSpace.DATA;
 
-describe(`Check genreSelector`, () => {
+describe(`genreSelector`, () => {
   it(`should return genre from store if call without genre paremeter`, () => {
     const genres = Selectors.genreSelector({[NAME_SPACE]: {genre: `Drama`}});
     expect(genres).toEqual(`Drama`);
@@ -16,7 +16,7 @@ describe(`Check genreSelector`, () => {
   });
 });
 
-describe(`Check genresSelector`, () => {
+describe(`genresSelector`, () => {
   it(`should return genres by films`, () => {
     const films = [
       {
@@ -80,7 +80,7 @@ describe(`Check genresSelector`, () => {
 
 });
 
-describe(`Check filmsByGenreSelector`, () => {
+describe(`filmsByGenreSelector`, () => {
   it(`should return films only certain genre`, () => {
     const genre = `Dramas`;
     const films = [
@@ -184,7 +184,7 @@ describe(`Check filmsByGenreSelector`, () => {
   });
 });
 
-describe(`Check filmSelector`, () => {
+describe(`filmSelector`, () => {
   it(`should return film by id`, () => {
     const films = [
       {
@@ -224,7 +224,8 @@ describe(`Check filmSelector`, () => {
   });
 });
 
-describe(`Check similarFilmsSelector`, () => {
+
+describe(`similarFilmsSelector`, () => {
   it(`should return films with the same genre, but without the current`, () => {
     const currentFilm = {
       id: 2,
@@ -247,5 +248,31 @@ describe(`Check similarFilmsSelector`, () => {
         genre: `Action`,
       }
     ]);
+  });
+});
+
+describe(`promoFilmSelector`, () => {
+  it(`should return film by promoFilmId`, () => {
+    const films = [
+      {
+        id: 1
+      },
+      {
+        id: 2
+      }
+    ];
+    expect(Selectors.promoFilmSelector({[NAME_SPACE]: {films, promoFilmId: 2}})).toEqual({id: 2});
+  });
+
+  it(`should return film by promoFilmId`, () => {
+    const films = [
+      {
+        id: 1
+      },
+      {
+        id: 2
+      }
+    ];
+    expect(Selectors.promoFilmSelector({[NAME_SPACE]: {films, promoFilmId: -1}})).toEqual(undefined);
   });
 });
