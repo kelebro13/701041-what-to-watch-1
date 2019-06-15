@@ -2,7 +2,7 @@ import {reviewType} from "../../types/types";
 
 const Review = (props) => {
   const {review} = props;
-  const date = new Date(review.date).toLocaleDateString();
+  const date = new Date(review.date).toISOString().substring(0, 10);
 
   return (
     <div className="review">
