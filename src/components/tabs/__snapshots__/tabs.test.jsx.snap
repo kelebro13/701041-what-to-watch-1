@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders properly 1`] = `
+<div
+  className="movie-card__desc"
+>
+  <nav
+    className="movie-nav movie-card__nav"
+  >
+    <ul
+      className="movie-nav__list"
+    >
+      <li
+        className="movie-nav__item movie-nav__item--active"
+      >
+        <a
+          className="movie-nav__link"
+          href="#"
+          onClick={[Function]}
+        >
+          test
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    Test
+  </div>
+</div>
+`;

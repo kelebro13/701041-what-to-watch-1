@@ -6,6 +6,8 @@ import InjectSvg from "../inject-svg/inject-svg";
 import withActiveItem from "../../hoc/with-active-item/with-active-item";
 import VideoPlayer from "../video-player/video-player";
 import Header from "../header/header.connect";
+import AddFavoriteFilmButton from "../add-favorite-button/add-favorite-button.connect";
+import Footer from "../footer/footer";
 
 const MovieListWithShowMoreWrapped = withShowMore(MovieListWithShowMore);
 const VideoPlayerWrapped = withActiveItem(VideoPlayer);
@@ -17,9 +19,13 @@ class MainPage extends React.PureComponent {
   }
 
   componentDidMount() {
-    const {loadFilmsRequest} = this.props;
-    if (loadFilmsRequest) {
+    const {filmsByGenre, loadFilmsRequest, film, loadPromoFilmRequest} = this.props;
+    if (filmsByGenre.length === 0 && loadFilmsRequest) {
       loadFilmsRequest();
+    }
+
+    if (film === undefined && loadPromoFilmRequest) {
+      loadPromoFilmRequest();
     }
   }
 
@@ -67,12 +73,7 @@ class MainPage extends React.PureComponent {
                       </svg>
                       <span>Play</span>
                     </button>
-                    <button className="btn btn--list movie-card__button" type="button">
-                      <svg viewBox="0 0 19 20" width="19" height="20">
-                        <use xlinkHref="#add"></use>
-                      </svg>
-                      <span>My list</span>
-                    </button>
+                    <AddFavoriteFilmButton filmId={film.id} isFavorite={film.isFavorite}/>
                   </div>
                 </div>
               </div>
@@ -90,19 +91,7 @@ class MainPage extends React.PureComponent {
             <MovieListWithShowMoreWrapped key={`movie-list-by-${genre}`} films={filmsByGenre} initCount={20} stepCount={20}/>
           </section>
 
-          <footer className="page-footer">
-            <div className="logo">
-              <a className="logo__link logo__link--light">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </a>
-            </div>
-
-            <div className="copyright">
-              <p>© 2019 What to watch Ltd.</p>
-            </div>
-          </footer>
+          <Footer isIndexPage={true}/>
         </div>
       </>
     );
@@ -116,6 +105,7 @@ MainPage.propTypes = {
   film: filmType,
   changeSelectedGenre: PropTypes.func,
   loadFilmsRequest: PropTypes.func,
+  loadPromoFilmRequest: PropTypes.func,
   isActive: PropTypes.bool,
   onActiveStatusChange: PropTypes.func
 };

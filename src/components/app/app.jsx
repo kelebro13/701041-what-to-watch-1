@@ -11,10 +11,10 @@ const App = () => {
   return (
     <Switch>
       <Route path={RoutePath.INDEX} exact component={MainPage}/>
+      <Route path={RoutePath.LOGIN} component={SingInPage}/>
       <Route path={RoutePath.MY_LIST} exact component={withAuthorization(MyListPage)}/>
       <Route path={`${RoutePath.FILM}/:id`} exact component={MoviePage}/>
       <Route path={`${RoutePath.FILM}/:id${RoutePath.ADD_REVIEW}`} exact component={withAuthorization(AddReviewPage)}/>
-      <Route path={RoutePath.LOGIN} component={SingInPage}/>
     </Switch>
   );
 };

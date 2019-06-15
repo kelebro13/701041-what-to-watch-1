@@ -10,6 +10,8 @@ import Header from "../header/header.connect";
 import MovieReviews from "./movie-reviews/movie-reviews.connect";
 import MovieOverview from "./movie-overview/movie-overview";
 import MovieDetails from "./movie-details/movie-details";
+import AddFavoriteFilmButton from "../add-favorite-button/add-favorite-button.connect";
+import Footer from "../footer/footer";
 
 const VideoPlayerWrapped = withActiveItem(VideoPlayer);
 
@@ -45,12 +47,7 @@ const MoviePage = (props) => {
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
-                  <span>My list</span>
-                </button>
+                <AddFavoriteFilmButton filmId={film.id} isFavorite={film.isFavorite}/>
                 {!isAuthorizationRequired && <Link to={`${RoutePath.FILM}/${film.id}${RoutePath.ADD_REVIEW}`} className="btn movie-card__button">Add review</Link>}
               </div>
             </div>
@@ -83,19 +80,7 @@ const MoviePage = (props) => {
           <MovieList films={similarFilms} activeCard={1} />
         </section>
 
-        <footer className="page-footer">
-          <div className="logo">
-            <a href="main.html" className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <Footer isIndexPage={false}/>
       </div>
     </>
   );
