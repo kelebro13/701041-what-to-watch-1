@@ -1,17 +1,20 @@
+import {Link} from 'react-router-dom';
+import {filmType} from "../../types/types";
+import withActiveItem from "../../hoc/with-active-item/with-active-item";
+import RoutePath from "../../routes";
 import MovieList from "../movie-list/movie-list";
 import Tabs from "../tabs/tabs";
-import {filmType} from "../../types/types";
 import InjectSvg from "../inject-svg/inject-svg";
-import MovieDetails from "./movie-details/movie-details";
-import MovieOverview from "./movie-overview/movie-overview";
-import MovieReviews from "./movie-reviews/movie-reviews";
-import withActiveItem from "../../hoc/with-active-item/with-active-item";
 import VideoPlayer from "../video-player/video-player";
+import Header from "../header/header.connect";
+import MovieReviews from "./movie-reviews/movie-reviews.connect";
+import MovieOverview from "./movie-overview/movie-overview";
+import MovieDetails from "./movie-details/movie-details";
 
 const VideoPlayerWrapped = withActiveItem(VideoPlayer);
 
 const MoviePage = (props) => {
-  const {film, similarFilms, onActiveStatusChange, isActive} = props;
+  const {film, similarFilms, onActiveStatusChange, isActive, isAuthorizationRequired} = props;
 
   return (
     film && <>
@@ -25,21 +28,7 @@ const MoviePage = (props) => {
 
           <h1 className="visually-hidden">WTW</h1>
 
-          <header className="page-header movie-card__head">
-            <div className="logo">
-              <a href="main.html" className="logo__link">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </a>
-            </div>
-
-            <div className="user-block">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-              </div>
-            </div>
-          </header>
+          <Header className={`movie-card__head`}/>
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
@@ -62,7 +51,7 @@ const MoviePage = (props) => {
                   </svg>
                   <span>My list</span>
                 </button>
-                <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                {!isAuthorizationRequired && <Link to={`${RoutePath.FILM}/${film.id}${RoutePath.ADD_REVIEW}`} className="btn movie-card__button">Add review</Link>}
               </div>
             </div>
           </div>
@@ -79,7 +68,7 @@ const MoviePage = (props) => {
               <Tabs key={film.id} items={[`Overview`, `Details`, `Reviews`]}>
                 <MovieOverview film={film}/>
                 <MovieDetails film={film}/>
-                <MovieReviews/>
+                <MovieReviews filmId={film.id}/>
               </Tabs>
             </div>
           </div>
@@ -116,7 +105,8 @@ MoviePage.propTypes = {
   film: filmType,
   similarFilms: PropTypes.arrayOf(filmType),
   isActive: PropTypes.bool,
-  onActiveStatusChange: PropTypes.func
+  onActiveStatusChange: PropTypes.func,
+  isAuthorizationRequired: PropTypes.bool
 };
 
 export default MoviePage;

@@ -1,4 +1,4 @@
-import {Actions, changeSelectedGenre, loadFilms, reducer} from "./data";
+import {Actions, changeSelectedGenre, loadFilms, reducer, loadReviewsByFilm} from "./data";
 
 describe(`ActionCreators`, () => {
 
@@ -88,6 +88,31 @@ describe(`ActionCreators`, () => {
     expect(loadFilms(films)).toEqual({
       type: Actions.LOAD_FILMS,
       payload: films
+    });
+  });
+
+  it(`check return action LOAD_REVIEWS_BY_FILM`, () => {
+    const filmId = 1;
+    const reviews = [
+      {
+        id: 1,
+        user: {
+          id: 4,
+          name: `Kate Muir`,
+        },
+        rating: 8.9,
+        comment: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+        date: `2019-05-08T14:13:56.569Z`
+      }
+    ];
+    const action = loadReviewsByFilm(filmId, reviews);
+
+    expect(action).toEqual({
+      type: Actions.LOAD_REVIEWS_BY_FILM,
+      payload: {
+        filmId,
+        reviews
+      }
     });
   });
 });
@@ -189,6 +214,31 @@ describe(`reducer`, () => {
     expect(store).toEqual({
       ...initialState,
       films
+    });
+  });
+
+  it(`should set loaded reviews by film`, () => {
+    const filmId = 1;
+    const reviews = [
+      {
+        id: 1,
+        user: {
+          id: 4,
+          name: `Kate Muir`,
+        },
+        rating: 8.9,
+        comment: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+        date: `2019-05-08T14:13:56.569Z`
+      }
+    ];
+
+    const store = reducer(initialState, loadReviewsByFilm(filmId, reviews));
+
+    expect(store).toEqual({
+      ...initialState,
+      reviews: {
+        [filmId]: reviews
+      }
     });
   });
 

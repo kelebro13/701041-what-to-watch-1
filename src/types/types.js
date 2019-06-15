@@ -17,3 +17,21 @@ export const filmType = PropTypes.shape({
   released: PropTypes.number,
   isFavorite: PropTypes.bool,
 });
+
+export const userType = PropTypes.shape({
+  id: PropTypes.number.isRequired,
+  email: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  avatarUrl: PropTypes.string.isRequired
+});
+
+export const reviewType = PropTypes.shape({
+  id: PropTypes.number.isRequired,
+  user: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+  rating: PropTypes.number.isRequired,
+  comment: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired
+});
