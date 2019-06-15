@@ -9,7 +9,7 @@ export const ResponseCode = {
   OK: 200
 };
 
-const configureAPI = () => {
+const configureAPI = (history) => {
   const api = axios.create({
     baseURL: `${SERVER_URL}/wtw`,
     timeout: 5000,
@@ -27,7 +27,7 @@ const configureAPI = () => {
   const onSuccess = (response) => response;
   const onFail = (error) => {
     if (error.response.status === ResponseCode.FORBIDDEN) {
-      history.pushState(null, null, RoutePath.LOGIN);
+      history.push(RoutePath.LOGIN);
     }
     return error;
   };
