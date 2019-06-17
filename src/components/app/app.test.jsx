@@ -12,7 +12,7 @@ import App from "./app";
 import AddReviewPage from "../add-review-page/add-review-page";
 
 describe(`App`, () => {
-  it(`renders properly`, () => {
+  it(`"`, () => {
     const tree = renderer
       .create(
           <Provider store={mockStore(store)}>

@@ -2,12 +2,12 @@ import {filmType} from "../../types/types";
 import MovieList from "../movie-list/movie-list";
 
 const MovieListWithShowMore = (props) => {
-  const {films, countItem, changeCountItem} = props;
+  const {films, countItem, onCountItemChange} = props;
 
   const handleCountChange = (evt) => {
     evt.preventDefault();
-    if (changeCountItem) {
-      changeCountItem();
+    if (onCountItemChange) {
+      onCountItemChange();
     }
   };
 
@@ -28,7 +28,7 @@ const MovieListWithShowMore = (props) => {
 MovieListWithShowMore.propTypes = {
   films: PropTypes.arrayOf(filmType),
   countItem: PropTypes.number,
-  changeCountItem: PropTypes.func
+  onCountItemChange: PropTypes.func
 };
 
 export default MovieListWithShowMore;

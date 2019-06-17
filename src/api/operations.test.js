@@ -7,8 +7,8 @@ import {
   loadReviewsByFilmRequest,
   addReviewRequest,
   loadPromoFilmRequest,
-  updateFavoriteFilmRequest
-} from "../api/operations";
+  updateFavoriteFilmRequest, loadFavoriteFilmsRequest
+} from "./operations";
 import {Actions as UserActions} from "../reducer/user/user";
 
 describe(`Operations`, () => {
@@ -131,6 +131,22 @@ describe(`Operations`, () => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: DataActions.UPDATE_FAVORITE_FILM,
+          payload: {fake: true}
+        });
+      });
+  });
+
+  it(`check return action LOAD_FAVORITE_FILM`, () => {
+    const dispatch = jest.fn();
+    apiMock
+      .onGet(`/favorite`)
+      .reply(200, {fake: true});
+
+    return loadFavoriteFilmsRequest()(dispatch, null, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: DataActions.LOAD_FAVORITE_FILM,
           payload: {fake: true}
         });
       });

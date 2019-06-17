@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`render correctly App component 1`] = `
+exports[`render property 1`] = `
 Array [
   <div
     className="visually-hidden"
@@ -230,6 +230,7 @@ Array [
           >
             <button
               className="btn btn--play movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -321,12 +322,12 @@ Array [
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          <div
-            className="small-movie-card__image"
+          <a
+            href="/film/2"
+            onClick={[Function]}
           >
-            <a
-              href="/film/2"
-              onClick={[Function]}
+            <div
+              className="small-movie-card__image"
             >
               <video
                 height="175"
@@ -335,8 +336,8 @@ Array [
                 src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
                 width="280"
               />
-            </a>
-          </div>
+            </div>
+          </a>
           <h3
             className="small-movie-card__title"
           >
@@ -354,12 +355,12 @@ Array [
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          <div
-            className="small-movie-card__image"
+          <a
+            href="/film/3"
+            onClick={[Function]}
           >
-            <a
-              href="/film/3"
-              onClick={[Function]}
+            <div
+              className="small-movie-card__image"
             >
               <video
                 height="175"
@@ -368,8 +369,8 @@ Array [
                 src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
                 width="280"
               />
-            </a>
-          </div>
+            </div>
+          </a>
           <h3
             className="small-movie-card__title"
           >
@@ -387,12 +388,12 @@ Array [
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          <div
-            className="small-movie-card__image"
+          <a
+            href="/film/4"
+            onClick={[Function]}
           >
-            <a
-              href="/film/4"
-              onClick={[Function]}
+            <div
+              className="small-movie-card__image"
             >
               <video
                 height="175"
@@ -401,8 +402,8 @@ Array [
                 src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
                 width="280"
               />
-            </a>
-          </div>
+            </div>
+          </a>
           <h3
             className="small-movie-card__title"
           >

@@ -4,7 +4,7 @@ import {Provider} from "react-redux";
 import MainPage from "./main-page";
 import {mockStore, store} from "../../test/mock";
 
-it(`render correctly App component`, () => {
+it(`render property`, () => {
   const genre = `All genres`;
   const genres = [`All genres`, `Kids & Family`, `Comedies`];
   const films = [

@@ -1,7 +1,7 @@
 import renderer from "react-test-renderer";
 import Form from "./form";
 
-it(`renders properly`, () => {
+it(`renders property`, () => {
 
   const tree = renderer
     .create(<Form />)

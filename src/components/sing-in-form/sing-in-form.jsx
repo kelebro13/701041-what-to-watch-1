@@ -18,9 +18,9 @@ const SingInForm = (props) => {
   };
 
   const _redirect = () => {
-    const {redirect} = props;
-    if (redirect) {
-      redirect();
+    const {onRedirect} = props;
+    if (onRedirect) {
+      onRedirect();
     }
   };
 
@@ -49,7 +49,7 @@ const SingInForm = (props) => {
 
 SingInForm.propTypes = {
   singInRequest: PropTypes.func,
-  redirect: PropTypes.func
+  onRedirect: PropTypes.func
 };
 
 export default SingInForm;

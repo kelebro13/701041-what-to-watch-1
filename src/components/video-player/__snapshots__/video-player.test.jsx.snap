@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders properly 1`] = `
+exports[`renders property 1`] = `
 <div
   className="player"
   style={
@@ -34,13 +34,12 @@ exports[`renders properly 1`] = `
         <progress
           className="player__progress"
           max="100"
-          value={0}
         />
         <div
           className="player__toggler"
           style={
             Object {
-              "left": "0%",
+              "left": "undefined%",
             }
           }
         >
@@ -49,9 +48,7 @@ exports[`renders properly 1`] = `
       </div>
       <div
         className="player__time-value"
-      >
-        0
-      </div>
+      />
     </div>
     <div
       className="player__controls-row"

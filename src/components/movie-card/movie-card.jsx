@@ -17,16 +17,15 @@ class MovieCard extends React.PureComponent {
   }
 
   render() {
-    const {film, renderVideo} = this.props;
+    const {film, onVideoRender} = this.props;
     const url = `${RoutePath.FILM}/${film.id}`;
     return (
       <article className="small-movie-card catalog__movies-card" onMouseEnter={this._handleCardMouseEnter} onMouseLeave={this._handleCardMouseLeave}>
-
-        <div className="small-movie-card__image">
-          <Link to={url}>
-            {renderVideo && renderVideo(film.previewImage, film.previewVideoLink)}
-          </Link>
-        </div>
+        <Link to={url}>
+          <div className="small-movie-card__image">
+            {onVideoRender && onVideoRender(film.previewImage, film.previewVideoLink)}
+          </div>
+        </Link>
         <h3 className="small-movie-card__title">
           <Link className="small-movie-card__link" to={url}>{film.name}</Link>
         </h3>
@@ -69,7 +68,7 @@ class MovieCard extends React.PureComponent {
 
 MovieCard.propTypes = {
   film: filmType.isRequired,
-  renderVideo: PropTypes.func,
+  onVideoRender: PropTypes.func,
   isPlaying: PropTypes.bool.isRequired,
   switchPlayer: PropTypes.func,
   onPreviewClick: PropTypes.func,

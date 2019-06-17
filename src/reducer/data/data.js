@@ -13,6 +13,7 @@ export const Actions = {
   LOAD_FILMS: `LOAD_FILMS`,
   LOAD_REVIEWS_BY_FILM: `LOAD_REVIEWS_BY_FILM`,
   UPDATE_FAVORITE_FILM: `UPDATE_FAVORITE_FILM`,
+  LOAD_FAVORITE_FILM: `LOAD_FAVORITE_FILM`,
   LOAD_PROMO_FILM: `LOAD_PROMO_FILM`
 };
 
@@ -51,6 +52,13 @@ export const updateFavoriteFilm = (film) => {
   return {
     type: Actions.UPDATE_FAVORITE_FILM,
     payload: film
+  };
+};
+
+export const loadFavoriteFilms = (films) => {
+  return {
+    type: Actions.LOAD_FAVORITE_FILM,
+    payload: films
   };
 };
 
@@ -100,6 +108,12 @@ export const reducer = (state = initialState, action) => {
           return film;
         }),
         favoriteFilms: null
+      };
+    }
+    case Actions.LOAD_FAVORITE_FILM: {
+      return {
+        ...state,
+        favoriteFilms: action.payload
       };
     }
   }

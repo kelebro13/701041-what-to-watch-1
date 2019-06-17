@@ -1,7 +1,7 @@
 import renderer from "react-test-renderer";
 import AddReviewForm from "./add-review-form";
 
-it(`renders properly`, () => {
+it(`renders property`, () => {
 
   const tree = renderer
     .create(<AddReviewForm filmId={1}/>)

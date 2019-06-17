@@ -7,7 +7,7 @@ it(`render correctly GenreList component`, () => {
   const onSelectedGenreChange = jest.fn();
 
   const tree = renderer
-    .create(<GenreList genres={genres} activeGenre={activeGenre} changeSelectedGenre={onSelectedGenreChange}/>)
+    .create(<GenreList genres={genres} activeGenre={activeGenre} onSelectedGenreChange={onSelectedGenreChange}/>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

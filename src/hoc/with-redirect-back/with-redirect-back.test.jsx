@@ -20,7 +20,7 @@ it(`should redirect back`, () => {
   };
 
   const wrapper = shallow(<MockComponentWrapped location={location} history={history}/>);
-  wrapper.props().redirect();
+  wrapper.props().onRedirect();
 
   expect(history.goBack).toHaveBeenCalledTimes(0);
   expect(history.push).toHaveBeenCalledTimes(1);
@@ -39,7 +39,7 @@ it(`should goBack if location empty`, () => {
   };
 
   const wrapper = shallow(<MockComponentWrapped location={location} history={history}/>);
-  wrapper.props().redirect();
+  wrapper.props().onRedirect();
 
   expect(history.goBack).toHaveBeenCalledTimes(1);
   expect(history.push).toHaveBeenCalledTimes(0);

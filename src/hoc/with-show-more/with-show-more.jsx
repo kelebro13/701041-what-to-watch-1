@@ -5,10 +5,10 @@ const withShowMore = (Component) => {
       this.state = {
         countItem: props.initCount
       };
-      this.changeCountItem = this.changeCountItem.bind(this);
+      this.handleCountItemChange = this.handleCountItemChange.bind(this);
     }
 
-    changeCountItem() {
+    handleCountItemChange() {
       this.setState((prevState) => ({
         countItem: prevState.countItem + this.props.stepCount
       }));
@@ -19,7 +19,7 @@ const withShowMore = (Component) => {
         <Component
           {...this.props}
           countItem={this.state.countItem}
-          changeCountItem={this.changeCountItem}/>
+          onCountItemChange={this.handleCountItemChange}/>
       );
     }
   }

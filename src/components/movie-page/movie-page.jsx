@@ -16,7 +16,13 @@ import Footer from "../footer/footer";
 const VideoPlayerWrapped = withActiveItem(VideoPlayer);
 
 const MoviePage = (props) => {
-  const {film, similarFilms, onActiveStatusChange, isActive, isAuthorizationRequired} = props;
+  const {film, similarFilms, isActive, onActiveStatusChange, isAuthorizationRequired} = props;
+
+  const handlePlayButtonClick = () => {
+    if (onActiveStatusChange) {
+      onActiveStatusChange();
+    }
+  };
 
   return (
     film && <>
@@ -41,7 +47,7 @@ const MoviePage = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button" onClick={onActiveStatusChange}>
+                <button className="btn btn--play movie-card__button" type="button" onClick={handlePlayButtonClick}>
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>

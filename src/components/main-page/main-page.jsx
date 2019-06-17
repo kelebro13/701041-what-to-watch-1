@@ -15,7 +15,8 @@ const VideoPlayerWrapped = withActiveItem(VideoPlayer);
 class MainPage extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.handleChangeSelectedGenre = this.handleChangeSelectedGenre.bind(this);
+    this.handleSelectedGenreChange = this.handleSelectedGenreChange.bind(this);
+    this._handlePlayButtonClick = this._handlePlayButtonClick.bind(this);
   }
 
   componentDidMount() {
@@ -29,7 +30,7 @@ class MainPage extends React.PureComponent {
     }
   }
 
-  handleChangeSelectedGenre(selectedGenre) {
+  handleSelectedGenreChange(selectedGenre) {
     const {changeSelectedGenre} = this.props;
     if (changeSelectedGenre) {
       changeSelectedGenre(selectedGenre);
@@ -67,7 +68,7 @@ class MainPage extends React.PureComponent {
                   </p>
 
                   <div className="movie-card__buttons">
-                    <button className="btn btn--play movie-card__button" type="button" onClick={onActiveStatusChange}>
+                    <button className="btn btn--play movie-card__button" type="button" onClick={this._handlePlayButtonClick}>
                       <svg viewBox="0 0 19 19" width="19" height="19">
                         <use xlinkHref="#play-s"></use>
                       </svg>
@@ -87,7 +88,7 @@ class MainPage extends React.PureComponent {
           <section className="catalog">
             <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-            <GenreList genres={genres} activeGenre={genre} changeSelectedGenre={this.handleChangeSelectedGenre}/>
+            <GenreList genres={genres} activeGenre={genre} onSelectedGenreChange={this.handleSelectedGenreChange}/>
             <MovieListWithShowMoreWrapped key={`movie-list-by-${genre}`} films={filmsByGenre} initCount={20} stepCount={20}/>
           </section>
 
@@ -95,6 +96,13 @@ class MainPage extends React.PureComponent {
         </div>
       </>
     );
+  }
+
+  _handlePlayButtonClick() {
+    const {onActiveStatusChange} = this.props;
+    if (onActiveStatusChange) {
+      onActiveStatusChange();
+    }
   }
 }
 

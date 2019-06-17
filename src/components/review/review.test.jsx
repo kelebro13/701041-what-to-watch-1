@@ -1,7 +1,7 @@
 import renderer from "react-test-renderer";
 import Review from "./review";
 
-it(`renders properly`, () => {
+it(`renders property`, () => {
   const review = {
     id: 1,
     user: {

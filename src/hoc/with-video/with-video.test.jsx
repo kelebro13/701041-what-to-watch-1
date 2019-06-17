@@ -1,9 +1,9 @@
 import renderer from "react-test-renderer";
 import withVideo from "./with-video";
 
-const MockComponent = (props) => <div>{props.renderVideo()}</div>;
+const MockComponent = (props) => <div>{props.onVideoRender()}</div>;
 MockComponent.propTypes = {
-  renderVideo: PropTypes.func
+  onVideoRender: PropTypes.func
 };
 
 const MockComponentWrapper = withVideo(MockComponent);

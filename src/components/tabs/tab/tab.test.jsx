@@ -1,7 +1,7 @@
 import renderer from "react-test-renderer";
 import Tab from "./tab";
 
-it(`renders properly for selected`, () => {
+it(`renders property for selected`, () => {
   const wrapper = renderer
     .create(<Tab index={1} title={`Test`} isSelected={true}/>)
     .toJSON();
@@ -9,7 +9,7 @@ it(`renders properly for selected`, () => {
   expect(wrapper).toMatchSnapshot();
 });
 
-it(`renders properly for not selected`, () => {
+it(`renders property for not selected`, () => {
   const wrapper = renderer
     .create(<Tab index={1} title={`Test`} isSelected={false}/>)
     .toJSON();

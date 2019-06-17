@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders properly for another pages 1`] = `
+exports[`renders property for another pages 1`] = `
 <footer
   className="page-footer"
 >
@@ -39,7 +39,7 @@ exports[`renders properly for another pages 1`] = `
 </footer>
 `;
 
-exports[`renders properly for index page 1`] = `
+exports[`renders property for index page 1`] = `
 <footer
   className="page-footer"
 >
