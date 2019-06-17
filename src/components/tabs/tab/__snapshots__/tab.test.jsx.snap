@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders properly for not selected 1`] = `
+exports[`renders property for not selected 1`] = `
 <li
   className="movie-nav__item "
 >
@@ -14,7 +14,7 @@ exports[`renders properly for not selected 1`] = `
 </li>
 `;
 
-exports[`renders properly for selected 1`] = `
+exports[`renders property for selected 1`] = `
 <li
   className="movie-nav__item movie-nav__item--active"
 >

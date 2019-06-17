@@ -1,7 +1,7 @@
 import renderer from "react-test-renderer";
 import InjectSvg from "./inject-svg";
 
-it(`renders properly`, () => {
+it(`renders property`, () => {
 
   const tree = renderer
     .create(<InjectSvg/>)

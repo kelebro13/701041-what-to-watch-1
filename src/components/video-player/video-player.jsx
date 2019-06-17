@@ -1,10 +1,8 @@
+import withTimelineVideo from "../../hoc/with-timeline-video/with-timeline-video";
+
 class VideoPlayer extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      progress: 0,
-      duration: 0
-    };
     this.videoRef = React.createRef();
     this._handlePlayClick = this._handlePlayClick.bind(this);
     this._handleFullScreenClick = this._handleFullScreenClick.bind(this);
@@ -17,9 +15,16 @@ class VideoPlayer extends React.PureComponent {
     this._videoInit(video);
   }
 
+  componentWillUnmount() {
+    const {current: video} = this.videoRef;
+    if (video !== null) {
+      video.onloadeddata = null;
+      video.ontimeupdate = null;
+    }
+  }
+
   render() {
-    const {name, poster, videoLink, isActive} = this.props;
-    const {progress, duration} = this.state;
+    const {name, poster, videoLink, isActive, progress, duration} = this.props;
     return (
       <div className="player" style={{position: `absolute`, zIndex: 2}}>
         <video ref={this.videoRef} src={videoLink} className="player__video" poster={poster}></video>
@@ -57,10 +62,11 @@ class VideoPlayer extends React.PureComponent {
   }
 
   _videoInit(video) {
+    const {onDurationChange, onProgressChange} = this.props;
     if (video !== null) {
       video.onloadeddata = () => {
         this.setState({
-          duration: this._convertDurationToString(video.duration)
+          duration: onDurationChange(video.duration)
         });
         video.play();
         this.props.onActiveStatusChange();
@@ -68,7 +74,7 @@ class VideoPlayer extends React.PureComponent {
 
       video.ontimeupdate = () => {
         this.setState({
-          progress: this._getProgress(video.currentTime, video.duration)
+          progress: onProgressChange(video.currentTime)
         });
       };
     }
@@ -100,15 +106,6 @@ class VideoPlayer extends React.PureComponent {
       onExit();
     }
   }
-
-  _getProgress(elapsedTime, duration) {
-    return (elapsedTime * 100) / duration;
-  }
-
-  _convertDurationToString(duration) {
-    const time = new Date(duration * 1000);
-    return time.toISOString().substr(11, 8);
-  }
 }
 
 VideoPlayer.propTypes = {
@@ -117,7 +114,13 @@ VideoPlayer.propTypes = {
   poster: PropTypes.string.isRequired,
   videoLink: PropTypes.string,
   onExit: PropTypes.func,
-  onActiveStatusChange: PropTypes.func
+  onActiveStatusChange: PropTypes.func,
+  progress: PropTypes.number,
+  duration: PropTypes.string,
+  onProgressChange: PropTypes.func,
+  onDurationChange: PropTypes.func
 };
 
-export default VideoPlayer;
+export {VideoPlayer};
+
+export default withTimelineVideo(VideoPlayer);

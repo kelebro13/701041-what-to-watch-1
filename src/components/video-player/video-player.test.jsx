@@ -1,7 +1,7 @@
 import renderer from "react-test-renderer";
-import VideoPlayer from './video-player';
+import {VideoPlayer} from './video-player';
 
-it(`renders properly`, () => {
+it(`renders property`, () => {
   const poster = `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`;
   const sourceMp4 = `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`;
 

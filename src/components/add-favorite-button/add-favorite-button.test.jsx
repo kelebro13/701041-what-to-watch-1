@@ -2,7 +2,7 @@ import renderer from "react-test-renderer";
 import {mount} from "enzyme";
 import AddFavoriteFilmButton from "./add-favorite-button";
 
-it(`renders properly`, () => {
+it(`renders property`, () => {
 
   const tree = renderer
     .create(<AddFavoriteFilmButton filmId={1}/>)

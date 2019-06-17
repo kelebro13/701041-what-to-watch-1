@@ -4,7 +4,7 @@ import {MemoryRouter} from "react-router-dom";
 import MoviePage from "./movie-page";
 import {mockStore, store} from "../../test/mock";
 
-it(`renders properly`, () => {
+it(`renders property`, () => {
   const film = {
     id: 1,
     name: `The Grand Budapest Hotel`,

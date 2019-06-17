@@ -4,7 +4,7 @@ import {MemoryRouter} from "react-router-dom";
 import {mockStore, store, film} from "../../test/mock";
 import AddReviewPage from "./add-review-page";
 
-it(`renders properly`, () => {
+it(`renders property`, () => {
 
   const tree = renderer
     .create(<Provider store={mockStore(store)}>

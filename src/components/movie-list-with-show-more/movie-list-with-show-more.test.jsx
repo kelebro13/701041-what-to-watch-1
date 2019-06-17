@@ -1,7 +1,7 @@
 import renderer from "react-test-renderer";
 import MovieListWithShowMore from "./movie-list-with-show-more";
 
-it(`renders properly`, () => {
+it(`renders property`, () => {
 
   const films = new Array(20);
 

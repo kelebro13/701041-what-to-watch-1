@@ -1,5 +1,5 @@
 import {mount} from "enzyme";
-import VideoPlayer from "./video-player";
+import {VideoPlayer} from "./video-player";
 
 it(`should open full screen if click on button`, () => {
   const video = {

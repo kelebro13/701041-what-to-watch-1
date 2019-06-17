@@ -4,7 +4,7 @@ import {Provider} from "react-redux";
 import {mockStore} from "../../test/mock";
 import Header from "./header";
 
-it(`renders properly`, () => {
+it(`renders property`, () => {
   const wrapper = renderer
     .create(<Provider store={mockStore()}><MemoryRouter><Header/></MemoryRouter></Provider>)
     .toJSON();
