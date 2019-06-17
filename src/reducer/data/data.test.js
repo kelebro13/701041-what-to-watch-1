@@ -1,4 +1,4 @@
-import {film as mockFilm} from "../../test/mock";
+import {film as mockFilm, films as mockFilms} from "../../test/mock";
 import {
   Actions,
   changeSelectedGenre,
@@ -6,7 +6,7 @@ import {
   reducer,
   loadReviewsByFilm,
   loadPromoFilm,
-  updateFavoriteFilm
+  updateFavoriteFilm, loadFavoriteFilms
 } from "./data";
 
 describe(`ActionCreators`, () => {
@@ -140,6 +140,15 @@ describe(`ActionCreators`, () => {
     expect(action).toEqual({
       type: Actions.UPDATE_FAVORITE_FILM,
       payload: mockFilm
+    });
+  });
+
+  it(`should return action LOAD_FAVORITE_FILM`, () => {
+    const action = loadFavoriteFilms(mockFilms);
+
+    expect(action).toEqual({
+      type: Actions.LOAD_FAVORITE_FILM,
+      payload: mockFilms
     });
   });
 });
@@ -403,6 +412,18 @@ describe(`reducer`, () => {
     });
   });
 
+  it(`should load favorite films`, () => {
+
+    const store = reducer({...initialState}, {
+      type: Actions.LOAD_FAVORITE_FILM,
+      payload: mockFilms
+    });
+
+    expect(store).toEqual({
+      ...initialState,
+      favoriteFilms: mockFilms
+    });
+  });
 
   it(`should return the initial state`, () => {
     expect(reducer(initialState, {})).toEqual(initialState);
