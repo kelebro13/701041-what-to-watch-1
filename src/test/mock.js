@@ -122,6 +122,7 @@ export const store = {
   [NameSpace.DATA]: {
     genre: DEFAULT_GENRE,
     films,
+    favoriteFilms: films,
     promoFilmId: 2
   },
   [NameSpace.USER]: {

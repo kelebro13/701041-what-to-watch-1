@@ -8,7 +8,7 @@ import {
   addReviewRequest,
   loadPromoFilmRequest,
   updateFavoriteFilmRequest, loadFavoriteFilmsRequest
-} from "../api/operations";
+} from "./operations";
 import {Actions as UserActions} from "../reducer/user/user";
 
 describe(`Operations`, () => {

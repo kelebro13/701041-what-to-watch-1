@@ -71,3 +71,5 @@ export const promoFilmSelector = createSelector(
     [filmsSelector, promoFilmIdSelector],
     (films, promoFilmId) => films.find((film) => film.id === promoFilmId)
 );
+
+export const favoriteFilmsSelector = (state) => state[NAME_SPACE].favoriteFilms;
