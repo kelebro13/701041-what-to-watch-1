@@ -25,7 +25,7 @@ const withVideo = (Component) => {
       return (
         <Component
           {...this.props}
-          renderVideo={this.renderVideo}
+          onVideoRender={this.renderVideo}
         />
       );
     }

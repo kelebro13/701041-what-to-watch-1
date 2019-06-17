@@ -20,9 +20,9 @@ it(`should render only MovieList if countItem more than films length`, () => {
 
 it(`should call changeCountItem on button click`, () => {
   const films = new Array(21);
-  const changeCountItem = jest.fn();
-  const wrapper = shallow(<MovieListWithShowMore films={films} countItem={20} changeCountItem={changeCountItem}/>);
+  const onCountItemChange = jest.fn();
+  const wrapper = shallow(<MovieListWithShowMore films={films} countItem={20} onCountItemChange={onCountItemChange}/>);
 
   wrapper.find(`button`).simulate(`click`, {preventDefault: () => {}});
-  expect(changeCountItem).toHaveBeenCalledTimes(1);
+  expect(onCountItemChange).toHaveBeenCalledTimes(1);
 });

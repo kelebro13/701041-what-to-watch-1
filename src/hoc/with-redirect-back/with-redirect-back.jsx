@@ -5,10 +5,10 @@ const withRedirectBack = (Component) => {
   class WithRedirectBack extends React.PureComponent {
     constructor(props) {
       super(props);
-      this.redirect = this.redirect.bind(this);
+      this.handleRedirect = this.handleRedirect.bind(this);
     }
 
-    redirect() {
+    handleRedirect() {
       const {location, history} = this.props;
       if (!location.state === false) {
         history.push(location.state.from.pathname);
@@ -18,7 +18,7 @@ const withRedirectBack = (Component) => {
     }
 
     render() {
-      return <Component {...this.props} redirect={this.redirect}/>;
+      return <Component {...this.props} onRedirect={this.handleRedirect}/>;
     }
   }
 

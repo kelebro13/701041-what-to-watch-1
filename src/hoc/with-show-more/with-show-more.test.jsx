@@ -9,9 +9,9 @@ it(`should change countItem when call changeCountItem`, () => {
 
   expect(wrapper.props().countItem).toEqual(20);
 
-  wrapper.props().changeCountItem();
+  wrapper.props().onCountItemChange();
   expect(wrapper.props().countItem).toEqual(40);
 
-  wrapper.props().changeCountItem();
+  wrapper.props().onCountItemChange();
   expect(wrapper.props().countItem).toEqual(60);
 });

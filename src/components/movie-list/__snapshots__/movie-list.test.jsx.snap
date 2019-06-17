@@ -9,12 +9,12 @@ exports[`render correctly MovieList component 1`] = `
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
-    <div
-      className="small-movie-card__image"
+    <a
+      href="/film/1"
+      onClick={[Function]}
     >
-      <a
-        href="/film/1"
-        onClick={[Function]}
+      <div
+        className="small-movie-card__image"
       >
         <video
           height="175"
@@ -23,8 +23,8 @@ exports[`render correctly MovieList component 1`] = `
           src="https://some-link"
           width="280"
         />
-      </a>
-    </div>
+      </div>
+    </a>
     <h3
       className="small-movie-card__title"
     >

@@ -15,7 +15,7 @@ const VideoPlayerWrapped = withActiveItem(VideoPlayer);
 class MainPage extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.handleChangeSelectedGenre = this.handleChangeSelectedGenre.bind(this);
+    this.handleSelectedGenreChange = this.handleSelectedGenreChange.bind(this);
     this._handlePlayButtonClick = this._handlePlayButtonClick.bind(this);
   }
 
@@ -30,7 +30,7 @@ class MainPage extends React.PureComponent {
     }
   }
 
-  handleChangeSelectedGenre(selectedGenre) {
+  handleSelectedGenreChange(selectedGenre) {
     const {changeSelectedGenre} = this.props;
     if (changeSelectedGenre) {
       changeSelectedGenre(selectedGenre);
@@ -88,7 +88,7 @@ class MainPage extends React.PureComponent {
           <section className="catalog">
             <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-            <GenreList genres={genres} activeGenre={genre} changeSelectedGenre={this.handleChangeSelectedGenre}/>
+            <GenreList genres={genres} activeGenre={genre} onSelectedGenreChange={this.handleSelectedGenreChange}/>
             <MovieListWithShowMoreWrapped key={`movie-list-by-${genre}`} films={filmsByGenre} initCount={20} stepCount={20}/>
           </section>
 
