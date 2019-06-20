@@ -1,4 +1,4 @@
-import {Actions, reducer, requireAuthorization, singIn} from "./user";
+import {Actions, reducer, requireAuthorization, loadUser} from "./user";
 
 describe(`ActionCreators`, () => {
   it(`check return action REQUIRED_AUTHORIZATION`, () => {
@@ -8,7 +8,7 @@ describe(`ActionCreators`, () => {
     });
   });
 
-  it(`check return action SING_IN`, () => {
+  it(`check return action LOAD_USER`, () => {
     const user = {
       id: 1,
       email: `Oliver.conner@gmail.com`,
@@ -16,8 +16,8 @@ describe(`ActionCreators`, () => {
       avatarUrl: `img/1.png`
     };
 
-    expect(singIn(user)).toEqual({
-      type: Actions.SING_IN,
+    expect(loadUser(user)).toEqual({
+      type: Actions.LOAD_USER,
       payload: user
     });
   });
@@ -47,7 +47,7 @@ describe(`reducer`, () => {
     };
 
     const store = reducer(initialState, {
-      type: Actions.SING_IN,
+      type: Actions.LOAD_USER,
       payload: user
     });
 
