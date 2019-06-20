@@ -5,7 +5,7 @@ const initialState = {
 
 const Actions = {
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
-  SING_IN: `SING_IN`
+  LOAD_USER: `LOAD_USER`
 };
 
 const requireAuthorization = (status) => {
@@ -15,9 +15,9 @@ const requireAuthorization = (status) => {
   };
 };
 
-const singIn = (user) => {
+const loadUser = (user) => {
   return {
-    type: Actions.SING_IN,
+    type: Actions.LOAD_USER,
     payload: user
   };
 };
@@ -30,7 +30,7 @@ const reducer = (state = initialState, action) => {
         isAuthorizationRequired: action.payload
       };
     }
-    case Actions.SING_IN: {
+    case Actions.LOAD_USER: {
       return {
         ...state,
         isAuthorizationRequired: false,
@@ -44,6 +44,6 @@ const reducer = (state = initialState, action) => {
 export {
   Actions,
   requireAuthorization,
-  singIn,
+  loadUser,
   reducer
 };

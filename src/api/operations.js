@@ -1,5 +1,5 @@
 import {loadFilms, loadReviewsByFilm, loadPromoFilm, updateFavoriteFilm, loadFavoriteFilms} from "../reducer/data/data";
-import {singIn} from "../reducer/user/user";
+import {loadUser} from "../reducer/user/user";
 import {ResponseCode} from "./api";
 
 export const loadFilmsRequest = () => (dispatch, _getState, api) => {
@@ -15,7 +15,7 @@ export const singInRequest = (email, password) => (dispatch, _getState, api) => 
     password
   })
     .then((response) => {
-      dispatch(singIn(response.data));
+      dispatch(loadUser(response.data));
     });
 };
 
@@ -57,5 +57,16 @@ export const loadFavoriteFilmsRequest = () => (dispatch, _getState, api) => {
   return api.get(`/favorite`)
     .then((response) => {
       dispatch(loadFavoriteFilms(response.data));
+    });
+};
+
+export const loadUserRequest = () => (dispatch, _getState, api) => {
+  return api.get(`/login`, {
+    withoutRedirect: true
+  })
+    .then((response) => {
+      if (response.status === ResponseCode.OK) {
+        dispatch(loadUser(response.data));
+      }
     });
 };

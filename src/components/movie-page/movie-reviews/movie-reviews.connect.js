@@ -1,11 +1,11 @@
 import {connect} from 'react-redux';
 import {loadReviewsByFilmRequest} from "../../../api/operations";
-import {reviewsSelector} from "../../../reducer/data/selectors";
+import {reviewsByFilmSelector} from "../../../reducer/data/selectors";
 import MovieReviews from "./movie-reviews";
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    reviews: reviewsSelector(state)[ownProps.filmId]
+    reviews: reviewsByFilmSelector(state, ownProps.filmId)
   };
 };
 

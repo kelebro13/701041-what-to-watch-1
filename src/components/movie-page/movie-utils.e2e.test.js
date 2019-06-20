@@ -1,4 +1,5 @@
 import * as Utils from './movie-utils';
+import {getDateToString} from "./movie-utils";
 
 describe(`getRatingLevel`, () => {
   it(`should return BAD level if rating less 3`, () => {
@@ -59,5 +60,23 @@ describe(`getTime`, () => {
 
   it(`should return current argument if it negative`, () => {
     expect(Utils.getTime(-132)).toEqual(-132);
+  });
+});
+
+describe(`getDateToString`, () => {
+  it(`should return correct date`, () => {
+    const date = `2019-05-31T19:33:44.642Z`;
+
+    expect(getDateToString(date)).toEqual(`May 31, 2019`);
+  });
+
+  it(`should return empty string if invalid date`, () => {
+    const date = `test`;
+    expect(getDateToString(date)).toEqual(``);
+  });
+
+  it(`should return empty string if incorrect format date`, () => {
+    const date = undefined;
+    expect(getDateToString(date)).toEqual(``);
   });
 });

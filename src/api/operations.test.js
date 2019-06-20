@@ -7,7 +7,7 @@ import {
   loadReviewsByFilmRequest,
   addReviewRequest,
   loadPromoFilmRequest,
-  updateFavoriteFilmRequest, loadFavoriteFilmsRequest
+  updateFavoriteFilmRequest, loadFavoriteFilmsRequest, loadUserRequest
 } from "./operations";
 import {Actions as UserActions} from "../reducer/user/user";
 
@@ -42,7 +42,7 @@ describe(`Operations`, () => {
       });
   });
 
-  it(`should return action SING_IN`, () => {
+  it(`should return action LOAD_USER`, () => {
     const dispatch = jest.fn();
 
     apiMock
@@ -53,7 +53,7 @@ describe(`Operations`, () => {
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: UserActions.SING_IN,
+          type: UserActions.LOAD_USER,
           payload: {fake: true}
         });
       });
@@ -149,6 +149,36 @@ describe(`Operations`, () => {
           type: DataActions.LOAD_FAVORITE_FILM,
           payload: {fake: true}
         });
+      });
+  });
+
+  it(`should return action LOAD_USER if response status 200`, () => {
+    const dispatch = jest.fn();
+
+    apiMock
+      .onGet(`/login`)
+      .reply(200, {fake: true});
+
+    return loadUserRequest()(dispatch, null, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: UserActions.LOAD_USER,
+          payload: {fake: true}
+        });
+      });
+  });
+
+  it(`should return undefined if response status is not 200`, () => {
+    const dispatch = jest.fn();
+
+    apiMock
+      .onGet(`/login`)
+      .reply(403, {fake: true});
+
+    return loadUserRequest()(dispatch, null, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(0);
       });
   });
 });

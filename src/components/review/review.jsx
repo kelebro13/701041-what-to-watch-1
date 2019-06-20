@@ -1,4 +1,5 @@
 import {reviewType} from "../../types/types";
+import {getDateToString} from "../movie-page/movie-utils";
 
 const Review = (props) => {
   const {review} = props;
@@ -11,7 +12,7 @@ const Review = (props) => {
 
         <footer className="review__details">
           <cite className="review__author">{review.user.name}</cite>
-          <time className="review__date" dateTime={date}>{date}</time>
+          <time className="review__date" dateTime={date}>{getDateToString(review.date)}</time>
         </footer>
       </blockquote>
 

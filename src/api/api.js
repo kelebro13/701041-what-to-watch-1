@@ -26,7 +26,7 @@ const configureAPI = (history) => {
 
   const onSuccess = (response) => response;
   const onFail = (error) => {
-    if (error.response.status === ResponseCode.FORBIDDEN) {
+    if (error.response.status === ResponseCode.FORBIDDEN && !error.config.withoutRedirect) {
       history.push(RoutePath.LOGIN);
     }
     return error;
