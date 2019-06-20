@@ -43,7 +43,7 @@ const MoviePage = (props) => {
               <h2 className="movie-card__title">{film.name}</h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">{film.genre}</span>
-                <span className="movie-card__year">{film.release}</span>
+                <span className="movie-card__year">{film.released}</span>
               </p>
 
               <div className="movie-card__buttons">

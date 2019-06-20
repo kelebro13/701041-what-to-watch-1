@@ -47,3 +47,25 @@ export const getTime = (runTime) => {
 
   return runTime;
 };
+
+const months = [
+  `January`,
+  `February`,
+  `March`,
+  `April`,
+  `May`,
+  `June`,
+  `July`,
+  `August`,
+  `September`,
+  `October`,
+  `November`,
+  `December`];
+
+export const getDateToString = (date) => {
+  const currentDate = new Date(date);
+  if (isNaN(currentDate.getTime()) || date === null) {
+    return ``;
+  }
+  return `${months[currentDate.getUTCMonth()]} ${currentDate.getUTCDate()}, ${currentDate.getUTCFullYear()}`;
+};

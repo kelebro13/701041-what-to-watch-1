@@ -1,7 +1,9 @@
+import {Link} from "react-router-dom";
+import {filmType} from "../../types/types";
+import RoutePath from "../../routes";
 import InjectSvg from "../inject-svg/inject-svg";
 import Header from "../header/header.connect";
 import AddReviewForm from "../add-review-form/add-review-form.connect";
-import {filmType} from "../../types/types";
 
 
 const AddReviewPage = (props) => {
@@ -20,7 +22,7 @@ const AddReviewPage = (props) => {
             <nav className="breadcrumbs">
               <ul className="breadcrumbs__list">
                 <li className="breadcrumbs__item">
-                  <a href="movie-page.html" className="breadcrumbs__link">{film.name}</a>
+                  <Link to={`${RoutePath.FILM}/${film.id}`} className="breadcrumbs__link">{film.name}</Link>
                 </li>
                 <li className="breadcrumbs__item">
                   <a className="breadcrumbs__link">Add review</a>

@@ -213,7 +213,9 @@ Array [
             </span>
             <span
               className="movie-card__year"
-            />
+            >
+              2014
+            </span>
           </p>
           <div
             className="movie-card__buttons"
