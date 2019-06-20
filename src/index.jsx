@@ -5,7 +5,7 @@ import thunk from "redux-thunk";
 import {createBrowserHistory} from "history";
 import {Router} from "react-router-dom";
 import {composeWithDevTools} from "redux-devtools-extension";
-import App from "./components/app/app";
+import App from "./components/app/app.connect";
 import reducer from "./reducer";
 import configureAPI from "./api/api";
 

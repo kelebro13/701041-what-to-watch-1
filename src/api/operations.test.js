@@ -152,7 +152,7 @@ describe(`Operations`, () => {
       });
   });
 
-  it(`should return action LOAD_USER`, () => {
+  it(`should return action LOAD_USER if response status 200`, () => {
     const dispatch = jest.fn();
 
     apiMock
@@ -166,6 +166,19 @@ describe(`Operations`, () => {
           type: UserActions.LOAD_USER,
           payload: {fake: true}
         });
+      });
+  });
+
+  it(`should return undefined if response status is not 200`, () => {
+    const dispatch = jest.fn();
+
+    apiMock
+      .onGet(`/login`)
+      .reply(403, {fake: true});
+
+    return loadUserRequest()(dispatch, null, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(0);
       });
   });
 });

@@ -61,8 +61,12 @@ export const loadFavoriteFilmsRequest = () => (dispatch, _getState, api) => {
 };
 
 export const loadUserRequest = () => (dispatch, _getState, api) => {
-  return api.get(`/login`)
+  return api.get(`/login`, {
+    withoutRedirect: true
+  })
     .then((response) => {
-      dispatch(loadUser(response.data));
+      if (response.status === ResponseCode.OK) {
+        dispatch(loadUser(response.data));
+      }
     });
 };
