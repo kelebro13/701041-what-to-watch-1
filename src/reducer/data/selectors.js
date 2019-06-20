@@ -63,7 +63,21 @@ export const similarFilmsSelector = createSelector(
     }
 );
 
-export const reviewsSelector = (state) => state[NAME_SPACE].reviews;
+const reviewsSelector = (state) => state[NAME_SPACE].reviews;
+
+export const reviewsByFilmSelector = createSelector(
+    [reviewsSelector, idSelector],
+    (reviews, filmId) => {
+      if (reviews[filmId] === undefined) {
+        return undefined;
+      }
+      return reviews[filmId].sort((film, anotherFilm) => {
+        const filmDate = new Date(film.date);
+        const anotherFilmDate = new Date(anotherFilm.date);
+        return anotherFilmDate - filmDate;
+      });
+    }
+);
 
 const promoFilmIdSelector = (state) => state[NAME_SPACE].promoFilmId;
 

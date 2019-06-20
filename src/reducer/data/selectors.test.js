@@ -224,7 +224,6 @@ describe(`filmSelector`, () => {
   });
 });
 
-
 describe(`similarFilmsSelector`, () => {
   it(`should return films with the same genre, but without the current`, () => {
     const currentFilm = {
@@ -274,5 +273,57 @@ describe(`promoFilmSelector`, () => {
       }
     ];
     expect(Selectors.promoFilmSelector({[NAME_SPACE]: {films, promoFilmId: -1}})).toEqual(undefined);
+  });
+});
+
+describe(`reviewByFilmSelector`, () => {
+  it(`should return sort review (first new)`, () => {
+    const filmId = 1;
+    const firstReview = {
+      id: 1,
+      date: `2018-05-08T14:13:56.569Z`
+    };
+    const secondReview = {
+      id: 2,
+      date: `2019-05-09T14:13:56.569Z`
+    };
+    const store = {
+      [NAME_SPACE]: {
+        reviews: {
+          [filmId]: [
+            firstReview, secondReview
+          ]
+        }
+      }
+    };
+
+
+    expect(Selectors.reviewsByFilmSelector(store, filmId)).toEqual([
+      secondReview, firstReview
+    ]);
+  });
+
+  it(`should return undefined if reviews by film empty`, () => {
+    const filmId = 1;
+    const firstReview = {
+      id: 1,
+      date: `2019-05-08T14:13:56.569Z`
+    };
+    const secondReview = {
+      id: 2,
+      date: `2019-05-09T14:13:56.569Z`
+    };
+    const store = {
+      [NAME_SPACE]: {
+        reviews: {
+          [2]: [
+            firstReview, secondReview
+          ]
+        }
+      }
+    };
+
+
+    expect(Selectors.reviewsByFilmSelector(store, filmId)).toEqual(undefined);
   });
 });
