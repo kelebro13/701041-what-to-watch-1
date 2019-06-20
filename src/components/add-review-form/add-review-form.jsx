@@ -2,6 +2,8 @@ import Form from "../form/form";
 
 const RATING_INPUT = `rating`;
 const REVIEW_TEXT_INPUT = `review-text`;
+const MIN_LENGTH = 50;
+const MAX_LENGTH = 400;
 
 const AddReviewForm = (props) => {
 
@@ -46,7 +48,7 @@ const AddReviewForm = (props) => {
 
         <div className="add-review__text">
           <textarea className="add-review__textarea" name={REVIEW_TEXT_INPUT} id="review-text"
-            placeholder="Review text" required></textarea>
+            placeholder="Review text" minLength={MIN_LENGTH} maxLength={MAX_LENGTH} required></textarea>
           <div className="add-review__submit">
             <button className="add-review__btn" type="submit">Post</button>
           </div>
